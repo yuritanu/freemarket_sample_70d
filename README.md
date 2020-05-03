@@ -22,3 +22,77 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+---------------------------------------
+## Usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true, index: true|
+|password|string|null: false, unique: true, index: true|
+|family_name|string|null: false|
+|given_name|string|null: false|
+|family_name_kana|string|null: false|
+|given_name_kana|string|null: false|
+|birthday|data|null: false|
+|destination_family_name|string|null: false|
+|destination_given_name|string|null: false|
+|destination_family_name_kana|string|null: false|
+|destination_given_name_kana|string|null: false|
+|postal_code|integer|null: false|
+|prefectures|string|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building|string|null|
+|phone_number|integer|null|
+
+### Association
+- belongs_to: credit_card
+- has_many :products
+---------------------------------------
+
+---------------------------------------
+## Credit_cardsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|card_number|string|null: false|
+|expiration_month|string|null: false|
+|expiration_year|string|null: false|
+|security_code|string|null: false|
+
+### Association
+- belongs_to :user
+---------------------------------------
+
+---------------------------------------
+## Productsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|product_name|string|null: false|
+|product_explanation|text|null: false|
+|category|integer|null: false, index: true||
+|brand|integer|null: false, index: true||
+|product_status|integer|null: false|
+|delivery_cost|integer|null: false|
+|shipping_origin|integer|null: false|
+|delivery_day|integer|null: false|
+|price|integer|null: false|
+
+### Association
+- belongs_to :user
+- has_many :images
+---------------------------------------
+
+---------------------------------------
+## Imagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|src|string|null: false|
+|product_id|references|foreign_key: true|
+
+### Association
+- belongs_to :product
+---------------------------------------
