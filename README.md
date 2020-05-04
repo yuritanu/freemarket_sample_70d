@@ -35,20 +35,17 @@ Things you may want to cover:
 |family_name_kana|string|null: false|
 |given_name_kana|string|null: false|
 |birthday|data|null: false|
-|destination_family_name|string|null: false|
-|destination_given_name|string|null: false|
-|destination_family_name_kana|string|null: false|
-|destination_given_name_kana|string|null: false|
-|postal_code|integer|null: false|
-|prefectures|string|null: false|
-|city|string|null: false|
-|address|string|null: false|
+|postal_code|integer|null|
+|prefectures|string|null|
+|city|string|null|
+|address|string|null|
 |building|string|null|
-|phone_number|integer|null|
 
 ### Association
 - belongs_to: credit_card
-- has_many :products
+- belongs_to: address
+- has_many: evaluation
+- has_many: products
 ---------------------------------------
 
 ---------------------------------------
@@ -60,6 +57,40 @@ Things you may want to cover:
 |expiration_month|string|null: false|
 |expiration_year|string|null: false|
 |security_code|string|null: false|
+|user_id|references|foreign_key: true|
+
+### Association
+- belongs_to :user
+---------------------------------------
+
+---------------------------------------
+## Addressesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|family_name|string|null: false|
+|given_name|string|null: false|
+|family_name_kana|string|null: false|
+|given_name_kana|string|null: false|
+|postal_code|integer|null: false|
+|prefectures|string|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building|string|null|
+|phone_number|integer|null|
+|user_id|references|foreign_key: true|
+
+### Association
+- belongs_to :user
+---------------------------------------
+
+---------------------------------------
+## Evaluationsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|evaluation|string|null: false|
+|user_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -79,6 +110,8 @@ Things you may want to cover:
 |shipping_origin|integer|null: false|
 |delivery_day|integer|null: false|
 |price|integer|null: false|
+|user_id|references|foreign_key: true|
+|buyer|integer|null|
 
 ### Association
 - belongs_to :user
