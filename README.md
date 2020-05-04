@@ -42,14 +42,14 @@ Things you may want to cover:
 |building|string|null|
 
 ### Association
-- belongs_to: credit_card
+- belongs_to: creditcard
 - belongs_to: address
 - has_many: evaluation
 - has_many: products
 ---------------------------------------
 
 ---------------------------------------
-## Credit_cardsテーブル
+## Creditcardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -103,8 +103,8 @@ Things you may want to cover:
 |------|----|-------|
 |product_name|string|null: false|
 |product_explanation|text|null: false|
-|category|integer|null: false, index: true||
-|brand|integer|null: false, index: true||
+|category|integer|null: false, index: true|
+|brand|integer|null|
 |product_status|integer|null: false|
 |delivery_cost|integer|null: false|
 |shipping_origin|integer|null: false|
@@ -115,7 +115,10 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
+- belongs_to :category
+- belongs_to :brand
 - has_many :images
+- has_many :comments
 ---------------------------------------
 
 ---------------------------------------
@@ -123,7 +126,44 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|src|string|null: false|
+|image|string|null: false|
+|product_id|references|foreign_key: true|
+
+### Association
+- belongs_to :product
+---------------------------------------
+
+---------------------------------------
+## Categoriesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|category_name|string|null: false|
+|product_id|references|foreign_key: true|
+
+### Association
+- has_many :products
+---------------------------------------
+
+---------------------------------------
+## Brandsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|brand_name|string|null: false|
+|product_id|references|foreign_key: true|
+
+### Association
+- has_many :products
+---------------------------------------
+
+---------------------------------------
+## Commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|comment|text|null: false|
+|user_id|string|foreign_key: true|
 |product_id|references|foreign_key: true|
 
 ### Association
