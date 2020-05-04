@@ -1,0 +1,11 @@
+%header.all-header
+  .all-header__inner
+    .all-header__inner__main
+      %h1.all-header__inner__main__logo
+        =link_to image_tag("logo/logo.png",class: "all-header__inner__main__logo__icon"),"#",class: "all-header__inner__main__logo__link" 
+      .all-header__inner__main__search
+        %form.all-header__inner__main__search__form
+          %input{type:"serach",placeholder:"キーワードから探す",class:"all-header__inner__main__search__form__input"}
+          %input{type:"submit",class:"all-header__inner__main__search__form__submit"}
+            =icon()
+    .all-header__inner__nav

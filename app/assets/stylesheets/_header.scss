@@ -1,0 +1,30 @@
+.all-header{
+  padding: 0 60px;
+  background-color: green;
+  &__inner{
+    max-width: 1040px;
+    width: 100%;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 15px 0 0;
+    background-color: honeydew;
+    &__main{
+      position: relative;
+      display: flex;
+      align-items: center;
+      &__logo{
+        padding-bottom: 10px;
+        margin-right: 30px;
+        border-radius: 4px;
+        &__link{
+          width: 140px;
+          display: block;
+        }
+        &__icon{
+          width: 140px;
+          height: 40.55px;
+        }
+      }
+    }
+  }
+}
