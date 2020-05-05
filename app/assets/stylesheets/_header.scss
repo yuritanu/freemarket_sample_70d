@@ -1,19 +1,18 @@
 .all-header{
   padding: 0 60px;
-  background-color: green;
   &__inner{
     max-width: 1040px;
     width: 100%;
     min-height: 82px;
     margin: 0 auto;
     padding: 15px 0 0;
-    background-color: honeydew;
     &__main{
       position: relative;
       display: flex;
       align-items: center;
-      &__logo{
-        padding-bottom: 10px;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      .header-logo{
         margin-right: 30px;
         border-radius: 4px;
         &__link{
@@ -25,6 +24,109 @@
           height: 40.55px;
         }
       }
+      .header-search{
+        width: 100%;
+        &__form{
+          display: flex;
+          &__input{
+            width: calc(100% - 26px);
+            height: 36px;
+            padding: 0 0 0 5px;
+          }
+          &__submit{
+            width: 36px;
+            height: 36px;
+            padding: 8px;
+            background-color: #3CCACE;
+            color: white;
+            border: 0;
+            &:hover{
+              cursor: pointer;
+            }
+            &__icon{
+              width: 19.73px;
+              height: 19.73px;
+            }
+          }
+        }
+      }
+    }
+    &__nav{
+      height: 32px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      .list-left{
+        position: relative;
+        display: flex;
+        &__choice{
+          padding-right: 30px;
+          position: relative;
+          &:hover{
+            cursor: pointer;
+            .list-left__choice__list--left{
+              visibility: visible;
+            }
+          }
+          &__list{
+            width: 240px;
+            position: absolute;
+            top: 22px;
+            z-index: 2;
+            background-color: #ffffff;
+            visibility: hidden;
+            &--left{
+              width: 240px;
+              background-color: #ffffff;
+              
+            }
+            &--middle{
+              width: 240px;
+              background-color: #ffffff;
+              position: absolute;
+              top: 0;
+              left: 240px;
+            }
+            &--right{
+              width: 240px;
+              background-color: #ffffff;
+              position: absolute;
+              top: 0;
+              left: 480px;
+            }
+            .category-list{
+              height: 38px;
+              border-bottom: 1px solid #f8f8f8;
+              &:hover{
+                background-color: rgb(253, 86, 86);
+              }
+              &__link{
+                padding: 3px 30px 3px 5px;
+                display: block;
+                text-decoration: none;
+                color: black;
+                line-height: 32px;
+                &:hover{
+                  color: #ffffff;
+                }
+              }
+            }
+          }
+        }
+      }
+      .list-right{
+        display: flex;
+        &__li{
+          padding-left: 30px;
+          &__link{
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    
     }
   }
 }
