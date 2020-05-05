@@ -141,7 +141,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|index: true|
+|ancestry|string|index: true|
 
 ### Association
 - has_many :products
@@ -169,5 +169,5 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :product
-- belongs_to :users
+- belongs_to :user
 ---------------------------------------
