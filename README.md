@@ -42,11 +42,11 @@ Things you may want to cover:
 |building|string|null|
 
 ### Association
-- has_one :creditcard
-- has_one :deliveryaddress
-- has_many :evaluations
-- has_many :products
-- has_many :comments
+- has_one :creditcard, dependent: :destroy 
+- has_one :deliveryaddress, dependent: :destroy
+- has_many :evaluations, dependent: :delete_all
+- has_many :products, dependent: :delete_all
+- has_many :comments, dependent: :delete_all
 
 ---------------------------------------
 
@@ -119,8 +119,8 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
-- has_many :images
-- has_many :comments
+- has_many :images, dependent: :delete_all
+- has_many :comments, dependent: :delete_all
 ---------------------------------------
 
 ---------------------------------------
