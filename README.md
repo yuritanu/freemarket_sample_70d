@@ -139,6 +139,9 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |category_name|string|null: false|
+|first_category|string|null: false|
+|second_category|string|null: false|
+|third_category|string|null: false|
 |product_id|references|foreign_key: true|
 
 ### Association
