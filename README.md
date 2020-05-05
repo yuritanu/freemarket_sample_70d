@@ -35,11 +35,6 @@ Things you may want to cover:
 |family_name_kana|string|null: false|
 |given_name_kana|string|null: false|
 |birthday|data|null: false|
-|postal_code|integer|null|
-|prefectures|string|null|
-|city|string|null|
-|address|string|null|
-|building|string|null|
 
 ### Association
 - has_one :profileaddress, dependent: :destroy
