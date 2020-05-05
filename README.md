@@ -42,10 +42,12 @@ Things you may want to cover:
 |building|string|null|
 
 ### Association
-- belongs_to: creditcard
-- belongs_to: address
-- has_many: evaluation
-- has_many: products
+- has_one :creditcard
+- has_one :deliveryaddress
+- has_many :evaluations
+- has_many :products
+- has_many :comments
+
 ---------------------------------------
 
 ---------------------------------------
@@ -64,7 +66,7 @@ Things you may want to cover:
 ---------------------------------------
 
 ---------------------------------------
-## Addressesテーブル
+## Deliveryaddressesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -101,16 +103,16 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|product_name|string|null: false|
-|product_explanation|text|null: false|
-|category|integer|null: false, index: true|
-|brand|integer|null|
+|name|string|null: false|
+|explanation|text|null: false|
+|category|references|null: false, index: true, foreigen_key: true|
+|brand|references|foreigen_key: true|
 |product_status|integer|null: false|
 |delivery_cost|integer|null: false|
 |shipping_origin|integer|null: false|
 |delivery_day|integer|null: false|
 |price|integer|null: false|
-|user_id|references|foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |buyer|integer|null|
 
 ### Association
@@ -127,7 +129,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|product_id|references|foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
@@ -138,11 +140,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|category_name|string|null: false|
-|first_category|string|null: false|
-|second_category|string|null: false|
-|third_category|string|null: false|
-|product_id|references|foreign_key: true|
+|name|string|null: false|
+|ancestry|string|index: true|
 
 ### Association
 - has_many :products
@@ -153,8 +152,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string|null: false|
-|product_id|references|foreign_key: true|
+|name|string|null: false|
 
 ### Association
 - has_many :products
@@ -171,4 +169,5 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :product
+- belongs_to :users
 ---------------------------------------
