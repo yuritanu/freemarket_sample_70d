@@ -42,11 +42,28 @@ Things you may want to cover:
 |building|string|null|
 
 ### Association
+- has_one :profileaddress, dependent: :destroy
 - has_one :creditcard, dependent: :destroy 
 - has_one :deliveryaddress, dependent: :destroy
 - has_many :evaluations, dependent: :delete_all
 - has_many :products, dependent: :delete_all
 - has_many :comments, dependent: :delete_all
+
+---------------------------------------
+
+---------------------------------------
+## Profileaddressesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|integer|null|
+|prefectures|string|null|
+|city|string|null|
+|address|string|null|
+|building|string|null|
+
+### Association
+- belongs_to :user
 
 ---------------------------------------
 
