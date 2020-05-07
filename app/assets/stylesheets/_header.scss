@@ -62,13 +62,16 @@
         position: relative;
         display: flex;
         &__choice{
-          padding-right: 30px;
+          padding-right: 32px;
           position: relative;
           &:hover{
             cursor: pointer;
             .list-left__choice__list--left{
               visibility: visible;
             }
+          }
+          &--brand{
+            padding-left: 16px;
           }
           &__list{
             width: 240px;
