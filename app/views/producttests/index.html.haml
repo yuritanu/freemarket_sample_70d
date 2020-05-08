@@ -1,0 +1,142 @@
+.product
+  .top
+  -# ヘッダー部分は【マークアップ】新規ユーザー登録で開発中の部分テンプレートを使用予定
+  -# ↓は予定されている部分テンプレート呼び出しの記述になります。
+  -# = render partial: "input-top"
+  -# ↑は予定されている部分テンプレート呼び出しの記述になります。
+
+  .showing
+    -# ↓画像投稿部分
+    .showing__images
+      %label.sub_title
+        出品画像 
+      %span.required
+        必須
+      %p.sentence
+        最大10枚までアップロードできます
+      %label.showing__images__file
+        %i.fas.fa-camera.fa-2x
+        %input.showing__images__file--file_choice{type: :file}
+        %p.showing__images__file--operation_text
+          クリックしてファイルをアップロード
+    -# ↑画像投稿部分
+    -# ↓商品名&説明部分
+    .showing__info
+      .showing__info__name
+        %label.sub_title
+          商品名 
+        %span.required
+          必須
+        .form
+          %input.form__input{type: :text, placeholder: "40文字まで"}
+      .showing__info__explain
+        %label.sub_title
+          商品の説明 
+        %span.required
+          必須
+        .form
+          %textarea.form__input--textarea{placeholder: "商品の説明（色、素材、重さ、定価、注意点など）"}
+    -# ↑商品名&説明部分
+    -# ↓商品の詳細部分
+    .showing__detail
+      %p.sentence
+        商品の詳細
+      .showing__detail__category
+        %label.sub_title
+          カテゴリー
+        %span.required
+          必須
+        .form
+          %select.form__input
+      .showing__detail__brand
+        %label.sub_title
+          ブランド
+        %span.option
+          任意
+        .form
+          %input.form__input{type: :text, placeholder: "例）シャネル"}
+      .showing__detail__status
+        %label.sub_title
+          商品の状態
+        %span.required
+          必須
+        .form
+          %select.form__input
+    -# ↑商品の詳細部分
+    -# ↓配送について部分
+    .showing__delivery
+      %p.sentence
+        配送について
+      .showing__delivery__cost
+        %label.sub_title
+          配送料の負担
+        %span.required
+          必須
+        .form
+          %select.form__input
+      .showing__delivery__area
+        %label.sub_title
+          発送元の地域
+        %span.required
+          必須
+        .form
+          %select.form__input
+      .showing__delivery__day
+        %label.sub_title
+          発送までの日数
+        %span.required
+          必須
+        .form
+          %select.form__input
+    -# ↑配送について部分
+    -# ↓価格部分
+    .showing__price
+      %p.sentence
+        価格（¥300〜9,999,999）
+      .showing__price__box
+        .showing__price__box__left
+          %label.sub_title
+            販売価格
+          %span.required
+            必須
+        .showing__price__box__right
+          ¥
+          %input.form__price{type: :number}
+          -# ↑販売価格入力部分です
+          -# 
+          -# ↓販売手数料・販売利益を表示部分です
+      .showing__price__smallbox
+        .showing__price__smallbox__left
+          %p.sentence--cost
+            販売手数料 （10%）
+        .showing__price__smallbox__right
+          ー
+      .showing__price__smallbox
+        .showing__price__smallbox__left
+          %p.sentence--cost
+            販売利益
+        .showing__price__smallbox__right
+          ー
+          -# ↑販売手数料・販売利益を表示部分です。
+    -# ↑価格部分
+    -# ↓アクション部分
+    .showing__action
+      .showing__action__btns
+        .showing__action__btns--submit
+          = link_to "#", class: "link__btn--white" do
+            出品する
+        .showing__action__btns--buttom
+          = link_to "#", class: "link__btn--black" do
+            下書きに保存する
+        .showing__action__btns--back
+          = link_to "戻る", class: "link__btn--blue" do
+            トップページへもどる
+      %p.showing__action__note
+        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+    -# ↑アクション部分
+
+  .end
+  -# フッター部分は【マークアップ】新規ユーザー登録で開発中の部分テンプレートを使用予定
+  -# ↓は予定されている部分テンプレート呼び出しの記述になります。
+  -# = render partial: "input-bottom"
+  -# ↑は予定されている部分テンプレート呼び出しの記述になります。
