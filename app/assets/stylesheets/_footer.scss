@@ -1,3 +1,47 @@
+.bottom-banner{
+  background-image: url("pict/bg-appBanner-pict.jpg");
+  padding: 100px 40px;
+  background-position: center;
+  background-size: cover;
+  .banner-inner{
+    color: #ffffff;
+    text-align: center;
+    &__title{
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &__text{
+      font-size: 35px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    .badge-btn{
+      
+    }
+  }
+}
+.badge-btn__footer{
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 0;
+  &__store{
+    width: 160px;
+    height: 54px;
+    margin-right: 10px;
+  }
+  &__play{
+    width: 160px;
+    height: 55px;
+  }
+  &__link{
+    margin-right: 10px;
+    &:hover{
+      opacity: 0.5;
+    }
+  }
+}
+
 .all-footer{
   width: 100vw;
   height: 354px;
@@ -47,5 +91,27 @@
   .copyright{
     font-size: 14px;
     text-align: center;
+  }
+}
+.sell-button{
+  width: 120px;
+  background: #3CCACE;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+  & a{
+    text-decoration: none;
+  }
+  &__text{
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  &__image{
+    max-width: 60%;
   }
 }
