@@ -1,3 +1,6 @@
+@import "mixin/ohtani";
+@import "config/variable";
+
 .all-header{
   padding: 0 60px;
   &__inner{
@@ -37,7 +40,7 @@
             width: 36px;
             height: 36px;
             padding: 8px;
-            background-color: #3CCACE;
+            background-color: $main-lightgreen;
             color: white;
             border: 0;
             &:hover{
@@ -64,22 +67,12 @@
         &__choice{
           padding-right: 32px;
           position: relative;
-          &:hover{
-            cursor: pointer;
-            .list-left__choice__list--left{
-              visibility: visible;
-            }
-          }
+          @include select;
           &--brand{
             padding-left: 16px;
             padding-right: 32px;
             position: relative;
-            &:hover{
-              cursor: pointer;
-              .list-left__choice__list--left{
-                visibility: visible;
-              }
-            }
+            @include select;
           }
           &__list{
             width: 240px;
@@ -109,7 +102,7 @@
             }
             .category-list{
               height: 38px;
-              border-bottom: 1px solid #f8f8f8;
+              border-bottom: 1px solid $main-background;
               &:hover{
                 background-color: rgb(253, 86, 86);
               }

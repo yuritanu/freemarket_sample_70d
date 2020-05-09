@@ -1,5 +1,7 @@
+@import "config/variable";
+
 .top-page{
-  background: #f8f8f8;
+  background-color: $main-background;
   &__title{
     width: 100%;
     height: 560px;
@@ -16,13 +18,13 @@
       margin: 0 auto;
       padding: 35px 0 0 0;
       &__font{
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        text-shadow: $white-shadow;
         font-size: 60px;
         line-height: 1.2;
         color: #fff;
       }
       &__text{
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        text-shadow: $white-shadow;
         font-size: 18px;
         color: #fff;
         line-height: 1.77778;
@@ -59,7 +61,7 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3CCACE;
+            background-color: $main-lightgreen;
             color: #fff;
           }
           .pict-image{
@@ -72,7 +74,7 @@
           line-height: 50px;
           margin: 0 0 0 2px;
           span{
-            color: #3CCACE;
+            color: $main-lightgreen;
           }
         }
         &__description{
@@ -92,7 +94,7 @@
     align-items: center;
     &__inner{
       color: #fff;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-shadow: $white-shadow;
       text-align: left;
       max-width: 1040px;
       width: 100%;
@@ -108,7 +110,6 @@
         line-height: 1.5;
       }
     }
-
   }
   &__feature{
     padding: 60px 130px;
@@ -143,40 +144,31 @@
     }
   }
   &__pickup{
-    padding: 80px 0 0;
-    background-color: #f8f8f8;
+    padding:80px 0 0 0;
+    background-color: $main-background;
     height: 100%;
     .pickup{
       &__head{
         text-align: center;
         &__link{
-          font-size: 24px;
-          text-decoration: none;
-          color: #3CCACE;
+          @include pickup-link;
           &__title{
             font-weight: bold;
           }
         }
       }
       &__lists{
-        width: 780px;
-        margin: 26px auto;
-        display: flex;
-        justify-content: space-around;
+        @include pickup-lists;
         &__list{
           width: 220px;
           .list-link{
-            text-decoration: none;
-            background-color: #fff;
-            display: inline-block;
+            @include list-link;
           }
           .list-image{
             max-width: 100%;
           }
           .list-details{
-            background-color: white;
-            color: #333;
-            padding: 16px;
+            @include list-details;
             &__name{
               line-height: 1.5;
             }
@@ -200,40 +192,31 @@
     }
   }
   &__pickup--brand{
-    padding: 80px 0;
-    background-color: #f8f8f8;
+    padding: 80px 0 ;
+    background-color: $main-background;
     height: 100%;
     .pickup{
       &__head{
         text-align: center;
         &__link{
-          font-size: 24px;
-          text-decoration: none;
-          color: #3CCACE;
+          @include pickup-link;
           &__title{
             font-weight: bold;
           }
         }
       }
       &__lists{
-        width: 780px;
-        margin: 26px auto;
-        display: flex;
-        justify-content: space-around;
+        @include pickup-lists;
         &__list{
           width: 220px;
           .list-link{
-            text-decoration: none;
-            background-color: #fff;
-            display: inline-block;
+            @include list-link;
           }
           .list-image{
             max-width: 100%;
           }
           .list-details{
-            background-color: white;
-            color: #333;
-            padding: 16px;
+            @include list-details;
             &__name{
               line-height: 1.5;
             }
@@ -287,7 +270,7 @@
       content: "";
       width: 70px;
       height: 4px;
-      background-color: #3CCACE;
+      background-color: $main-lightgreen;
       position: absolute;
       bottom: 0;
       left: 50%;

@@ -1,3 +1,5 @@
+@import "config/variable";
+
 .bottom-banner{
   background-image: url("pict/bg-appBanner-pict.jpg");
   padding: 100px 40px;
@@ -10,14 +12,11 @@
       font-size: 24px;
       font-weight: bold;
       line-height: 1.4;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-shadow: $white-shadow;
     }
     &__text{
       font-size: 35px;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    }
-    .badge-btn{
-      
+      text-shadow: $white-shadow;
     }
   }
 }
