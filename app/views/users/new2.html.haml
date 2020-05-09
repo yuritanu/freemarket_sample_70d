@@ -1,0 +1,55 @@
+.input-top
+  = render partial: 'input-top'
+  
+  .login-main
+    .login-main__title
+      ご本人様情報
+    .login-main__content
+      .login-main__content__form
+        .form-group
+          郵便番号  
+          %span.required
+            必須
+          %br 
+          %input.default{type: "text", placeholder: "ーーー"} 
+
+        .form-group
+          -# 後に、都道府県を選べるようコードを書き換えてください
+          都道府県
+          %span.required
+            必須
+          %br 
+          %input.default{type: "text", placeholder: "選択してください"} 
+
+        .form-group
+          市区町村
+          %span.required
+            必須
+          %br 
+          %input.default{type: "text", placeholder: "ーーー"}
+
+        .form-group
+          番地
+          %span.required
+            必須
+          %br 
+          %input.default{type: "text", placeholder: "ーーー"} 
+
+        .form-group
+          マンション名など部屋号室
+          %span.any
+            任意 
+          %input.default{type: "text", placeholder: "ーーー"} 
+          %p.info ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合がございます。
+        
+        .form-group
+          %input.submit{type: "submit", value: "次へすすむ"}
+          
+          -# 実験的にページ移動の為のリンクです。後にウィーザード形式になります
+          =link_to '会員登録情報その３', new3_users_path
+
+
+
+
+  .login-footer
+    = render partial: 'input-bottom'

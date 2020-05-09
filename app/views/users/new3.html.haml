@@ -1,0 +1,56 @@
+.input-top
+  = render partial: 'input-top'
+  
+  .login-main
+    .login-main__title
+      お届け先登録（任意）
+      %p.info   
+        ※ご本人様登録情報の住所以外にお届けの場合はご入力ください。
+        %br
+        同住所の場合はそのまま「登録する」へお進みください。
+    .login-main__content
+      .login-main__content__form
+
+        .form-group
+          お名前(全角)
+          %br
+          %input.default.half{type: "text", placeholder: "例）山田"}
+          %input.default.half__right{type: "text", placeholder: "例）太郎"}
+
+        .form-group
+          お名前カナ(全角)
+          %br
+          %input.default.half{type: "text", placeholder: "例）ヤマダ"}
+          %input.default.half__right{type: "text", placeholder: "例）タロウ"}
+
+        .form-group
+          郵便番号            
+          %input.default{type: "text", placeholder: "ーーー"} 
+
+          .form-group
+          -# 後に、都道府県を選べるようコードを書き換えてください
+          都道府県          
+          %input.default{type: "select", placeholder: "選択してください"} 
+
+          .form-group
+            市区町村             
+            %input.default{type: "text", placeholder: "ーーー"}
+
+          .form-group
+            番地             
+            %input.default{type: "text", placeholder: "ーーー"} 
+
+          .form-group
+            マンション名など部屋号室           
+            %input.default{type: "text", placeholder: "ーーー"} 
+
+          .form-group
+            電話番号
+            %input.default{type: "tel", placeholder: "ーーー"} 
+
+        .form-group
+          %p.info-text__end 「登録する」のボタンを押すことにより、利用規約に同意したものとみなします
+          %input.submit{type: "submit", value: "登録する"}  
+
+  .login-footer
+    = render partial: 'input-bottom'

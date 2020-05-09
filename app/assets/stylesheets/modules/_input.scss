@@ -1,0 +1,35 @@
+.input-top{
+  background-color: $login-background;
+  height: 100%;
+  width: 100%;
+}
+.input-header {
+  padding: 40px 0 0;
+  text-align: center;
+  height: 100px;
+  .logo{
+    width: 120px;
+    height: 33px;
+  }
+}
+
+.input-bottom{
+  padding: 40px 0;
+  text-align: center;
+  margin: 0 auto;
+  height: 220px;
+  .logo-white{
+    padding-top: 40px;
+    height: 33px;
+    width: 120px;
+  }
+  li{
+    @include size14;
+    display: inline-block;
+    margin-right: 8px;
+    color: #333;
+  }
+  p{
+    font-size: 10px;
+  }
+}
