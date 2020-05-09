@@ -72,6 +72,14 @@
           }
           &--brand{
             padding-left: 16px;
+            padding-right: 32px;
+            position: relative;
+            &:hover{
+              cursor: pointer;
+              .list-left__choice__list--left{
+                visibility: visible;
+              }
+            }
           }
           &__list{
             width: 240px;
