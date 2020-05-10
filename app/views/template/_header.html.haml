@@ -49,8 +49,6 @@
 
       %ul.list-right
         %li.list-right__li
-          = link_to "ログイン","#",class: "list-right__li__link"
-          -# = link_to "ログイン",index_user_path,class: "list-right__li__link"
+          = link_to "ログイン", users_path, class: "list-right__li__link"
         %li.list-right__li
-          = link_to "新規会員登録","#",class: "list-right__li__link"
-          -# = link_to "新規会員登録",new_user_path,class: "list-right__li__link"
+          = link_to "新規会員登録", new_user_path, class: "list-right__li__link"
