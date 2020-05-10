@@ -1,9 +1,9 @@
 .input-top
-  = render partial: 'input-top'
+  = render partial: '/template/input-top'
   
   .login-main
     .login-main__title
-      新規会員登録
+      会員情報入力
     .login-main__content
       .login-main__content__form
       
@@ -34,7 +34,7 @@
           %span.required
             必須
           %br
-          %input.default{type: "password", placeholder: "もう一度パスワードの入力してください"} 
+          %input.default{type: "password", placeholder: "もう一度パスワードを入力してください"} 
         
         .form-group
           本人確認
@@ -72,4 +72,4 @@
           =link_to '会員登録情報その２', new2_users_path
           
   .login-footer
-    = render partial: 'input-bottom'
+    = render partial: '/template/input-bottom'

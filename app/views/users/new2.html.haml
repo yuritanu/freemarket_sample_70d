@@ -1,37 +1,38 @@
 .input-top
-  = render partial: 'input-top'
+  = render partial: '/template/input-top'
   
   .login-main
     .login-main__title
-      ご本人様情報
+      ご本人様情報入力（任意）
+
     .login-main__content
       .login-main__content__form
         .form-group
           郵便番号  
-          %span.required
-            必須
+          %span.any
+            任意
           %br 
           %input.default{type: "text", placeholder: "ーーー"} 
 
         .form-group
           -# 後に、都道府県を選べるようコードを書き換えてください
           都道府県
-          %span.required
-            必須
+          %span.any
+            任意
           %br 
           %input.default{type: "text", placeholder: "選択してください"} 
 
         .form-group
           市区町村
-          %span.required
-            必須
+          %span.any
+            任意
           %br 
           %input.default{type: "text", placeholder: "ーーー"}
 
         .form-group
           番地
-          %span.required
-            必須
+          %span.any
+            任意
           %br 
           %input.default{type: "text", placeholder: "ーーー"} 
 
@@ -52,4 +53,4 @@
 
 
   .login-footer
-    = render partial: 'input-bottom'
+    = render partial: '/template/input-bottom'

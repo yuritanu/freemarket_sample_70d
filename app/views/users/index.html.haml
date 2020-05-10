@@ -1,12 +1,12 @@
 .input-top
-  = render partial: 'input-top'
+  = render partial: '/template/input-top'
   
   .login-content
     .login-main__title
       %p.nav アカウントをお持ちでない方はこちら
       
-      -# 移動の実験的に作成したものです
-      =link_to '新規会員登録へ移動リンク（実験）', new_user_path
+      -# 移動の為のリンク住所です。ログイン機能の際に活用ください。
+      -# =link_to '#', new_user_path
 
       %input.new-login{type: "submit", value: "新規会員登録"}
     .login-main__content
@@ -15,4 +15,4 @@
       %input.login{type: "submit", value: "ログイン"}
 
   .login-footer
-    = render partial: 'input-bottom'
+    = render partial: '/template/input-bottom'
