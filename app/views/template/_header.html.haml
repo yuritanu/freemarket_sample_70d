@@ -1,0 +1,56 @@
+%header.all-header
+  .all-header__inner
+    .all-header__inner__main
+      %h1.header-logo
+        =link_to image_tag("logo/logo.png",class: "header-logo__icon"),"#",class: "header-logo__link" 
+      .header-search
+        %form.header-search__form
+          %input{type:"serach",placeholder:"キーワードから探す",class:"header-search__form__input"}
+          %button{type:"submit",class:"header-search__form__submit"}
+            =image_tag("icon/icon-search 1.png",class: "header-search__form__submit__icon") 
+    .all-header__inner__nav
+      %ul.list-left
+        %li.list-left__choice
+          カテゴリー
+          .list-left__choice__list
+            %ul.list-left__choice__list--left
+              %li.category-list
+                =link_to "本","#",class: "category-list__link"
+              %li.category-list
+                =link_to "レディース","#",class: "category-list__link"
+            %ul.list-left__choice__list--middle
+              %li.category-list
+                =link_to "政治経済","#",class: "category-list__link"
+              %li.category-list
+                =link_to "漫画","#",class: "category-list__link"
+            %ul.list-left__choice__list--right
+              %li.category-list
+                =link_to "政治","#",class: "category-list__link"
+              %li.category-list
+                =link_to "経済","#",class: "category-list__link"
+        %li.list-left__choice--brand
+          ブランド
+          .list-left__choice__list
+            %ul.list-left__choice__list--left
+              %li.category-list
+                =link_to "シャネル","#",class: "category-list__link"
+              %li.category-list
+                =link_to "グッチ","#",class: "category-list__link"
+            %ul.list-left__choice__list--middle
+              %li.category-list
+                =link_to "政治経済","#",class: "category-list__link"
+              %li.category-list
+                =link_to "漫画","#",class: "category-list__link"
+            %ul.list-left__choice__list--right
+              %li.category-list
+                =link_to "政治","#",class: "category-list__link"
+              %li.category-list
+                =link_to "経済","#",class: "category-list__link"
+
+      %ul.list-right
+        %li.list-right__li
+          = link_to "ログイン","#",class: "list-right__li__link"
+          -# = link_to "ログイン",index_user_path,class: "list-right__li__link"
+        %li.list-right__li
+          = link_to "新規会員登録","#",class: "list-right__li__link"
+          -# = link_to "新規会員登録",new_user_path,class: "list-right__li__link"
