@@ -1,10 +1,6 @@
 .product
-  .top
-  -# ヘッダー部分は【マークアップ】新規ユーザー登録で開発中の部分テンプレートを使用予定
-  -# ↓は予定されている部分テンプレート呼び出しの記述になります。
-  -# = render partial: "input-top"
-  -# ↑は予定されている部分テンプレート呼び出しの記述になります。
-
+  .product__top
+    = render partial: '/template/input-top'
   .showing
     -# ↓画像投稿部分
     .showing__images
@@ -15,7 +11,8 @@
       %p.sentence
         最大10枚までアップロードできます
       %label.showing__images__file
-        %i.fas.fa-camera.fa-2x
+        = icon('fas','camera fa-2x')
+        -# %i.fas.fa-camera.fa-2x
         %input.showing__images__file--file_choice{type: :file}
         %p.showing__images__file--operation_text
           クリックしてファイルをアップロード
@@ -103,7 +100,6 @@
           ¥
           %input.form__price{type: :number}
           -# ↑販売価格入力部分です
-          -# 
           -# ↓販売手数料・販売利益を表示部分です
       .showing__price__smallbox
         .showing__price__smallbox__left
@@ -134,9 +130,5 @@
       %p.showing__action__note
         禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
     -# ↑アクション部分
-
-  .end
-  -# フッター部分は【マークアップ】新規ユーザー登録で開発中の部分テンプレートを使用予定
-  -# ↓は予定されている部分テンプレート呼び出しの記述になります。
-  -# = render partial: "input-bottom"
-  -# ↑は予定されている部分テンプレート呼び出しの記述になります。
+  .product__end
+    = render partial: '/template/input-bottom'

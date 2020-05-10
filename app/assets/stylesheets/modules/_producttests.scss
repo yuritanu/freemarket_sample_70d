@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 $gray_color: #EEEEEE;
 $white_color: #FFFFFF;
 $lightgray_color: #d3d3d3;
@@ -13,20 +9,18 @@ $bule_color: #0000FF;
   width: 100%;
   color: gr;
   background-color: $gray_color;
-  // ↓ヘッダー・フッターの部分テンプレートが適応されるまでの仮実装
-  .top {
+  &__top {
     width: 700px;
     height: 128px;
     background-color: $gray_color;
     margin: 0 auto;
   }
-  .end {
+  &__end {
     width: 700px;
     height: 220px;
     background-color: $gray_color;
     margin: 0 auto;
   }
-  // ↑ヘッダー・フッターの部分テンプレートが適応されるまでの仮実装
 }   
 
 .required {
