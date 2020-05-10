@@ -1,0 +1,200 @@
+.top-page
+  %section.top-page__title
+    .title-contents
+      %h2.title-contents__font
+        %br/
+        人生を変えるフリマアプリ
+      %p.title-contents__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br/
+        フリマアプリです
+      .badge-btn
+        =link_to image_tag("Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class: "badge-btn__store"),"https://www.apple.com/jp/ios/app-store/",class:"badge-btn__link"
+        =link_to image_tag("google-play-badge.png",class: "badge-btn__play"),"https://play.google.com/store",class:"badge-btn__link"
+  %section.top-page__reason
+    %h2.toppage-subtitle
+      FURIMAが選ばれる3つの理由
+    %ul.reason-lists
+      %li.reason-lists__list
+        .reason-lists__list__pict
+          %span.pict-number
+            1
+          =image_tag("pict/pict-reason-01.jpg",class: "pict-image")
+        %h3.reason-lists__list__text
+          %span
+            3分
+          ですぐに出品
+        %p.reason-lists__list__description
+          スマホで入力するだけで簡単に出品できる！
+      %li.reason-lists__list
+        .reason-lists__list__pict
+          %span.pict-number
+            2
+          =image_tag("pict/pict-reason-02.jpg",class: "pict-image")
+        %h3.reason-lists__list__text
+          %span
+            シンプル
+          で使いやすい
+        %p.reason-lists__list__description
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.reason-lists__list
+        .reason-lists__list__pict
+          %span.pict-number
+            3
+          =image_tag("pict/pict-reason-03.jpg",class: "pict-image")
+        %h3.reason-lists__list__text
+          手数料
+          %span
+            業界最安
+        %p.reason-lists__list__description
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+  %section.top-page__ad
+    .top-page__ad__inner
+      %h2.ad-title
+        会員数日本一位
+      %p.ad-text
+        FURIMAは、フリマアプリで最も人気。
+        %br/
+        出品・購入回数も業界最多です！
+        %br/
+        ほしかったあの商品に出会えるかもしれません。
+      .badge-btn
+        =link_to image_tag("Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class: "badge-btn__store"),"https://www.apple.com/jp/ios/app-store/",class:"badge-btn__link"
+        =link_to image_tag("google-play-badge.png",class: "badge-btn__play"),"https://play.google.com/store",class:"badge-btn__link"
+  %section.top-page__feature
+    %h2.toppage-subtitle
+      FURIMAの特徴
+    %ul.feature-lists
+      %li.feature-lists__list
+        %figure.feature-lists__list__image
+          = image_tag("icon/icon-01.png",class: "feature-image")
+        %h3.feature-lists__list__subtitle
+          簡単に売り買いできる
+        %p.feature-lists__list__text
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %li.feature-lists__list
+        %figure.feature-lists__list__image
+          = image_tag("icon/icon-03.png",class: "feature-image")
+        %h3.feature-lists__list__subtitle
+          売上金は即日振込みに対応
+        %p.feature-lists__list__text
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      %li.feature-lists__list
+        %figure.feature-lists__list__image
+          = image_tag("icon/icon-04.png",class: "feature-image")
+        %h3.feature-lists__list__subtitle
+          様々な支払いに対応
+        %p.feature-lists__list__text
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  %section.top-page__pickup
+    %h2.toppage-subtitle__pickup
+      ピックアップカテゴリー
+    .pickup
+      .pickup__head
+        = link_to "#",class: "pickup__head__link" do
+          %h3.pickup__head__link__title
+            新規投稿商品
+      %ul.pickup__lists
+        %li.pickup__lists__list
+          = link_to "#",class: "list-link" do
+            = image_tag("copy/steak.jpg",class: "list-image")
+            .list-details
+              %h3.list-details__name
+                product3
+              .list-details__body
+                %ul
+                  %li
+                    3000円
+                  %li.list-details__body__icon
+                    = icon("fa","star")
+                    0
+                %p
+                  （税込）
+        %li.pickup__lists__list
+          = link_to "#",class: "list-link" do
+            = image_tag("copy/desert.jpg",class: "list-image")
+            .list-details
+              %h3.list-details__name
+                product2
+              .list-details__body
+                %ul
+                  %li
+                    2000円
+                  %li.list-details__body__icon
+                    = icon("fa","star")
+                    0
+                %p
+                  （税込）
+        %li.pickup__lists__list
+          = link_to "#",class: "list-link" do
+            = image_tag("copy/meet.jpg",class: "list-image")
+            .list-details
+              %h3.list-details__name
+                product1
+              .list-details__body
+                %ul
+                  %li
+                    1000円
+                  %li.list-details__body__icon
+                    = icon("fa","star")
+                    0
+                %p
+                  （税込）
+  %section.top-page__pickup--brand
+    %h2.toppage-subtitle__pickup
+      ピックアップブランド
+    .pickup
+      .pickup__head
+        = link_to "#",class: "pickup__head__link" do
+          %h3.pickup__head__link__title
+            アーカイバ
+      %ul.pickup__lists
+        %li.pickup__lists__list
+          = link_to "#",class: "list-link" do
+            = image_tag("copy/steak.jpg",class: "list-image")
+            .list-details
+              %h3.list-details__name
+                product3
+              .list-details__body
+                %ul
+                  %li
+                    3000円
+                  %li.list-details__body__icon
+                    = icon("fa","star")
+                    0
+                %p
+                  （税込）
+        %li.pickup__lists__list
+          = link_to "#",class: "list-link" do
+            = image_tag("copy/desert.jpg",class: "list-image")
+            .list-details
+              %h3.list-details__name
+                product2
+              .list-details__body
+                %ul
+                  %li
+                    2000円
+                  %li.list-details__body__icon
+                    = icon("fa","star")
+                    0
+                %p
+                  （税込）
+        %li.pickup__lists__list
+          = link_to "#",class: "list-link" do
+            = image_tag("copy/meet.jpg",class: "list-image")
+            .list-details
+              %h3.list-details__name
+                product1
+              .list-details__body
+                %ul
+                  %li
+                    1000円
+                  %li.list-details__body__icon
+                    = icon("fa","star")
+                    0
+                %p
+                  （税込）
+   
+  %aside.top-page__download
+.top-page__footer
+%a.top-page__sell
