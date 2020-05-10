@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       get 'new3'
     end
   end  
+  resources :products, only: :new
 end
