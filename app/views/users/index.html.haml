@@ -1,18 +1,20 @@
 .input-top
   = render partial: '/template/input-top'
   
-  .login-content
-    .login-main__title
-      %p.nav アカウントをお持ちでない方はこちら
-      
-      -# 移動の為のリンク住所です。ログイン機能の際に活用ください。
-      -# =link_to '#', new_user_path
+  .login-contents
+    -# 追加部分↑
+    .login-content
+      .login-main__title
+        %p.nav アカウントをお持ちでない方はこちら
+        
+        -# 移動の為のリンク住所です。ログイン機能の際に活用ください。
+        -# =link_to '#', new_user_path
 
-      %input.new-login{type: "submit", value: "新規会員登録"}
-    .login-main__content
-      %input.form{type: "email", placeholder: "メールアドレス"}
-      %input.form{type: "password", placeholder: "パスワード"}
-      %input.login{type: "submit", value: "ログイン"}
+        %input.new-login{type: "submit", value: "新規会員登録"}
+      .login-main__content
+        %input.form{type: "email", placeholder: "メールアドレス"}
+        %input.form{type: "password", placeholder: "パスワード"}
+        %input.login{type: "submit", value: "ログイン"}
 
   .login-footer
     = render partial: '/template/input-bottom'
