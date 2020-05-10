@@ -6,5 +6,5 @@ Rails.application.routes.draw do
       get 'new3'
     end
   end  
-  get 'testshowing', to: 'producttests#index'
+  get 'showing', to: 'products#new'
 end
