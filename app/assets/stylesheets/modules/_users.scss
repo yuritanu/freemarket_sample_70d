@@ -1,0 +1,65 @@
+.login-main{
+  background-color: $White;
+  width: 700px;
+  margin: 0 auto;
+  &__title{
+    padding: 25px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center; 
+    border-bottom: 1px solid $login-background; 
+  }
+    &__content{
+      padding: 24px 40px 40px;
+      &__form{
+        max-width: 343px;
+        margin: 0 auto;
+        .form-group{  
+          width: 100%;
+          margin: 24px 0 0;
+          font-size: 14px;
+          font-weight: 600;
+          .required{
+            @include required_or_any;
+            background-color: $red;
+          }
+          .any{
+            @include required_or_any;
+            background-color: $grey;
+          }
+          .default{
+            @include form;
+            margin: 8px 0 0;
+            &.half{
+              margin-right: 8px;
+              width: calc(50% - 7px);
+              &__right{
+                width: calc(50% - 6px);
+              }
+            }
+          }          
+        }
+        .submit{
+          @include size14;
+          width: 100%;
+          margin: 24px 0 24px;
+          background-color: $red;
+          color: $White;
+          border: 1px $red;
+          line-height: 48px;
+        }
+      }
+    }    
+    .info{
+      @include size14;
+      margin: 8px 0 0;
+      color: $grey;
+    }
+    .info-text{
+      @include size14;
+      &__end{
+        text-align: center;
+        font-weight: normal;
+      }
+    }
+}

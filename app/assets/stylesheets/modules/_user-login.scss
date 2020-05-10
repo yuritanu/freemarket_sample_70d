@@ -1,0 +1,31 @@
+.login-content{
+  max-width: 456px;
+  margin: 0 auto;
+  background-color: $White; 
+  .nav {
+    @include size14;
+  }
+  .new-login{
+    @include size14;
+    width: 100%;
+    margin: 0 auto;
+    background-color: $blue;
+    color: $White;
+    border: 1px $blue;
+    line-height: 48px;
+  }
+  .form{
+    @include form;
+    margin: 24px 0 0;
+  }
+  .login{
+    @include size14;
+    width: 100%;
+    margin: 24px 0 0;
+    background-color: $red;
+    color: $White;
+    border: 1px $red;
+    line-height: 48px;
+  }  
+}
+
