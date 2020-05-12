@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     end
   end  
   resources :products, only: :new
+  resources :show, only: :index
 end
