@@ -24,7 +24,7 @@
             .item-box__price__detail
               %span (税込み)
               %span 送料込み
-            %a{type: "submit", class: "item-buy-btn", href: "#"}
+            =link_to "#", class:"item-buy-btn" do
               購入画面に進む
           .item-detail コメント欄
           .table
@@ -61,7 +61,7 @@
                 いいね 0
             %ul
               %li.optional-area__right
-                %a{href: "#"}
+                = link_to "#" do
                   %i= icon('fa', 'flag')
                   不適切な商品の通報
         .comment-box
@@ -76,13 +76,13 @@
             コメントする
       %ul.links
         %li
-          %a{href: "#"}
+          = link_to "#" do
             %i= icon('fa', 'angle-left')
             %span
             前の商品
       %ul.links-right
         %li
-          %a{href: "#"}
+          = link_to "#" do
             %span
             後ろの商品
             %i= icon('fa', 'angle-right')

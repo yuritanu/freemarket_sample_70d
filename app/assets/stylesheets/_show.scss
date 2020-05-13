@@ -2,9 +2,9 @@
   background: #f8f8f8;
 }
 
-.content-leftqq {
-  box-sizing: border-box;
-}
+  .content-leftqq {
+    box-sizing: border-box;
+  }
 
 .show-main {
   padding: 40px;
@@ -12,23 +12,23 @@
   .content-right {
     width: 700px;
     margin: 0 auto;
-  .top-content {
-    margin: 0;
-    padding: 0;
-  .item-box {
-    background-color: #fff;
-    padding: 24px 40px 40px;
-    &__name {
-      text-align: center;
-      font-weight: bold;
-      font-size: 24px;
+    .top-content {
       margin: 0;
       padding: 0;
-              }
-            }
-          }
+      .item-box {
+        background-color: #fff;
+        padding: 24px 40px 40px;
+        &__name {
+          text-align: center;
+          font-weight: bold;
+          font-size: 24px;
+          margin: 0;
+          padding: 0;
         }
       }
+    }
+  }
+}
     .item-box__body {
       margin: 16px 0 0;
       ul {
