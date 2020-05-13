@@ -13,7 +13,8 @@
 }
 @mixin pickup-lists {
   width: 780px;
-  margin: 26px auto;
+  margin: 0 auto;
+  padding: 26px 0;
   display: flex;
   justify-content: space-around;
 }
