@@ -1,0 +1,113 @@
+.products-buy_content{
+  height: calc(100vh - 100px -230px);
+}
+
+.products-buy_content{
+  background-color: $White;
+  max-width: 700px;
+  margin: 0 auto;
+  &__title{
+    padding: 32px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid $login-background;
+  }
+  &__image{
+    padding: 32px 16px;
+    text-align: center;
+    border-bottom: 1px solid $login-background;
+    .products-buy_boxs{
+      max-width: 343px;
+      margin: 0 auto;
+      &__item{
+        display: flex;
+        justify-content: right;
+        .buy-image{
+          .image{
+            height: 80px;
+            width: 80px;
+          }
+        }
+        .buy-image_info{
+          margin-left: 16px;
+          .buy-title{
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-align: left;
+          }
+          .buy-price{
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+          }
+          .buy-price-info{
+            font-size: 12px;
+            font-weight: bold;
+          }
+        }
+      }      
+    }
+  }
+  .products-buy_item{
+    padding: 24px 16px 48px;
+    &__form{
+      max-width: 343px;
+      margin: 0 auto;
+      border-bottom: 1px solid $login-background;
+      .buy-item{
+        border-bottom: 1px solid $login-background;
+        .buy-price{
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 24px;
+          &__title{
+            font-size: 18px;
+            font-weight: bold;
+          }
+          &__pay{
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+      }
+      .buy-user__info{
+        padding: 24px 0;
+        border-bottom: 1px solid $login-background;
+        .buy-nav{
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .icon{
+          color: $blue;
+          height: 12px;
+          width: 12px;
+        }
+        .buy-info{
+          margin-left: 4px;
+          color: $blue;
+          text-decoration: none;
+          font-size: 14px;
+        }
+      }
+      .buy-submit{
+        padding-top: 24px;
+        p{
+          color: $grey;
+          font-size: 14px;
+          padding-bottom: 24px;
+        }
+        .buy{
+          font-size: 14px;
+          font-weight: bold;
+          width: 100%;
+          background-color: $grey;
+          color: $White;
+          border: 1px $grey;
+          line-height: 48px;
+        }
+      }
+    }
+  }
+}
