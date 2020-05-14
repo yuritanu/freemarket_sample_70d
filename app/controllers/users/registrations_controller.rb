@@ -16,8 +16,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(birthday_save)
-    @user.save
-    redirect_to root_path
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render :new and return
+    end
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @address = @user.build_profileaddress
+    render :profileaddress
+  end
+
+  def create_profileaddres
+    @profileaddress = Profileaddress.new(profileaddress_params)
+    session["devise.regist_data"]["user"] = {profileaddress: @profileaddress.attributes}
+    
   end
 
   # GET /resource/edit
@@ -82,5 +94,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def user_params
       params.require(:user).permit(:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana).merge("birthday(1i)": params[:birthday][:"birthday(1i)"]).merge("birthday(2i)": params[:birthday][:"birthday(2i)"]).merge("birthday(3i)": params[:birthday][:"birthday(3i)"])
       # paramsの中のカラム→:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana,:birthday(1i),:birthday(2i),:birthday(3i)
+    end
+    def profileaddress_params
+      params.require(:profileaddress).permit(:postal_code, :prefectures,:city,:address,:building,:user)
     end
 end
