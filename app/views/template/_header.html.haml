@@ -46,9 +46,15 @@
                 =link_to "政治","#",class: "category-list__link"
               %li.category-list
                 =link_to "経済","#",class: "category-list__link"
-
-      %ul.list-right
-        %li.list-right__li
-          = link_to "ログイン", users_path, class: "list-right__li__link"
-        %li.list-right__li
-          = link_to "新規会員登録", new_user_path, class: "list-right__li__link"
+      - if user_signed_in?
+        %ul.list-right
+          %li.list-right__li
+            = link_to "マイページ", "#", class: "list-right__li__link"
+          %li.list-right__li
+            = link_to "ログアウト", destroy_user_session_path, method: :delete,class: "list-right__li__link"
+      - else
+        %ul.list-right
+          %li.list-right__li
+            = link_to "ログイン", new_user_session_path, class: "list-right__li__link"
+          %li.list-right__li
+            = link_to "新規会員登録", new_user_registration_path, class: "list-right__li__link"
