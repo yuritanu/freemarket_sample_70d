@@ -14,6 +14,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def create
+    @user = User.new(birthday_save)
+    @user.save
+    redirect_to root_path
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -59,4 +65,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+    def birthday_save
+      date = user_params
+      year = date[:"birthday(1i)"]
+      month = date[:"birthday(2i)"]
+      day = date[:"birthday(3i)"]
+      if year.empty? || month.empty? || day.empty?
+        return
+      end
+        # 年月日別々できたものを結合して新しいDate型変数を作り,paramsに数字化したDataをくっつけました
+        birthday = Date.new(year.to_i,month.to_i,day.to_i)
+        params.require(:user).permit(:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana).merge(birthday: birthday)
+    end
+    def user_params
+      params.require(:user).permit(:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana).merge("birthday(1i)": params[:birthday][:"birthday(1i)"]).merge("birthday(2i)": params[:birthday][:"birthday(2i)"]).merge("birthday(3i)": params[:birthday][:"birthday(3i)"])
+      # paramsの中のカラム→:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana,:birthday(1i),:birthday(2i),:birthday(3i)
+    end
 end
