@@ -1,0 +1,30 @@
+@mixin select {
+  &:hover{
+    cursor: pointer;
+    .list-left__choice__list--left{
+      visibility: visible;
+    }
+  }
+}
+@mixin pickup-link {
+  font-size: 24px;
+  text-decoration: none;
+  color: $main-lightgreen;
+}
+@mixin pickup-lists {
+  width: 780px;
+  margin: 0 auto;
+  padding: 26px 0;
+  display: flex;
+  justify-content: space-around;
+}
+@mixin list-link {
+  text-decoration: none;
+  background-color: #fff;
+  display: inline-block;
+}
+@mixin list-details {
+  background-color: white;
+  color: #333;
+  padding: 16px;
+}

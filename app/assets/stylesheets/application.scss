@@ -11,3 +11,17 @@
 @import "cards/cards";
 @import "modules/_card_menu";
 @import "modules/new_card";
+@import "config/iwamoto-colour";
+@import "mixin/iwamoto-mixin";
+@import "modules/input";
+@import "modules/users";
+@import "modules/user-login";
+@import "header";
+@import "home";
+@import "footer";
+@import "modules/producttests";
+
+*{
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
