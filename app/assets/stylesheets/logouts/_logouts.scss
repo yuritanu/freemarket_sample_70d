@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  background-color: $main_background_color;
+}
+
+.logout{
+  @include clearfix();
+  margin: 0 auto;
+  padding: 40px 0;
+  width: 1020px;
+}

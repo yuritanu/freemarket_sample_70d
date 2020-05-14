@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  background-color: $main_background_color;
+}
+
+.card{
+  @include clearfix();
+  margin: 0 auto;
+  padding: 40px 0;
+  width: 1020px;
+}
+
+.new_card{
+  @include clearfix();
+  margin: 0 auto;
+  padding: 40px 0;
+  width: 1020px;
+}

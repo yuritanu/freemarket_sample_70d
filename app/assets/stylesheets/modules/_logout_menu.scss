@@ -1,0 +1,21 @@
+.main_logout{
+  float: right;
+  width: 700px;
+  .logout__display{
+    background-color: $white;
+    height: 179px;
+    padding: 64px;
+    &__btn{
+      margin: 0 auto;
+      display: block;
+      text-decoration: none;
+      width: 320px;
+      height: 50px;
+      background-color: $red;
+      color:$white;
+      font-size: 14px;
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+}
