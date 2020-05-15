@@ -1,0 +1,67 @@
+-# .input-top
+-#   = render partial: '/template/input-top'
+  
+-#   .login-main
+-#     .login-main__title
+-#       ご本人様情報入力（任意）
+
+-#     .login-main__content
+-#       .login-main__content__form
+-#         = form_with(model: @profileaddress,url: registration_path(resource_name),local: true) do |f|
+-#           = render "devise/shared/error_messages", resource: resource
+
+-#           .form-group
+-#             郵便番号  
+-#             %span.any
+-#               任意
+-#             %br 
+-#             .field
+-#               = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",placeholder: "ーーー",class: "default"
+
+-#           .form-group
+-#             -# 後に、都道府県を選べるようコードを書き換えてください
+-#             都道府県
+-#             %span.any
+-#               任意
+-#             %br
+-#             .field 
+-#               -# = f.text_field :prefectures, autofocus: true, autocomplete: "prefectures",placeholder: "選択してください",class: "default" 
+-#               -# 別モデルを作成しなくてはいけないので相談後
+-#               = f.select :prefectures, Profileaddress.prefectures.keys, {},placeholder: "選択してください",class: "default"
+-#           .form-group
+-#             市区町村
+-#             %span.any
+-#               任意
+-#             %br 
+-#             .field
+-#               = f.text_field :city, autofocus: true, autocomplete: "city",placeholder: "ーーー",class: "default" 
+
+-#           .form-group
+-#             番地
+-#             %span.any
+-#               任意
+-#             %br 
+-#             .field
+-#               = f.text_field :address, autofocus: true, autocomplete: "address",placeholder: "ーーー",class: "default" 
+
+-#           .form-group
+-#             マンション名など部屋号室
+-#             %span.any
+-#               任意
+-#             .field 
+-#               = f.text_field :building, autofocus: true, autocomplete: "building",placeholder: "ーーー",class: "default" 
+
+-#             %p.info ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合がございます。
+          
+-#           .form-group
+-#             .action
+-#               = f.submit "次へすすむ",class: "submit"
+            
+-#             -# 実験的にページ移動の為のリンクです。後にウィーザード形式になります
+-#             -# =link_to '会員登録情報その３', new3_users_path
+
+
+
+
+-#   .login-footer
+-#     = render partial: '/template/input-bottom'

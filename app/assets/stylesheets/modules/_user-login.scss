@@ -13,6 +13,8 @@
     }
     .new-login{
       @include size14;
+      display: block;
+      text-decoration: none;
       width: 100%;
       margin: 0 auto;
       background-color: $blue;
