@@ -1,0 +1,314 @@
+.main_contents{
+  float: right;
+  width: 700px;
+  .mypage_user_icon{
+    position: relative;
+    height: 200px;
+    background-size: cover;
+    background-image: url('material/illust/mypage-background.png');
+    text-align: center;
+    &__link{
+      display: block;
+      position: absolute;
+      top: 20%;
+      left: 0;
+      right: 0;
+      text-decoration: none;
+      color: $dark_gray;
+      &__figure{
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+        &__image{
+          width: 60px;
+          height: 60px;
+        }
+      }
+      .user_name{
+        margin: 12px 0 0;
+        font-size: 14px;
+      }
+      .user_info{
+        margin: 12px 0 0;
+        font-size: 0;
+        &__evaluation{
+          display: inline-block;
+          font-size: 14px;
+          &--number{
+            margin-left: 8px;
+            font-size: 14px;
+          }
+        }
+        &__exhibits{
+          display: inline-block;
+          font-size: 14px;
+          margin-left: 16px;
+          &--number{
+            margin-left: 8px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  .news{
+    margin-top: 20px;
+    background-color: $white;
+    &__tab{
+      font-size: 18px;
+    }
+    &__content{
+      .lists{
+        .item{
+          position: relative;
+          border-bottom: 1px solid $white;
+          &__link{
+            display: block;
+            min-height: 80px;
+            text-decoration: none;
+            color: $dark_gray;
+            padding: 16px;
+            &__figure{
+              position: relative;
+              overflow: hidden;
+              float: left;
+              height: 48px;
+              width: 48px;
+              &__image{
+                position: absolute;
+                top: 50%;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 1;
+                width: 100%;
+                transform: translate(0, -50%);
+              }
+            }
+            &__info{
+              margin: 0 40px 0 68px;
+              &__text{
+                overflow: hidden;
+                max-height: 4.4em;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+              }
+              &__time{
+                display: inline-block;
+                color: $light_gray;
+                .fa-clock{
+                  margin: 0 8px 0 0;
+                }
+                &--num{
+                  vertical-align: middle;
+                }
+              }
+            }
+            .fa-chevron-right{
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              transform: translate(0, -50%);
+            }
+          }
+        }
+      }
+    }
+  }
+  .todo{
+    margin-top: 20px;
+    background-color: $white;
+    &__tab{
+      font-size: 18px;
+    }
+    &__content{
+      .lists{
+        .item{
+          position: relative;
+          border-bottom: 1px solid $white;
+          &__link{
+            display: block;
+            min-height: 80px;
+            text-decoration: none;
+            color: $dark_gray;
+            padding: 16px;
+            &__figure{
+              position: relative;
+              overflow: hidden;
+              float: left;
+              height: 48px;
+              width: 48px;
+              &__image{
+                position: absolute;
+                top: 50%;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 1;
+                width: 100%;
+                transform: translate(0, -50%);
+              }
+            }
+            &__info{
+              margin: 0 40px 0 68px;
+              &__text{
+                overflow: hidden;
+                max-height: 4.4em;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+              }
+              &__time{
+                display: inline-block;
+                color: $light_gray;
+                .fa-clock{
+                  margin: 0 8px 0 0;
+                }
+                &--num{
+                  vertical-align: middle;
+                }
+              }
+            }
+            .fa-chevron-right{
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              transform: translate(0, -50%);
+            }
+          }
+        }
+      }
+    }
+  }
+  .parchased_products{
+    margin-top: 20px;
+    background-color: $white;
+    &__tab{
+      font-size: 18px;
+    }
+    .during_trade{
+      margin-top: 20px;
+      &__tab{
+        font-size: 18px;
+      }
+      &__content{
+        .lists{
+          .item{
+            position: relative;
+            border-bottom: 1px solid $white;
+            &__link{
+              display: block;
+              min-height: 80px;
+              text-decoration: none;
+              color: $dark_gray;
+              padding: 16px;
+              &__figure{
+                position: relative;
+                overflow: hidden;
+                float: left;
+                height: 48px;
+                width: 48px;
+                &__image{
+                  position: absolute;
+                  top: 50%;
+                  right: 0;
+                  left: 0;
+                  bottom: 0;
+                  z-index: 1;
+                  width: 100%;
+                  transform: translate(0, -50%);
+                }
+              }
+              &__info{
+                margin: 0 40px 0 68px;
+                &__text{
+                  overflow: hidden;
+                  max-height: 4.4em;
+                  text-overflow: ellipsis;
+                  line-height: 1.5;
+                }
+                &__status{
+                  background-color: $light_gray;
+                  display: inline-block;
+                  margin: 8px 0 0 0;
+                  padding: 5px 6px;
+                  border-radius: 2px;
+                  font-size: 12px;
+                  color:$white;
+                }
+              }
+              .fa-chevron-right{
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                transform: translate(0, -50%);
+              }
+            }
+          }
+        }
+      }
+    }
+    .past_trade{
+      &__tab{
+        font-size: 18px;
+      }
+      &__content{
+        .lists{
+          .item{
+            position: relative;
+            border-bottom: 1px solid $white;
+            &__link{
+              display: block;
+              min-height: 80px;
+              text-decoration: none;
+              color: $dark_gray;
+              padding: 16px;
+              &__figure{
+                position: relative;
+                overflow: hidden;
+                float: left;
+                height: 48px;
+                width: 48px;
+                &__image{
+                  position: absolute;
+                  top: 50%;
+                  right: 0;
+                  left: 0;
+                  bottom: 0;
+                  z-index: 1;
+                  width: 100%;
+                  transform: translate(0, -50%);
+                }
+              }
+              &__info{
+                margin: 0 40px 0 68px;
+                &__text{
+                  overflow: hidden;
+                  max-height: 4.4em;
+                  text-overflow: ellipsis;
+                  line-height: 1.5;
+                }
+                &__status{
+                  background-color: $light_gray;
+                  display: inline-block;
+                  margin: 8px 0 0 0;
+                  padding: 5px 6px;
+                  border-radius: 2px;
+                  font-size: 12px;
+                  color: $white;
+                }
+              }
+              .fa-chevron-right{
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                transform: translate(0, -50%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
