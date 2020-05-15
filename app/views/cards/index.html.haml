@@ -1,12 +1,10 @@
 .header
-  -# = render partial: '/template/header'
-  -# ヘッダー、フッターの記述はマージ後に解除予定
-
-.wrapper
+  = render partial: '/template/header'
+  
+.card_wrapper
   %main.card
     =render "shared/card_menu"
     =render "shared/mypage_menu"
 
 .footer
-  -# = render partial: '/template/footer'
-  -# ヘッダー、フッターの記述はマージ後に解除予定
+  = render partial: '/template/footer'

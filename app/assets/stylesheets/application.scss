@@ -3,14 +3,6 @@
 @import "config/color";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "mypages/mypages";
-@import "modules/mypage_contents";
-@import "modules/mypage_menu";
-@import "logouts/logouts";
-@import "modules/logout_menu";
-@import "cards/cards";
-@import "modules/_card_menu";
-@import "modules/new_card";
 @import "config/iwamoto-colour";
 @import "mixin/iwamoto-mixin";
 @import "modules/input";
@@ -20,6 +12,14 @@
 @import "home";
 @import "footer";
 @import "modules/producttests";
+@import "modules/mypage_contents";
+@import "modules/mypage_menu";
+@import "mypages/mypages";
+@import "modules/logout_menu";
+@import "logouts/logouts";
+@import "modules/_card_menu";
+@import "modules/new_card";
+@import "cards/cards";
 
 *{
   box-sizing: border-box;

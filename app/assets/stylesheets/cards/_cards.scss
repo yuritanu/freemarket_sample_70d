@@ -1,21 +1,20 @@
-* {
-  box-sizing: border-box;
-}
-
-.wrapper {
+.card_wrapper {
   background-color: $main_background_color;
+  .card{
+    @include clearfix();
+    margin: 0 auto;
+    padding: 40px 0;
+    width: 1020px;
+  }
 }
 
-.card{
-  @include clearfix();
-  margin: 0 auto;
-  padding: 40px 0;
-  width: 1020px;
+.new_card_wrapper {
+  background-color: $main_background_color;
+  .new_card{
+    @include clearfix();
+    margin: 0 auto;
+    padding: 40px 0;
+    width: 1020px;
+  }
 }
 
-.new_card{
-  @include clearfix();
-  margin: 0 auto;
-  padding: 40px 0;
-  width: 1020px;
-}
