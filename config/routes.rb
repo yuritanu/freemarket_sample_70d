@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       get 'new2'
       get 'new3'
     end
-  end
-  resources :products, only: [:new, :edit]
+  end  
+  resources :products, only: [:new, :edit, :show]
 end

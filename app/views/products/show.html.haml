@@ -1,0 +1,90 @@
+.header
+  = render partial: '/template/header'
+.main
+  .show-main
+    .content-leftqq
+    .content-right
+      .top-content
+        .item-box
+          %h2.item-box__name 商品名
+          .item-box__body
+            %ul
+              %li
+                =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
+                .item-box__body__items
+                  %ul
+                    %li
+                      =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
+                    %li
+                      =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png")
+                    %li
+                      =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png")
+          .item-box__price
+            %span ¥3000
+            .item-box__price__detail
+              %span (税込み)
+              %span 送料込み
+            =link_to "#", class:"item-buy-btn" do
+              購入画面に進む
+          .item-detail コメント欄
+          .table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td 
+                %tr
+                  %th カテゴリー
+                  %td
+                %tr
+                  %th ブランド
+                  %td
+                %tr
+                  %th 商品のサイズ
+                  %td
+                %tr
+                  %th 商品の状態
+                  %td
+                %tr
+                  %th 配送料の負担
+                  %td
+                %tr
+                  %th 発送元の地域
+                  %td
+                %tr
+                  %th 発送日の目安
+                  %td
+          .optional-area
+            %ul
+              %li.optional-area__left
+                %i= icon('fa', 'star')
+                いいね 0
+            %ul
+              %li.optional-area__right
+                = link_to "#" do
+                  %i= icon('fa', 'flag')
+                  不適切な商品の通報
+        .comment-box
+          %ul.comment-contents
+          %form.new-comment
+            %textarea.input-text{type: "text"}
+          %p.notice-msg
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %button{type: "submit", class: "comment-btn"}
+            %i= icon('fa', 'comment')
+            コメントする
+      %ul.links
+        %li
+          = link_to "#" do
+            %i= icon('fa', 'angle-left')
+            %span
+            前の商品
+      %ul.links-right
+        %li
+          = link_to "#" do
+            %span
+            後ろの商品
+            %i= icon('fa', 'angle-right')
+.footer
+  = render partial: '/template/footer'
