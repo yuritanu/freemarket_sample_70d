@@ -1,0 +1,118 @@
+.main_new_card{
+  float: right;
+  width: 700px;
+  .new_card__registration{
+    background-color: $white;
+    .registration__header{
+      font-size: 24px;
+      padding: 8px 24px;
+      border-bottom: 1px solid $main_background_color;
+      text-align: center;
+      font-weight: 700;
+    }
+    .registration-form{
+      padding: 40px 40px 64px;
+      .form_contents{
+        max-width: 343px;
+        margin: 0 auto;
+        &__card_number{
+          .card_no{
+            font-weight: 600;
+            display: inline-block;
+          }
+          &__input{
+            width: 100%;
+            margin: 8px 0 0;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid $light_gray;
+            background-color: $white;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+        }
+        &__card_expiration_date{
+          margin-top: 24px;
+          .expiration_date{
+            font-weight: 600;
+            display: inline-block;
+          }
+          .select_display_month{
+            display: inline-block;
+            width: calc(50% - 5px);
+            margin: 8px 0 0;
+            background-color: $white;
+            .select_month{
+              width: calc(100% - 38px);
+              height: 48px;
+              padding: 0 16px;
+              border-radius: 4px;
+              border: 1px solid $light_gray;
+              background: 0;
+              font-size: 16px;
+              line-height: 1.5;
+              cursor: pointer;
+            }
+          }
+          .select_display_year{
+            display: inline-block;
+            width: calc(50% - 5px);
+            margin: 8px 0 0;
+            background-color: $white;
+            .select_year{
+              width: calc(100% - 38px);
+              height: 48px;
+              padding: 0 16px;
+              border-radius: 4px;
+              border: 1px solid $light_gray;
+              background: 0;
+              font-size: 16px;
+              line-height: 1.5;
+              cursor: pointer;
+            }
+          }
+        }
+        &__card_security_code{
+          margin-top: 24px;
+          .security_code{
+            font-weight: 600;
+            display: inline-block;
+          }
+          .form_contents__security_code__input{
+            width: 100%;
+            margin: 8px 0 0;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid $light_gray;
+            background-color: $white;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+        }
+        &__submit{
+          margin-top: 24px;
+          background: $red;
+          border: 1px solid $red;
+          color: $white;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.form_require{
+  background-color: $red;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: $white;
+  font-size: 12px;
+}

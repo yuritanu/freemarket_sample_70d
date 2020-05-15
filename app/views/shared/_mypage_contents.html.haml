@@ -1,0 +1,86 @@
+.main_contents
+  %section.mypage_user_icon
+    = link_to "#", class: "mypage_user_icon__link" do
+      %figure.mypage_user_icon__link__figure
+        = image_tag 'material/icon/member_photo_noimage_thumb.png', alt: 'sample', class: 'mypage_user_icon__link__figure__image'
+      %h2.user_name
+        hoge
+      .user_info
+        .user_info__evaluation
+          評価
+          %span.user_info__evaluation--number
+            0
+        .user_info__exhibits
+          出品数
+          %span.user_info__exhibits--number
+            0
+  %section.news
+    %h3.news__tab
+      <お知らせ>
+    .news__content
+      %ul.lists
+        %li.item
+          = link_to "#", class: "item__link" do
+            %figure.item__link__figure
+              = image_tag 'material/logo/logo.png', alt: 'sample', class: 'item__link__figure__image'
+            .item__link__info
+              .item__link__info__text
+                現在お知らせはございません。
+              %time.item__link__info__time
+                = icon('fas', 'clock')
+                %span.item__link__info__time--num
+                  ???時間前
+            = icon('fas', 'chevron-right')
+
+  %section.todo
+    %h3.todo__tab
+      <やることリスト>
+    .todo__content
+      %ul.lists
+        %li.item
+          = link_to "#", class: "item__link" do
+            %figure.item__link__figure
+              = image_tag 'material/logo/logo.png', alt: 'sample', class: 'item__link__figure__image'
+            .item__link__info
+              .item__link__info__text
+                現在やることリストはございません。
+              %time.item__link__info__time
+                = icon('fas', 'clock')
+                %span.item__link__info__time--num
+                  ???時間前
+            = icon('fas', 'chevron-right')
+
+  %section.parchased_products
+    %h3.parchased_products__tab
+      <購入した商品>
+    .during_trade
+      %h3.during_trade__tab
+        取引中
+      .during_trade__content
+        %ul.lists
+          %li.item
+            = link_to "#", class: "item__link" do
+              %figure.item__link__figure
+                = image_tag 'material/logo/logo.png', alt: 'sample', class: 'item__link__figure__image'
+              .item__link__info
+                .item__link__info__text
+                  現在取引中の商品はございません。
+                .item__link__info__status
+                  取引無し
+              = icon('fas', 'chevron-right')
+
+    .past_trade
+      %h3.past_trade__tab
+        過去の取引
+      .past_trade__content
+        %ul.lists
+          %li.item
+            = link_to "#", class: "item__link" do
+              %figure.item__link__figure
+                = image_tag 'material/logo/logo.png', alt: 'sample', class: 'item__link__figure__image'
+              .item__link__info
+                .item__link__info__text
+                  現在過去に取引した商品はございません。
+                .item__link__info__status
+                  取引無し
+              = icon('fas', 'chevron-right')
