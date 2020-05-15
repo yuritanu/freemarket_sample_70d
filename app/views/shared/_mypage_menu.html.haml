@@ -1,0 +1,74 @@
+.main_menu
+  %nav.menu__nav
+    %ul.menu__nav__list
+      %li.menu__nav__list__item
+        = link_to mypages_path, class: "menu__nav__list__item__link" do
+          マイページ
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          お知らせ
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          やることリスト
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          いいね一覧
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          出品する
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          出品した商品ー出品中
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          出品した商品ー取引中
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          出品した商品ー売却済み
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          購入した商品ー取引中
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          購入した商品ー過去の取引
+          = icon('fas', 'chevron-right')
+    %h3.menu__nav__head
+      設定
+    %ul.menu__nav__list
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          プロフィール
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          発送元・お届け先住所変更
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to cards_path, class: "menu__nav__list__item__link" do
+          支払い方法
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          メール/パスワード
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          本人情報
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to "#", class: "menu__nav__list__item__link" do
+          電話番号の確認
+          = icon('fas', 'chevron-right')
+      %li.menu__nav__list__item
+        = link_to logouts_path, class: "menu__nav__list__item__link" do
+          ログアウト
+          = icon('fas', 'chevron-right')

@@ -1,0 +1,9 @@
+.main_card
+  %section.card_display
+    %h2.card_display__header
+      支払い方法
+    .card_display__body
+      .card_display__body__inner
+        = icon('fas', 'credit-card')
+        = link_to "クレジットカードを追加する",new_card_path, class: 'card_display__body__inner__btn'
+      
