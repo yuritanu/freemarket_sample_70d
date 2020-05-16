@@ -56,6 +56,7 @@ Things you may want to cover:
 |city|string|null|
 |address|string|null|
 |building|string|null|
+|user_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :user

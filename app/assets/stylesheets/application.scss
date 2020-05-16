@@ -16,12 +16,12 @@
 @import "modules/show";
 @import "modules/mypage_contents";
 @import "modules/mypage_menu";
-@import "mypages/mypages";
+@import "modules/mypages";
 @import "modules/logout_menu";
-@import "logouts/logouts";
+@import "modules/logouts";
 @import "modules/_card_menu";
 @import "modules/new_card";
-@import "cards/cards";
+@import "modules/cards";
 
 *{
   box-sizing: border-box;

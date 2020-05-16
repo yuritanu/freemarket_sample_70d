@@ -2,7 +2,7 @@
   .all-header__inner
     .all-header__inner__main
       %h1.header-logo
-        =link_to image_tag("logo/logo.png",class: "header-logo__icon"),"#",class: "header-logo__link" 
+        =link_to image_tag("logo/logo.png",class: "header-logo__icon"), root_path, class: "header-logo__link" 
       .header-search
         %form.header-search__form
           %input{type:"serach",placeholder:"キーワードから探す",class:"header-search__form__input"}
@@ -46,15 +46,25 @@
                 =link_to "政治","#",class: "category-list__link"
               %li.category-list
                 =link_to "経済","#",class: "category-list__link"
-      - if user_signed_in?
-        %ul.list-right
-          %li.list-right__li
-            = link_to "マイページ", "#", class: "list-right__li__link"
-          %li.list-right__li
-            = link_to "ログアウト", destroy_user_session_path, method: :delete,class: "list-right__li__link"
-      - else
-        %ul.list-right
-          %li.list-right__li
-            = link_to "ログイン", new_user_session_path, class: "list-right__li__link"
-          %li.list-right__li
-            = link_to "新規会員登録", new_user_registration_path, class: "list-right__li__link"
+      -# - if user_signed_in?
+      -#   %ul.list-right
+      -#     %li.list-right__li
+      -#       = link_to "マイページ", "#", class: "list-right__li__link"
+      -#     %li.list-right__li
+      -#       = link_to "ログアウト", destroy_user_session_path, method: :delete,class: "list-right__li__link"
+      -# - else
+      -#   %ul.list-right
+      -#     %li.list-right__li
+      -#       = link_to "ログイン", new_user_session_path, class: "list-right__li__link"
+      -#     %li.list-right__li
+      -#       = link_to "新規会員登録", new_user_registration_path, class: "list-right__li__link"
+
+
+      -# 下記5/16スプリントレビュー用、終了後は削除してください
+      %ul.list-right
+        %li.list-right__li
+          = link_to "マイページ(スプリントレビュー用)", mypages_path, class: "list-right__li__link"
+        %li.list-right__li
+          = link_to "ログイン", notusers_path, class: "list-right__li__link"
+        %li.list-right__li
+          = link_to "新規会員登録",new_notuser_path, class: "list-right__li__link"

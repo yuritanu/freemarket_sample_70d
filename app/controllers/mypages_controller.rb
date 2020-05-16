@@ -4,6 +4,16 @@ class MypagesController < ApplicationController
 
   end
 
+  def logout
+
+  end
+
+  def card
+  end
+
+  def newcard
+  end
+
   # def show
     
   # end
