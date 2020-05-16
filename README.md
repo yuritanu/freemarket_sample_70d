@@ -118,8 +118,8 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |explanation|text|null: false|
-|category|references|null: false, index: true, foreigen_key: true|
-|brand|references|foreigen_key: true|
+|category|references|null: false, foreign_key: true|
+|brand|integer|null|
 |product_status|integer|null: false|
 |delivery_cost|integer|null: false|
 |shipping_origin|integer|null: false|
