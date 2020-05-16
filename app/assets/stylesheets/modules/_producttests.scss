@@ -1,9 +1,3 @@
-$gray_color: #EEEEEE;
-$white_color: #FFFFFF;
-$lightgray_color: #d3d3d3;
-$red_color: #FF0000;
-$black_color: #000000;
-$bule_color: #0000FF;
 
 .product {
   width: 100%;
@@ -66,6 +60,8 @@ p.sentence {
 }
 
 .link__btn {
+  // 5/16スプリントレビュー用
+  text-decoration: none;
   &--white {
     text-decoration: none;
     color: $white_color;

@@ -10,18 +10,30 @@ Rails.application.routes.draw do
   #   post 'deliveryaddresses', to: 'users/registrations#create_deliveryaddresses'
 
   # end
-  root to: 'home#index' 
-  resources :mypages, only: [:index]
-  # resources :mypages, only: [:show] マイページのルーティングは一旦indexにしています。ログイン機能実装後showに変更予定
-  resources :logouts, only: [:index]
-  # resources :logouts, only: [:destroy] ログアウトページのルーティングは一旦indexにしています。ログイン機能実装後destroyに変更予定
-  resources :cards, only: [:index, :new] 
-  resources :users do
+  root to: 'products#index' 
+  resources :mypages, only: [:index] do
+    collection do
+      get 'logout'
+      get 'card'
+      get 'newcard'
+    end
+  end
+  
+  # ↓5/16スプリントレビュー後は削除
+  resources :notusers do
     collection do
       get 'new2'
       get 'new3'
     end
   end  
-  resources :products, only: [:new, :edit, :show]
+  # ↑5/16スプリントレビュー後は削除
 
+  resources :products, only: [:index, :new, :edit, :show] do
+    # 上記のproductsの最後にあるdoも5/16スプリントレビュー後は削除
+    # ↓も5/16スプリントレビュー用
+    collection do
+      get 'testshow'
+      get 'testconfirm'
+    end
+  end  
 end
