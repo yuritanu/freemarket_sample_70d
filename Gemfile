@@ -73,3 +73,6 @@ gem "haml-rails"
 gem "font-awesome-sass"
 gem "devise"
 gem "pry-rails"
+# deviseの日本語対応gem↓
+gem 'devise-i18n'
+gem 'devise-i18n-views'
