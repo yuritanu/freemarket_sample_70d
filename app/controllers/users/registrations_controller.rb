@@ -5,12 +5,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
   def new
-    @user = User.new
+    super
   end
+  
   # POST /resource
   # def create
   #   super
@@ -24,21 +22,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @address = @user.build_profileaddress
+    @profileaddress = @user.build_profileaddress
     render :new_profileaddresses
   end
   
   def new_profileaddresses
-    @user = User.new
+    @profileaddress = Profileaddress.new
   end
 
   def create_profileaddresses
     @user = User.new(session["devise.regist_data"]["user"])
     @profileaddress = Profileaddress.new(profileaddress_params)
-    @user.build_profileaddress(@profileaddress.attribute)
-    session["profileaddress"] = @profileaddress.attribute
+    @user.build_profileaddress(@profileaddress.attributes)
+    session["profileaddress"] = @profileaddress.attributes
     @deliveryaddress = @user.build_deliveryaddress
     render :new_deliveryaddresses
+  end
+
+  # def new_deliveryaddresses
+  #   @deliveryaddress = Deliveryaddress.new
+  #   @deliveryaddress = @user.build_deliveryaddress
+  # end
+  def create_deliveryaddresses
+    @user = User.new(session["devise.regist_data"]["user"])
+    @profileaddress = Profileaddress.new(session["profileaddress"])
+    @deliveryaddress = Deliveryaddress.new(deliveryaddresses_params)
+    # unless @deliveryaddress.valid?
+    #   flash.now[:alert] = @deliveryaddress.errors.full_messages
+    #   render :new_deliveryaddresses and return
+    # end
+    @user.build_profileaddress(@profileaddress.attributes)
+    @user.build_deliveryaddress(@deliveryaddress.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    session["profileaddress"].clear
+    sign_in(:user,@user)
+    redirect_to "/"
   end
 
   # GET /resource/edit
@@ -96,15 +115,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if year.empty? || month.empty? || day.empty?
         return
       end
-        # 年月日別々できたものを結合して新しいDate型変数を作り,paramsに数字化したDataをくっつけました
-        birthday = Date.new(year.to_i,month.to_i,day.to_i)
-        params.require(:user).permit(:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana).merge(birthday: birthday)
+      # 年月日別々できたものを結合して新しいDate型変数を作り,paramsに数字化したDataをくっつけました
+      birthday = Date.new(year.to_i,month.to_i,day.to_i)
+      params.require(:user).permit(:email,:password,:password_confirmation,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana).merge(birthday: birthday)
     end
     def user_params
-      params.require(:user).permit(:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana).merge("birthday(1i)": params[:birthday][:"birthday(1i)"]).merge("birthday(2i)": params[:birthday][:"birthday(2i)"]).merge("birthday(3i)": params[:birthday][:"birthday(3i)"])
-      # paramsの中のカラム→:email,:password,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana,:birthday(1i),:birthday(2i),:birthday(3i)
+      params.require(:user).permit(:email,:password,:password_confirmation,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana).merge("birthday(1i)": params[:birthday][:"birthday(1i)"]).merge("birthday(2i)": params[:birthday][:"birthday(2i)"]).merge("birthday(3i)": params[:birthday][:"birthday(3i)"])
+      # paramsの中のカラム→:email,:password,:password_confirmation,:nickname,:family_name,:given_name,:family_name_kana,:given_name_kana,:birthday(1i),:birthday(2i),:birthday(3i)
     end
     def profileaddress_params
-      params.require(:profileaddress).permit(:postal_code, :prefectures,:city,:address,:building,:user)
+      params.require(:profileaddress).permit(:postal_code, :prefectures,:city,:address,:building)
+    end
+    def deliveryaddresses_params
+      params.require(:deliveryaddress).permit(:family_name,:given_name,:family_name_kana,:given_name_kana,:postal_code,:prefectures,:city,:address,:building,:phone_number)
     end
 end
