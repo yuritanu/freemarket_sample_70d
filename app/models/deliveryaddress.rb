@@ -9,7 +9,12 @@ class Deliveryaddress < ApplicationRecord
   validates :address, presence: true
   validates :user_id, presence: true
 
-  bilongs_to :user
+  belongs_to :user,optional: true
+
+  # 全角のバリデーション↓
+  validate :name_em
+  validate :name_kana_em
+  
 
   enum prefecture:{
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -21,4 +26,38 @@ class Deliveryaddress < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
+  
+  def name_em
+    if !(family_name =~ /^[ぁ-んァ-ン一-龥]/)
+      if !(given_name =~ /^[ぁ-んァ-ン一-龥]/)
+        errors.add :family_name, "は全角で入力してください"
+        errors.add :given_name, "は全角で入力してください"
+      else
+        errors.add :family_name, "は全角で入力してください"
+      end
+    elsif !(given_name =~ /^[ぁ-んァ-ン一-龥]/)
+      errors.add :given_name, "は全角で入力してください"
+    else
+      return
+    end
+  end
+
+  def name_kana_em
+    if !(family_name_kana =~ /^([ァ-ン]|ー)+$/)
+      if !(given_name_kana =~ /^([ァ-ン]|ー)+$/)
+        errors.add :family_name_kana, "は全角カタカナで入力してください"
+        errors.add :given_name_kana, "は全角カタカナで入力してください"
+      else
+        errors.add :family_name_kana, "は全角カタカナで入力してください"
+      end
+    elsif !(given_name_kana =~ /^([ァ-ン]|ー)+$/)
+      errors.add :given_name_kana, "は全角カタカナで入力してください"
+    else
+      return
+    end
+  end
+
+  def zipcode
+    
+  end
 end
