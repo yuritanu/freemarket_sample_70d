@@ -23,34 +23,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @profileaddress = @user.build_profileaddress
-    render :new_profileaddresses
+    render :profileaddresses
   end
   
-  def new_profileaddresses
-    @profileaddress = Profileaddress.new
-  end
 
   def create_profileaddresses
     @user = User.new(session["devise.regist_data"]["user"])
     @profileaddress = Profileaddress.new(profileaddress_params)
+    unless @profileaddress.valid?
+      flash.now[:alert] = @profileaddress.errors.full_messages
+      render :profileaddresses and return
+    end
     @user.build_profileaddress(@profileaddress.attributes)
     session["profileaddress"] = @profileaddress.attributes
     @deliveryaddress = @user.build_deliveryaddress
-    render :new_deliveryaddresses
+    render :deliveryaddresses
   end
 
-  # def new_deliveryaddresses
-  #   @deliveryaddress = Deliveryaddress.new
-  #   @deliveryaddress = @user.build_deliveryaddress
-  # end
   def create_deliveryaddresses
     @user = User.new(session["devise.regist_data"]["user"])
     @profileaddress = Profileaddress.new(session["profileaddress"])
     @deliveryaddress = Deliveryaddress.new(deliveryaddresses_params)
-    # unless @deliveryaddress.valid?
-    #   flash.now[:alert] = @deliveryaddress.errors.full_messages
-    #   render :new_deliveryaddresses and return
-    # end
+    unless @deliveryaddress.valid?
+      flash.now[:alert] = @deliveryaddress.errors.full_messages
+      render :deliveryaddresses and return
+    end
     @user.build_profileaddress(@profileaddress.attributes)
     @user.build_deliveryaddress(@deliveryaddress.attributes)
     @user.save
