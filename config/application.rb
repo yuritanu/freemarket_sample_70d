@@ -14,6 +14,7 @@ module FreemarketSample70d
     # deviseのエラーを日本語にするため↑
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     # エラー時のレイアウト崩れを防ぐため記述↑
+    
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
