@@ -1,6 +1,24 @@
 ---
 ja:
   activerecord:
+    profileaddresses:
+      postal_code: '郵便番号'
+      prefectures: '都道府県 '
+      city: '市区町村'
+      address: '番地'
+      building: 'マンション名など'
+    deliveryaddresses:
+      family_name: "名字"
+      given_name: "名前"
+      family_name_kana: "名字（カナ）"
+      given_name_kana: "名前（カナ）"
+      birthday: "生年月日 "
+      postal_code: '郵便番号'
+      prefectures: '都道府県 '
+      city: '市区町村'
+      address: '番地'
+      building: 'マンション名など'
+      phone_number: '電話番号'
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
