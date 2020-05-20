@@ -7,7 +7,7 @@
 
     .login-main__content
       .login-main__content__form
-        = form_with(model: @profileaddress,url: registration_path(resource_name),local: true) do |f|
+        = form_with(model: @profileaddress,url: profileaddresses_path,local: true,method: :post) do |f|
           = render "devise/shared/error_messages", resource: resource
 
           .form-group
@@ -58,7 +58,7 @@
               = f.submit "次へすすむ",class: "submit"
             
             -# 実験的にページ移動の為のリンクです。後にウィーザード形式になります
-            -# =link_to '会員登録情報その３', new3_users_path
+            =link_to '会員登録情報その３', deliveryaddresses_path
 
 
 
