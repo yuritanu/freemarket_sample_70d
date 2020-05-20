@@ -1,20 +1,26 @@
 class Deliveryaddress < ApplicationRecord
-  validates :family_name, presence: true
-  validates :given_name, presence: true
-  validates :family_name_kana, presence: true
-  validates :given_name_kana, presence: true
-  validates :postal_code, presence: true
-  validates :prefectures, presence: true
-  validates :city, presence: true
-  validates :address, presence: true
-  validates :user_id, presence: true
+  # validates :family_name, presence: true
+  # validates :given_name, presence: true
+  # validates :family_name_kana, presence: true
+  # validates :given_name_kana, presence: true
+  # validates :postal_code, presence: true
+  # validates :prefectures, presence: true
+  # validates :city, presence: true
+  # validates :address, presence: true
 
   belongs_to :user,optional: true
 
-  # 全角のバリデーション↓
+  # 全角(＆空白)のバリデーション↓
   validate :name_em
   validate :name_kana_em
-  
+
+  validate :zipcode
+  validate :phone_number_check
+
+  validate :full_width_city
+  validate :full_width_address
+  validate :full_width_building
+  # 全角のみ入力設定（半角ではない設定）↑
 
   enum prefecture:{
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -26,17 +32,19 @@ class Deliveryaddress < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
-  
+
   def name_em
     if !(family_name =~ /^[ぁ-んァ-ン一-龥]/)
       if !(given_name =~ /^[ぁ-んァ-ン一-龥]/)
-        errors.add :family_name, "は全角で入力してください"
-        errors.add :given_name, "は全角で入力してください"
+        @error_name1 = I18n.t(User.human_attribute_name(:family_name))
+        @error_name2 = I18n.t(User.human_attribute_name(:given_name))
+        errors.add @error_name1, "は全角で入力してください"
+        errors.add @error_name2, "は全角で入力してください"
       else
-        errors.add :family_name, "は全角で入力してください"
+        errors.add @error_name1, "は全角で入力してください"
       end
     elsif !(given_name =~ /^[ぁ-んァ-ン一-龥]/)
-      errors.add :given_name, "は全角で入力してください"
+      errors.add @error_name2, "は全角で入力してください"
     else
       return
     end
@@ -45,19 +53,47 @@ class Deliveryaddress < ApplicationRecord
   def name_kana_em
     if !(family_name_kana =~ /^([ァ-ン]|ー)+$/)
       if !(given_name_kana =~ /^([ァ-ン]|ー)+$/)
-        errors.add :family_name_kana, "は全角カタカナで入力してください"
-        errors.add :given_name_kana, "は全角カタカナで入力してください"
+        @error_name3 = I18n.t(User.human_attribute_name(:family_name_kana))
+        @error_name4 = I18n.t(User.human_attribute_name(:given_name_kana))
+        errors.add @error_name3, "は全角カタカナで入力してください"
+        errors.add @error_name4, "は全角カタカナで入力してください"
       else
-        errors.add :family_name_kana, "は全角カタカナで入力してください"
+        errors.add @error_name3, "は全角カタカナで入力してください"
       end
     elsif !(given_name_kana =~ /^([ァ-ン]|ー)+$/)
-      errors.add :given_name_kana, "は全角カタカナで入力してください"
+      errors.add @error_name4, "は全角カタカナで入力してください"
     else
       return
     end
   end
 
-  def zipcode
-    
+  def phone_number_check
+    return if phone_number.blank? || phone_number =~ /\A\d{10,11}\z/
+    @error_name5 = I18n.t(User.human_attribute_name(:phone_number))
+    errors.add @error_name5, "は不当な値です。ハイフンなし、10桁,又は11桁の番号で入力してください"
   end
+
+  def zipcode
+    return if postal_code.present?	 || postal_code =~ /\A\d{7}\z/
+    @error_name6 = I18n.t(User.human_attribute_name(:postal_code))
+    errors.add @error_name6, "はハイフンなし、７桁の番号で入力してください"
+  end
+
+  def full_width_city
+    return if city.present?	 || city =~ /[^ -~｡-ﾟ]/
+    @error_name7 = I18n.t(User.human_attribute_name(:city))
+    errors.add @error_name7, "は全角で入力してください"
+  end
+  def full_width_address
+    return if address.present?	 || address =~ /[^ -~｡-ﾟ]/
+    @error_name8 = I18n.t(User.human_attribute_name(:address))
+    errors.add @error_name8, "は全角で入力してください"
+  end
+  def full_width_building
+    return if building.blank?	|| building =~ /[^ -~｡-ﾟ]/
+    @error_name9 = I18n.t(User.human_attribute_name(:building))
+    errors.add @error_name9, "は全角で入力してください"
+  end
+
+
 end
