@@ -78,3 +78,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 # railsを日本語対応にする↓
 gem 'rails-i18n'
+# jqueryを使用する
+gem 'jquery-rails'

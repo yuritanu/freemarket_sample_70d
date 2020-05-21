@@ -5,10 +5,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   devise_scope :user do
-    get  '/profileaddresses', to: 'users/registrations#new_profileaddresses'
-    post '/profileaddresses', to: 'users/registrations#create_profileaddresses'
-    get  '/deliveryaddresses',to: 'users/registrations#new_deliveryaddresses'
-    post '/deliveryaddresses', to: 'users/registrations#create_deliveryaddresses'
+    post  '/profileaddresses', to: 'users/registrations#new_profileaddresses'
+    post  '/deliveryaddresses',to: 'users/registrations#new_deliveryaddresses'
   end
    
   resources :mypages, only: [:index] do

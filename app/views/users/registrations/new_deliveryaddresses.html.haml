@@ -6,7 +6,7 @@
       お届け先住所入力
     .login-main__content
       .login-main__content__form
-        = form_with(model: @deliveryaddress,url: deliveryaddresses_path,local: true) do |f|
+        = form_with(model: @deliveryaddress,url: user_registration_path,local: true) do |f|
           -# = render "devise/shared/error_messages", resource: resource
           -if @deliveryaddress.errors.any?
             .alert.alert-warning

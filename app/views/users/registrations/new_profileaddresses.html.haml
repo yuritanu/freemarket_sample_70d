@@ -7,7 +7,7 @@
 
     .login-main__content
       .login-main__content__form
-        = form_with(model: @profileaddress,url: profileaddresses_path,local: true,method: :post) do |f|
+        = form_with(model: @profileaddress,url: deliveryaddresses_path,local: true,method: :post) do |f|
           -# = render "devise/shared/error_messages", resource: resource
             ↑だとエラー表示呼び出せないので、下のコードを記述
           -if @profileaddress.errors.any?
