@@ -34,10 +34,10 @@ class Deliveryaddress < ApplicationRecord
   }
 
   def name_em
+    @error_name1 = I18n.t(User.human_attribute_name(:family_name))
+    @error_name2 = I18n.t(User.human_attribute_name(:given_name))
     if !(family_name =~ /^[ぁ-んァ-ン一-龥]/)
       if !(given_name =~ /^[ぁ-んァ-ン一-龥]/)
-        @error_name1 = I18n.t(User.human_attribute_name(:family_name))
-        @error_name2 = I18n.t(User.human_attribute_name(:given_name))
         errors.add @error_name1, "は全角で入力してください"
         errors.add @error_name2, "は全角で入力してください"
       else
@@ -51,10 +51,10 @@ class Deliveryaddress < ApplicationRecord
   end
 
   def name_kana_em
+    @error_name3 = I18n.t(User.human_attribute_name(:family_name_kana))
+    @error_name4 = I18n.t(User.human_attribute_name(:given_name_kana))
     if !(family_name_kana =~ /^([ァ-ン]|ー)+$/)
       if !(given_name_kana =~ /^([ァ-ン]|ー)+$/)
-        @error_name3 = I18n.t(User.human_attribute_name(:family_name_kana))
-        @error_name4 = I18n.t(User.human_attribute_name(:given_name_kana))
         errors.add @error_name3, "は全角カタカナで入力してください"
         errors.add @error_name4, "は全角カタカナで入力してください"
       else
@@ -74,23 +74,23 @@ class Deliveryaddress < ApplicationRecord
   end
 
   def zipcode
-    return if postal_code.present?	 || postal_code =~ /\A\d{7}\z/
+    return if postal_code =~ /\A\d{7}\z/
     @error_name6 = I18n.t(User.human_attribute_name(:postal_code))
-    errors.add @error_name6, "はハイフンなし、７桁の番号で入力してください"
+    errors.add @error_name6, "はハイフンなし、７桁の数字で入力してください"
   end
 
   def full_width_city
-    return if city.present?	 || city =~ /[^ -~｡-ﾟ]/
+    return if city =~ /[^ -~｡-ﾟ]/
     @error_name7 = I18n.t(User.human_attribute_name(:city))
     errors.add @error_name7, "は全角で入力してください"
   end
   def full_width_address
-    return if address.present?	 || address =~ /[^ -~｡-ﾟ]/
+    return if address =~ /[^ -~｡-ﾟ]/
     @error_name8 = I18n.t(User.human_attribute_name(:address))
     errors.add @error_name8, "は全角で入力してください"
   end
   def full_width_building
-    return if building.blank?	|| building =~ /[^ -~｡-ﾟ]/
+    return if building.blank? || building =~ /[^ -~｡-ﾟ]/
     @error_name9 = I18n.t(User.human_attribute_name(:building))
     errors.add @error_name9, "は全角で入力してください"
   end
