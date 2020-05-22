@@ -24,24 +24,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.build_profileaddress(@profileaddress.attributes)
     @user.build_deliveryaddress(@deliveryaddress.attributes)
-    @user.save
-    session["devise.regist_data"]["user"].clear
-    session["profileaddress"].clear
-    sign_in(:user,@user)
-    redirect_to "/"
-
+    if @user.save
+      session["devise.regist_data"]["user"].clear
+      session["profileaddress"].clear
+      sign_in(:user,@user)
+      redirect_to "/"
+    else
+      render :new
+    end
   end
 
   def new_profileaddresses
-    user = User.new(birthday_save)
-    binding.pry
-    unless user.valid?
-      flash.now[:alert] = user.errors.full_messages
+    @user = User.new(birthday_save)
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
-    session["devise.regist_data"] = {user: user.attributes}
+    session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @profileaddress = user.build_profileaddress
+    @profileaddress = @user.build_profileaddress
     # @profileaddress = Profileaddress.new
   end
 
