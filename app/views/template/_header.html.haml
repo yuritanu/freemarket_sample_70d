@@ -8,6 +8,7 @@
           %input{type:"serach",placeholder:"キーワードから探す",class:"header-search__form__input"}
           %button{type:"submit",class:"header-search__form__submit"}
             =image_tag("icon/icon-search 1.png",class: "header-search__form__submit__icon") 
+
     .all-header__inner__nav
       %ul.list-left
         %li.list-left__choice
@@ -15,19 +16,25 @@
           .list-left__choice__list
             %ul.list-left__choice__list--left
               %li.category-list
-                =link_to "本","#",class: "category-list__link"
-              %li.category-list
-                =link_to "レディース","#",class: "category-list__link"
-            %ul.list-left__choice__list--middle
-              %li.category-list
-                =link_to "政治経済","#",class: "category-list__link"
-              %li.category-list
-                =link_to "漫画","#",class: "category-list__link"
-            %ul.list-left__choice__list--right
-              %li.category-list
-                =link_to "政治","#",class: "category-list__link"
-              %li.category-list
-                =link_to "経済","#",class: "category-list__link"
+                =link_to "すべて","#",class: "category-list__link"  # カテコりー関係なくすべての商品を呼び出す
+                - @parents.each do |parent|     # 親の表示
+                  =link_to "#{parent.name}","#",class: "category-list__link", id: "#{parent.id}"
+                    
+                  
+                  -# %ul.list-left__choice__list--middle
+                  -#   %li.category-list
+                  -#     - parent.children.each do |child|   # 子の表示
+                  -#       =link_to child.name,"#",class: "category-list__link"
+                                  
+                  -#       %ul.list-left__choice__list--right
+                  -#         %li.category-list
+                  -#           - child.children.each do |grandchild|
+                  -#             =link_to grandchild.name,"#",class: "category-list__link"
+
+
+                         
+
+                
         %li.list-left__choice--brand
           ブランド
           .list-left__choice__list
@@ -46,6 +53,8 @@
                 =link_to "政治","#",class: "category-list__link"
               %li.category-list
                 =link_to "経済","#",class: "category-list__link"
+
+
       -# - if user_signed_in?
       -#   %ul.list-right
       -#     %li.list-right__li
