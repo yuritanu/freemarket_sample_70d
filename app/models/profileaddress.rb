@@ -12,7 +12,7 @@ class Profileaddress < ApplicationRecord
     return if postal_code.blank? || postal_code =~ /\A\d{7}\z/
     @error_name = I18n.t(User.human_attribute_name(:postal_code))
     # ja.ymlからデータを引っ張ってきている↑
-    errors.add @error_name, "は不当な値です。ハイフンなし、７桁の番号で入力してください"
+    errors.add @error_name, "は不当な値です。ハイフンなし、７桁の数字で入力してください"
   end
 
   def full_width_city
