@@ -70,7 +70,8 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     render_views
     context 'バリデーション' do
       before do
-        @request.host = "localhost：3000" 
+        @request.host = "localhost：3000"
+        # ↑root設定
         @password = FactoryBot.attributes_for(:user_registration_2)
         @data = User.new(FactoryBot.attributes_for(:user_registration_2))
         @profileaddress = Profileaddress.new(FactoryBot.attributes_for(:profileaddress_registration))
