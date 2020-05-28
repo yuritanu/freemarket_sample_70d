@@ -1,12 +1,6 @@
 class Deliveryaddress < ApplicationRecord
   # validates :family_name, presence: true
-  # validates :given_name, presence: true
-  # validates :family_name_kana, presence: true
-  # validates :given_name_kana, presence: true
-  # validates :postal_code, presence: true
-  # validates :prefectures, presence: true
-  # validates :city, presence: true
-  # validates :address, presence: true
+  # ↑のようにバリデーションすると日本語化できないので↓のメソッドでバリデーションしてます
 
   belongs_to :user,optional: true
 
@@ -14,13 +8,15 @@ class Deliveryaddress < ApplicationRecord
   validate :name_em
   validate :name_kana_em
 
+  # 決まった桁の数字を入力するバリデーション↓
   validate :zipcode
   validate :phone_number_check
 
+  # 全角のみ入力設定（半角ではない設定）↓
   validate :full_width_city
   validate :full_width_address
   validate :full_width_building
-  # 全角のみ入力設定（半角ではない設定）↑
+  
 
   enum prefecture:{
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -80,17 +76,17 @@ class Deliveryaddress < ApplicationRecord
   end
 
   def full_width_city
-    return if city =~ /[^ -~｡-ﾟ]/
+    return if city =~ /^[^ -~｡-ﾟ]*$/
     @error_name7 = I18n.t(User.human_attribute_name(:city))
     errors.add @error_name7, "は全角で入力してください"
   end
   def full_width_address
-    return if address =~ /[^ -~｡-ﾟ]/
+    return if address =~ /^[^ -~｡-ﾟ]*$/
     @error_name8 = I18n.t(User.human_attribute_name(:address))
     errors.add @error_name8, "は全角で入力してください"
   end
   def full_width_building
-    return if building.blank? || building =~ /[^ -~｡-ﾟ]/
+    return if building.blank? || building =~ /^[^ -~｡-ﾟ]*$/
     @error_name9 = I18n.t(User.human_attribute_name(:building))
     errors.add @error_name9, "は全角で入力してください"
   end
