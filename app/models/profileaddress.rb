@@ -16,17 +16,17 @@ class Profileaddress < ApplicationRecord
   end
 
   def full_width_city
-    return if city.blank? || city =~ /[^ -~｡-ﾟ]/
+    return if city.blank? || city =~ /^[^ -~｡-ﾟ]*$/
     @error_name = I18n.t(User.human_attribute_name(:city))
     errors.add @error_name, "は全角で入力してください"
   end
   def full_width_address
-    return if address.blank? || address =~ /[^ -~｡-ﾟ]/
+    return if address.blank? || address =~ /^[^ -~｡-ﾟ]*$/
     @error_name = I18n.t(User.human_attribute_name(:address))
     errors.add @error_name, "は全角で入力してください"
   end
   def full_width_building
-    return if building.blank? || building =~ /[^ -~｡-ﾟ]/
+    return if building.blank? || building =~ /^[^ -~｡-ﾟ]*$/
     @error_name = I18n.t(User.human_attribute_name(:building))
     errors.add @error_name, "は全角で入力してください"
   end
