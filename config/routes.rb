@@ -35,5 +35,8 @@ Rails.application.routes.draw do
       get 'testshow'
       get 'testconfirm'
     end
-  end  
+  end
+
+  resources :categories, only: [:new] do
+  end
 end
