@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       session["devise.regist_data"]["user"].clear
       session["profileaddress"].clear
       sign_in(:user,@user)
-      redirect_to "/"
+      redirect_to root_path
     else
       render :new
     end
@@ -43,7 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @profileaddress = @user.build_profileaddress
-    # @profileaddress = Profileaddress.new
   end
 
   def new_deliveryaddresses
@@ -56,7 +55,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user.build_profileaddress(@profileaddress.attributes)
     session["profileaddress"] = @profileaddress.attributes
     @deliveryaddress = user.build_deliveryaddress
-    # @deliveryaddress = Deliveryaddress.new
   end
 
 
