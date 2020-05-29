@@ -68,8 +68,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|expiration_month|string|null: false|
-|expiration_year|string|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 |user_id|references|foreign_key: true|
 
 ### Association
