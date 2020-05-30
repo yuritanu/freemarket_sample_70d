@@ -2,14 +2,14 @@ class CreditcardsController < ApplicationController
   require "payjp"
   protect_from_forgery with: :null_session
   
-  def index
-    @creditcard = Creditcard.find_by(user_id: current_user.id)
-    Payjp.api_key = 'test_secret_key'
-    customer = Payjp::Customer.retrieve(@creditcard.customer_id)
-    @card = customer.cards.retrieve(@creditcard.card_id)
-    @exp_month = @card.exp_month.to_s
-    @exp_year = @card.exp_year.to_s.slice(2,3)
-  end
+  # def index
+  #   @creditcard = Creditcard.find_by(user_id: current_user.id)
+  #   Payjp.api_key = 'test_secret_key'
+  #   customer = Payjp::Customer.retrieve(@creditcard.customer_id)
+  #   @card = customer.cards.retrieve(@creditcard.card_id)
+  #   @exp_month = @card.exp_month.to_s
+  #   @exp_year = @card.exp_year.to_s.slice(2,3)
+  # end
 
   def new
     @creditcard = Creditcard.new
@@ -20,7 +20,7 @@ class CreditcardsController < ApplicationController
       # paramsの中にjsで作った'payjpTokenが存在するか確かめる
         redirect_to action: "new"
     else
-      Payjp.api_key = 'test_secret_key'
+      Payjp.api_key = Rails.application.credentials.test_secret_key
       customer = Payjp::Customer.create(
         card: params['payjp-token'], 
         email: current_user.email,
@@ -35,7 +35,7 @@ class CreditcardsController < ApplicationController
 
   def destroy
     credit = Credit.find_by(user_id: current_user.id)
-    Payjp.api_key = 'sk_test_7ca83cd8b0bdf8e7771acc13'
+    Payjp.api_key = Rails.application.credentials.test_secret_key
     customer = Payjp::Customer.retrieve(credit.customer_id)
     card = customer.cards.retrieve(credit.card_id)
     card.delete

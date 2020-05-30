@@ -1,85 +1,92 @@
--# .input-top
--#   = render partial: '/template/input-top'
+.input-top
+  = render partial: '/template/input-top'
   
--#   .login-main
--#     .login-main__title
--#       お届け先住所入力
--#     .login-main__content
--#       .login-main__content__form
--#         = form_with(model: @deliveryaddress,url: registration_path(resource_name),local: true) do |f|
--#           = render "devise/shared/error_messages", resource: resource
+  .login-main
+    .login-main__title
+      お届け先住所入力
+    .login-main__content
+      .login-main__content__form
+        = form_with(model: @deliveryaddress,url: user_registration_path,local: true) do |f|
+          -# = render "devise/shared/error_messages", resource: resource
+          -if @deliveryaddress.errors.any?
+            .alert.alert-warning
+              %ul
+                - @deliveryaddress.errors.full_messages.each do |message|
+                  %li 
+                    = message.delete!("Translation missing: ja")
 
--#         .form-group
--#           お名前(全角)
--#           %span.required
--#             必須
--#           %br
--#           .field
--#             = f.text_field :family_name, autofocus: true, autocomplete: "family_name",placeholder: "例）山田",class: "default half"           
--#             = f.text_field :given_name, autofocus: true, autocomplete: "given_name",placeholder: "例）太郎",class: "default half__right"       
+          .form-group
+            お名前(全角)
+            %span.required
+              必須
+            %br
+            .field
+              = f.text_field :family_name, autofocus: true, autocomplete: "family_name",placeholder: "例）山田",class: "default half"           
+              = f.text_field :given_name, autofocus: true, autocomplete: "given_name",placeholder: "例）太郎",class: "default half__right"       
 
--#         .form-group
--#           お名前カナ(全角)
--#           %span.required
--#             必須
--#           %br
--#           .field
--#             = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana",placeholder: "例）ヤマダ",class: "default half"           
--#             = f.text_field :given_name_kana, autofocus: true, autocomplete: "given_name_kana",placeholder: "例）タロウ",class: "default half__right"
+          .form-group
+            お名前カナ(全角)
+            %span.required
+              必須
+            %br
+            .field
+              = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana",placeholder: "例）ヤマダ",class: "default half"           
+              = f.text_field :given_name_kana, autofocus: true, autocomplete: "given_name_kana",placeholder: "例）タロウ",class: "default half__right"
 
--#         .form-group
--#           郵便番号 
--#           %span.required
--#             必須
--#           %br 
--#           .field
--#             = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",placeholder: "ーーー",class: "default"
+          .form-group
+            郵便番号 
+            %span.required
+              必須
+            %br 
+            .field
+              = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",placeholder: "ーーー",class: "default"
 
--#           .form-group
--#             -#  後に、都道府県を選べるようコードを書き換えてください
--#             都道府県 
--#             %span.required
--#               必須
--#             %br         
--#             .field 
--#               -# = f.text_field :prefectures, autofocus: true, autocomplete: "prefectures",placeholder: "選択してください",class: "default" 
--#               -# 別モデルを作成しなくてはいけないので相談後
--#               = f.select :prefectures, Deliveryaddress.prefectures.keys, {},placeholder: "選択してください",class: "default"
--#           .form-group
--#             市区町村 
--#             %span.required
--#               必須
--#             %br            
--#             .field
--#               = f.text_field :city, autofocus: true, autocomplete: "city",placeholder: "ーーー",class: "default" 
+            .form-group
+              -#  後に、都道府県を選べるようコードを書き換えてください
+              都道府県 
+              %span.required
+                必須
+              %br         
+              .field 
+                -# = f.text_field :prefectures, autofocus: true, autocomplete: "prefectures",placeholder: "選択してください",class: "default" 
+                -# 別モデルを作成しなくてはいけないので相談後
+                = f.select :prefectures, Deliveryaddress.prefectures.keys, {},placeholder: "選択してください",class: "default"
+            .form-group
+              市区町村 
+              %span.required
+                必須
+              %br            
+              .field
+                = f.text_field :city, autofocus: true, autocomplete: "city",placeholder: "ーーー",class: "default" 
 
--#           .form-group
--#             番地
--#             %span.required
--#               必須
--#             %br             
--#             .field
--#               = f.text_field :address, autofocus: true, autocomplete: "address",placeholder: "ーーー",class: "default" 
+            .form-group
+              番地
+              %span.required
+                必須
+              %br             
+              .field
+                = f.text_field :address, autofocus: true, autocomplete: "address",placeholder: "ーーー",class: "default" 
 
--#           .form-group
--#             マンション名など部屋号室
--#             %span.any
--#               任意
--#             %br           
--#             %input.default{type: "text", placeholder: "ーーー"} 
+            .form-group
+              マンション名など部屋号室
+              %span.any
+                任意
+              %br
+              .field 
+                = f.text_field :building, autofocus: true, autocomplete: "building",placeholder: "ーーー",class: "default"  
 
--#           .form-group
--#             電話番号
--#             %span.any
--#               任意
--#             %br
--#             .field 
--#               = f.text_field :building, autofocus: true, autocomplete: "building",placeholder: "ーーー",class: "default" 
+            .form-group
+              電話番号
+              %span.any
+                任意
+              %br
+              .field 
+                = f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",placeholder: "ーーー",class: "default" 
 
--#         .form-group
--#           %p.info-text__end 「登録する」のボタンを押すことにより、利用規約に同意したものとみなします
--#           .action
--#             = f.submit "登録する",class: "submit" 
+          .form-group
+            %p.info-text__end 「登録する」のボタンを押すことにより、利用規約に同意したものとみなします
+            .action
+              = f.submit "登録する",class: "submit" 
 
--#   .login-footer
--#     = render partial: '/template/input-bottom'
+  .login-footer
+    = render partial: '/template/input-bottom'

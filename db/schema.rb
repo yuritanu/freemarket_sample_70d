@@ -34,24 +34,16 @@ ActiveRecord::Schema.define(version: 2020_05_29_095451) do
     t.string "given_name", null: false
     t.string "family_name_kana", null: false
     t.string "given_name_kana", null: false
-    t.integer "postal_code", null: false
+    t.string "postal_code", null: false
     t.string "prefectures", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_deliveryaddresses_on_user_id"
-  end
-
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_images_on_product_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -73,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_095451) do
   end
 
   create_table "profileaddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "postal_code"
+    t.string "postal_code"
     t.string "prefectures"
     t.string "city"
     t.string "address"
@@ -104,7 +96,6 @@ ActiveRecord::Schema.define(version: 2020_05_29_095451) do
 
   add_foreign_key "creditcards", "users"
   add_foreign_key "deliveryaddresses", "users"
-  add_foreign_key "images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "profileaddresses", "users"

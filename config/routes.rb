@@ -1,32 +1,21 @@
 Rails.application.routes.draw do 
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions',
-  #   registrations: 'users/registrations'
-  # }
-  # devise_scope :user do
-  #   get  'profileaddresses', to: 'users/registrations#new_profileaddresses'
-  #   post 'profileaddresses', to: 'users/registrations#create_profileaddresses'
-  #   get  'deliveryaddresses',to: 'users/registrations#new_deliveryaddresses'
-  #   post 'deliveryaddresses', to: 'users/registrations#create_deliveryaddresses'
-
-  # end
-  root to: 'products#index' 
-  resources :mypages, only: [:index] do
-    collection do
+  root to: 'products#index'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    post  '/profileaddresses', to: 'users/registrations#new_profileaddresses'
+    post  '/deliveryaddresses',to: 'users/registrations#new_deliveryaddresses'
+  end
+   
+  resources :mypages, only: [:show] do
+    member do
       get 'logout'
       get 'card'
-      get 'newcard'
     end
   end
-
   resources :creditcards
-  
 
-  resources :products, only: [:index, :new, :edit, :show] do
-    member do
-      get :confirmation
-      get :buy
-      post :buy
-    end
-  end  
+  resources :products, only: [:index, :new, :edit, :show]
 end

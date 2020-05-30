@@ -44,6 +44,14 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  # テスト
+  gem 'rspec-rails'
+  # テストでダミーインスタンスを作成
+  gem 'factory_bot_rails'
+  # テストで保存したデータを削除する
+  gem 'database_cleaner'
+  # エラーにより下記gemをインストール
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -73,8 +81,15 @@ gem "haml-rails"
 gem "font-awesome-sass"
 gem "devise"
 gem "pry-rails"
-gem 'jquery-rails'
 gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
 gem 'payjp'
+# deviseの日本語対応gem↓
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+# railsを日本語対応にする↓
+gem 'rails-i18n'
+# jqueryを使用する
+gem 'jquery-rails'
+

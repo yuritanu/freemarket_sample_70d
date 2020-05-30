@@ -145,18 +145,11 @@
     %h2.toppage-subtitle__pickup
       ピックアップブランド
     .pickup
-      -# .pickup__head
-      -#   = link_to "#",class: "pickup__head__link" do
-      -#     %h3.pickup__head__link__title
-      -#       アーカイバ
-      -# ↑5/16スプリントレビュー用にコメントアウト。上記が本流です。
-      -# 
-      -# ↓5/16のスプリントレビューで使います
       .pickup__head
-        -# = link_to testshow_products_path,class: "pickup__head__link" do
-        -#   %h3.pickup__head__link__title
-        -#     商品詳細ページへ(5/16スプリントレビュー用)
-      -# ↑5/16のスプリントレビューで使います
+        = link_to "#",class: "pickup__head__link" do
+          %h3.pickup__head__link__title
+            アーカイバ
+
       %ul.pickup__lists
         %li.pickup__lists__list
           = link_to "#",class: "list-link" do
