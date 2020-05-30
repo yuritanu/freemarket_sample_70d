@@ -18,22 +18,15 @@ Rails.application.routes.draw do
       get 'newcard'
     end
   end
+
+  resources :creditcards
   
-  # ↓5/16スプリントレビュー後は削除
-  resources :notusers do
-    collection do
-      get 'new2'
-      get 'new3'
-    end
-  end  
-  # ↑5/16スプリントレビュー後は削除
 
   resources :products, only: [:index, :new, :edit, :show] do
-    # 上記のproductsの最後にあるdoも5/16スプリントレビュー後は削除
-    # ↓も5/16スプリントレビュー用
-    collection do
-      get 'testshow'
-      get 'testconfirm'
+    member do
+      get :confirmation
+      get :buy
+      post :buy
     end
   end  
 end
