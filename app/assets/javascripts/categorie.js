@@ -9,6 +9,10 @@ $(function(){
   $(document).on('mouseleave', '.list-left__choice__list', function(){
     $(".parent_category").css("background-color","").css("color", "");
   })
+  // 「すべて」にマウスが乗った時に親カテゴリーの色を初期に戻します
+  $(document).on('mouseover', '.category-list__link', function(){
+    $(".parent_category").css("background-color","").css("color", "");
+  })
   // 子カテゴリー取得発火処理
   $(".parent_category").on("mouseover", function(){
     var id = this.id  //  マウスが乗った親のIDを取得してます
