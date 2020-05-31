@@ -102,5 +102,4 @@ class Deliveryaddress < ApplicationRecord
     @error_name9 = I18n.t(User.human_attribute_name(:building))
     errors.add @error_name9, "は全角で入力してください"
   end
-a
 end
