@@ -15,7 +15,12 @@ Rails.application.routes.draw do
       get 'card'
     end
   end
-  resources :creditcards
+  resources :creditcards, only: [:new, :create, :destroy]
 
-  resources :products, only: [:index, :new, :edit, :show]
+  resources :products, only: [:index, :new, :edit, :show] do
+    member do
+      get  :buy
+      post :buy
+    end
+  end
 end

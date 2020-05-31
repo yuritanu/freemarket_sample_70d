@@ -18,8 +18,8 @@ $(function(){
     Payjp.createToken(card, function (status, response) {
 
       if (response.error) {
-        alert("error")
-        form.find('button').prop('disabled', false);
+        alert("入力内容に誤りがあります。ご確認の上、再度入力願います。");
+        $('input[type=submit]').removeAttr("disabled");
       }
       else {
         $(".form_contents__card_number__input").removeAttr("name");

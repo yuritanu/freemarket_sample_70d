@@ -13,6 +13,7 @@ class User < ApplicationRecord
   
   has_one :profileaddress, dependent: :destroy
   has_one :deliveryaddress, dependent: :destroy
+  has_one :creditcard, dependent: :destroy
 
   # パスワード英字数字１文字かつ７文字以上のバリデーション↓
   validate :password_complexity

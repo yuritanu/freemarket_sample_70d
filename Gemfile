@@ -84,7 +84,6 @@ gem "pry-rails"
 gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
-gem 'payjp'
 # deviseの日本語対応gem↓
 gem 'devise-i18n'
 gem 'devise-i18n-views'
@@ -92,4 +91,5 @@ gem 'devise-i18n-views'
 gem 'rails-i18n'
 # jqueryを使用する
 gem 'jquery-rails'
-
+# ↓payjpを使用する
+gem 'payjp'

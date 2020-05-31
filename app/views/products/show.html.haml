@@ -6,7 +6,8 @@
     .content-right
       .top-content
         .item-box
-          %h2.item-box__name 商品名
+          %h2.item-box__name
+            = @product.name
           .item-box__body
             %ul
               %li
@@ -20,12 +21,21 @@
                     %li
                       =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png")
           .item-box__price
-            %span ¥3000
+            %span
+              = @product.price
             .item-box__price__detail
               %span (税込み)
               %span 送料込み
-            =link_to "#", class:"item-buy-btn" do
-              購入画面に進む
+            - if @product.user_id == current_user.id
+              =link_to "#", class:"item-buy-btn" do
+                編集
+            - else
+              - if @product.buyer.blank?
+                =link_to buy_product_path, class:"item-buy-btn" do
+                  購入する
+              - else
+                =link_to "#", class:"item-buy-btn" do
+                  売り切れ
           .item-detail コメント欄
           .table
             %table

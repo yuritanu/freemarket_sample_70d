@@ -2,14 +2,7 @@ class CreditcardsController < ApplicationController
   require "payjp"
   protect_from_forgery with: :null_session
   
-  # def index
-  #   @creditcard = Creditcard.find_by(user_id: current_user.id)
-  #   Payjp.api_key = 'test_secret_key'
-  #   customer = Payjp::Customer.retrieve(@creditcard.customer_id)
-  #   @card = customer.cards.retrieve(@creditcard.card_id)
-  #   @exp_month = @card.exp_month.to_s
-  #   @exp_year = @card.exp_year.to_s.slice(2,3)
-  # end
+  
 
   def new
     @creditcard = Creditcard.new
@@ -18,7 +11,7 @@ class CreditcardsController < ApplicationController
   def create
     if params['payjp-token'].blank?
       # paramsの中にjsで作った'payjpTokenが存在するか確かめる
-        redirect_to action: "new"
+        redirect_to action: "new" and return
     else
       Payjp.api_key = Rails.application.credentials.test_secret_key
       customer = Payjp::Customer.create(
@@ -34,14 +27,13 @@ class CreditcardsController < ApplicationController
 
 
   def destroy
-    credit = Credit.find_by(user_id: current_user.id)
+    creditcard = Creditcard.find_by(user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials.test_secret_key
-    customer = Payjp::Customer.retrieve(credit.customer_id)
-    card = customer.cards.retrieve(credit.card_id)
+    customer = Payjp::Customer.retrieve(creditcard.customer_id)
+    card = customer.cards.retrieve(creditcard.card_id)
     card.delete
     customer.delete
-    # credit = Credit.find(current_user.id)
-    credit.destroy
+    creditcard.destroy
     redirect_to root_path
   end
 

@@ -34,3 +34,10 @@
 
         = f.submit "追加する", id: "regist_card", class: "form_contents__submit"
         #card_token
+
+        -# -if @creditcard.errors.any?
+        -#   .alert.alert-warning
+        -#     %ul
+        -#       - @creditcard.errors.full_messages.each do |message|
+        -#         %li 
+        -#           = message.delete!("Translation missing: ja")
