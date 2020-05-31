@@ -10,13 +10,6 @@
         = form_with(model: @profileaddress,url: deliveryaddresses_path,local: true,method: :post) do |f|
           -# = render "devise/shared/error_messages", resource: resource
             ↑だとエラー表示呼び出せないので、下のコードを記述
-          -if @profileaddress.errors.any?
-            .alert.alert-warning
-              %ul
-                - @profileaddress.errors.full_messages.each do |message|
-                  %li 
-                    = message.delete!("Translation missing: ja")
-                    
 
           .form-group
             郵便番号  
