@@ -1,5 +1,7 @@
 .main_new_card
   .new_card__registration
+    .flash_message_creditcard
+      = flash[:add_creditcard]
     %h2.registration__header
       クレジットカード情報入力
     = form_with model: @creditcard, id: "card_form", class: "registration-form" do |f|

@@ -2,16 +2,15 @@ class CreditcardsController < ApplicationController
   require "payjp"
   protect_from_forgery with: :null_session
   
-  
-
   def new
     @creditcard = Creditcard.new
   end
 
   def create
+    # if文はparamsの中にjsで作った'payjpTokenが存在するか確かめています。
     if params['payjp-token'].blank?
-      # paramsの中にjsで作った'payjpTokenが存在するか確かめる
-        redirect_to action: "new" and return
+        redirect_to action: "new"
+        # payjp-tokenに問題がある場合はJSでalert「入力内容に誤りがあります。ご確認の上、再度入力願います。」が表示されます。
     else
       Payjp.api_key = Rails.application.credentials.test_secret_key
       customer = Payjp::Customer.create(

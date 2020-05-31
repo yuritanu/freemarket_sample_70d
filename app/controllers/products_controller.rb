@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
   def buy
     @product = Product.find(params[:id])
     if @product.buyer.present?
-      redirect_to product_path(@product.id), alert: "売り切れです"
+      flash[:add_creditcard] = "申し訳ございません。先に他のお客様が購入されました。"      
+      redirect_to product_path(@product.id)
     else
       @product.with_lock do
         if current_user.creditcard.present?
@@ -30,7 +31,8 @@ class ProductsController < ApplicationController
           @product.update(buyer: current_user.id)
           redirect_to root_path
         else
-          redirect_to new_creditcard_path, alert: "クレジットカードの登録をお願いします。"
+          flash[:add_creditcard] = "クレジットカードの登録をお願いします。"
+          redirect_to new_creditcard_path
         end
       end
     end
