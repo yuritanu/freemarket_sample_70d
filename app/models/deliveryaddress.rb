@@ -76,20 +76,30 @@ class Deliveryaddress < ApplicationRecord
   end
 
   def full_width_city
-    return if city =~ /^[^ -~｡-ﾟ]*$/
-    @error_name7 = I18n.t(User.human_attribute_name(:city))
-    errors.add @error_name7, "は全角で入力してください"
+    if city.blank? 
+      @error_name7 = I18n.t(User.human_attribute_name(:city))
+      errors.add @error_name7, "は全角で入力してください"
+    elsif !(city =~ /^[^ -~｡-ﾟ]*$/)
+      @error_name7 = I18n.t(User.human_attribute_name(:city))
+      errors.add @error_name7, "は全角で入力してください"
+    else
+      return
+    end
   end
+
   def full_width_address
-    return if address =~ /^[^ -~｡-ﾟ]*$/
-    @error_name8 = I18n.t(User.human_attribute_name(:address))
-    errors.add @error_name8, "は全角で入力してください"
+    if address.blank?
+      @error_name8 = I18n.t(User.human_attribute_name(:address))
+      errors.add @error_name8, "は全角で入力してください"
+    elsif !(address =~ /^[^ -~｡-ﾟ]*$/)
+      @error_name8 = I18n.t(User.human_attribute_name(:address))
+      errors.add @error_name8, "は全角で入力してください"
+    else
+    end
   end
   def full_width_building
     return if building.blank? || building =~ /^[^ -~｡-ﾟ]*$/
     @error_name9 = I18n.t(User.human_attribute_name(:building))
     errors.add @error_name9, "は全角で入力してください"
   end
-
-
 end
