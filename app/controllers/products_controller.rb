@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-
+  before_action :set_prodcut, only: [:show, :buy]
+  
   def index
   end
   
@@ -10,11 +11,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def buy
-    @product = Product.find(params[:id])
     if @product.buyer.present?
       flash[:add_creditcard] = "申し訳ございません。先に他のお客様が購入されました。"      
       redirect_to product_path(@product.id)
@@ -38,4 +37,8 @@ class ProductsController < ApplicationController
     end
   end
 
+  private
+  def set_prodcut
+    @product = Product.find(params[:id])
+  end
 end
