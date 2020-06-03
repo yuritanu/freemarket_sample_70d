@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :images, dependent: :destroy
   belongs_to_active_hash :product_status
-  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :shipping_origin
   belongs_to_active_hash :delivery_cost
   belongs_to_active_hash :delivery_day
   belongs_to :user
@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   validates :category_id, presence: true
   validates :product_status_id, presence: true
   validates :delivery_cost_id, presence: true
-  validates :prefecture_id, presence: true
+  validates :shipping_origin_id, presence: true
   validates :delivery_day_id, presence: true
   validates :price, presence: true, inclusion: 300..9999999
 

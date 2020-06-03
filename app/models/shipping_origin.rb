@@ -1,4 +1,4 @@
-class Prefecture < ActiveHash::Base
+class ShippingOrigin < ActiveHash::Base
   include ActiveHash::Associations
   self.data = [
     { id: 1, name: '北海道' },

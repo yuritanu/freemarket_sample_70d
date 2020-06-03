@@ -8,15 +8,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-    @user = User.find(1)
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def create
-    @user = User.find(1)
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
@@ -32,7 +26,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @user = User.find(1)
     if @product.update(product_params)
       redirect_to root_path
     else
@@ -47,7 +40,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :explanation, :category_id, :brand, :product_status_id, :delivery_cost_id, :prefecture_id, :delivery_day_id, :price, images_attributes: [:image, :_destroy, :id]).merge(user_id: @user.id)
+    params.require(:product).permit(:name, :explanation, :category_id, :brand, :product_status_id, :delivery_cost_id, :shipping_origin_id, :delivery_day_id, :price, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   # 商品情報

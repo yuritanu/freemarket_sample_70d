@@ -26,7 +26,7 @@
                   = image.file_field :image, class: "input_box__upload__field"
                   = icon('fas','camera fa-2x')
                   - if @product.errors.include?(:"images.image")
-                    %p{:style => "color: red;"}
+                    %p{style: "color: red;"}
                       = @product.errors.full_messages_for(:"images.image").first
                 .input_box__check_box
                   = image.check_box :_destroy, data:{index: image.index}, class: 'hidden-destroy'
@@ -41,7 +41,7 @@
               .form
                 = f.text_field :name, {class: "form__input", placeholder: "40文字まで"}
                 - if @product.errors.include?(:name)
-                  %p{:style => "color: red;"}
+                  %p{style: "color: red;"}
                     = @product.errors.full_messages_for(:name).first
             .showing__info__explain
               = f.label :explanation do
@@ -51,7 +51,7 @@
               .form
                 =f.text_area :explanation, {class: "form__input--textarea", placeholder: "商品の説明（色、素材、重さ、定価、注意点など）"}
                 - if @product.errors.include?(:explanation)
-                  %p{:style => "color: red;"}
+                  %p{style: "color: red;"}
                     = @product.errors.full_messages_for(:explanation).first
           -# ↑商品名&説明部分
           -# ↓商品の詳細部分
@@ -66,7 +66,7 @@
               .form
                 = f.collection_select :category_id, Category.where(sub: '0'), :id, :name, { prompt: '--' }, class: 'form__input', id: 'sell-main__select-category--main'
                 - if @product.errors.include?(:category_id)
-                  %p{:style => "color: red;"}
+                  %p{style: "color: red;"}
                     = @product.errors.full_messages_for(:category_id).first
             .showing__detail__brand
               %label.sub_title
@@ -83,7 +83,7 @@
               .form
                 = f.collection_select :product_status_id, ProductStatus.all, :id, :value, { prompt: '--' }, class: 'form__input'
                 - if @product.errors.include?(:product_status_id)
-                  %p{:style => "color: red;"}
+                  %p{style: "color: red;"}
                     = @product.errors.full_messages_for(:product_status_id).first
           -# ↑商品の詳細部分
           -# ↓配送について部分
@@ -98,26 +98,26 @@
               .form
               = f.collection_select :delivery_cost_id, DeliveryCost.all, :id, :value, { prompt: '--' }, class: 'form__input'
               - if @product.errors.include?(:delivery_cost_id)
-                %p{:style => "color: red;"}
+                %p{style: "color: red;"}
                   = @product.errors.full_messages_for(:delivery_cost_id).first
             .showing__delivery__area
-              = f.label :prefecture_id do
+              = f.label :shipping_origin_id do
                 発送元の地域
                 %span.required 必須
               .form
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '--' }, class: 'form__input'
-              - if @product.errors.include?(:prefecture_id)
-                %p{:style => "color: red;"}
-                  = @product.errors.full_messages_for(:prefecture_id).first
+              = f.collection_select :shipping_origin_id, ShippingOrigin.all, :id, :name, { prompt: '--' }, class: 'form__input'
+              - if @product.errors.include?(:shipping_origin_id)
+                %p{style: "color: red;"}
+                  = @product.errors.full_messages_for(:shipping_origin_id).first
             .showing__delivery__day
-              = f.label :delivery_day do
+              = f.label :delivery_day_id do
                 発送までの日数
               %span.required
                 必須
               .form
               = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :value, { prompt: '--' }, class: 'form__input'
               - if @product.errors.include?(:delivery_day_id)
-                %p{:style => "color: red;"}
+                %p{style: "color: red;"}
                   = @product.errors.full_messages_for(:delivery_day_id).first
           -# ↑配送について部分
           -# ↓価格部分
@@ -134,7 +134,7 @@
                 ¥
                 = f.text_field :price, {class: 'form__price',id: 'form__price-input', placeholder: '例）300',  value: '' }
                 - if @product.errors.include?(:price)
-                  %p{:style => "color: red;"}
+                  %p{style: "color: red;"}
                     = @product.errors.full_messages_for(:price).first
                 -# ↑販売価格入力部分です
                 -# ↓販売手数料・販売利益を表示部分です
