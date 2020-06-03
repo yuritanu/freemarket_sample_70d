@@ -86,10 +86,13 @@ gem "pry-rails"
 gem 'active_hash'
 gem 'carrierwave'
 gem 'mini_magick'
+
 # deviseの日本語対応gem↓
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
 # railsを日本語対応にする↓
 gem 'rails-i18n'
+
 # jqueryを使用する
 gem 'jquery-rails'
