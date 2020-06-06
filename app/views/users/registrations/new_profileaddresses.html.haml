@@ -10,13 +10,6 @@
         = form_with(model: @profileaddress,url: deliveryaddresses_path,local: true,method: :post) do |f|
           -# = render "devise/shared/error_messages", resource: resource
             ↑だとエラー表示呼び出せないので、下のコードを記述
-          -if @profileaddress.errors.any?
-            .alert.alert-warning
-              %ul
-                - @profileaddress.errors.full_messages.each do |message|
-                  %li 
-                    = message.delete!("Translation missing: ja")
-                    
 
           .form-group
             郵便番号  
@@ -25,7 +18,15 @@
             %br 
             .field
               = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",placeholder: "ーーー",class: "default"
+              -if @profileaddress.errors.any?
+                .alert.alert-warning
+                  %ul
+                    - @profileaddress.errors.full_messages.each do |message|
+                      %li{style: "color:red"} 
+                        - if message.include?("郵便番号")
+                          = message.delete!("Translation missing: ja")
 
+                    
           .form-group
             -# 後に、都道府県を選べるようコードを書き換えてください
             都道府県
@@ -42,7 +43,14 @@
               任意
             %br 
             .field
-              = f.text_field :city, autofocus: true, autocomplete: "city",placeholder: "ーーー",class: "default" 
+              = f.text_field :city, autofocus: true, autocomplete: "city",placeholder: "ーーー",class: "default"
+              -if @profileaddress.errors.any?
+                .alert.alert-warning
+                  %ul
+                    - @profileaddress.errors.full_messages.each do |message|
+                      %li{style: "color:red"} 
+                        - if message.include?("市区町村")
+                          = message.delete!("Translation missing: ja")
 
           .form-group
             番地
@@ -51,14 +59,26 @@
             %br 
             .field
               = f.text_field :address, autofocus: true, autocomplete: "address",placeholder: "ーーー",class: "default" 
-
+              -if @profileaddress.errors.any?
+                .alert.alert-warning
+                  %ul
+                    - @profileaddress.errors.full_messages.each do |message|
+                      %li{style: "color:red"} 
+                        - if message.include?("番地")
+                          = message.delete!("Translation missing: ja")
           .form-group
             マンション名など部屋号室
             %span.any
               任意
             .field 
               = f.text_field :building, autofocus: true, autocomplete: "building",placeholder: "ーーー",class: "default" 
-
+              -if @profileaddress.errors.any?
+                .alert.alert-warning
+                  %ul
+                    - @profileaddress.errors.full_messages.each do |message|
+                      %li{style: "color:red"} 
+                        - if message.include?("マンション")
+                          = message.delete!("Translation missing: ja")
             %p.info ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合がございます。
           
           .form-group

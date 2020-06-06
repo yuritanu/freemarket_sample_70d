@@ -9,18 +9,26 @@ Rails.application.routes.draw do
     post  '/deliveryaddresses',to: 'users/registrations#new_deliveryaddresses'
   end
    
+  # マイページ関係
   resources :mypages, only: [:show] do
     member do
       get 'logout'
       get 'card'
     end
   end
+
+  # クレジットカード関係
   resources :creditcards, only: [:new, :create, :destroy]
 
-  resources :products, only: [:index, :new, :edit, :show] do
+  # 商品関係
+  resources :products do
     member do
       get  :buy
       post :buy
     end
   end
+
+  # カテゴリー関係
+  resources :categories, only: [:new]
+  
 end

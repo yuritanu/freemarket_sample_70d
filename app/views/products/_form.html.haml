@@ -1,0 +1,170 @@
+.product
+  .product__top
+    = render partial: '/template/input-top'
+    = form_with(model: @product, local: true) do |f|
+      .showing
+        -# ↓画像投稿部分
+        .showing__images
+          %label.sub_title
+            出品画像 
+          %span.required
+            必須
+          %p.sentence
+            最大10枚までアップロードできます
+          .showing__images__file
+            .previews
+              - if @product.persisted?
+                - @product.images.each_with_index do |image, i|
+                  .previews__image
+                    .previews__image__box
+                      = image_tag image.image.url, data: {image: {index: i }}, width: "100", height: '100'
+                    .previews__image__btn{data: {btn: {index: i}}}
+                      削除する
+            %label.input_box
+              = f.fields_for :images do |image|
+                .input_box__upload{data: {index: "#{image.index}"}}
+                  = image.file_field :image, class: "input_box__upload__field"
+                  = icon('fas','camera fa-2x')
+                  - if @product.errors.include?(:"images.image")
+                    %p{style: "color: red;"}
+                      = @product.errors.full_messages_for(:"images.image").first
+                .input_box__check_box
+                  = image.check_box :_destroy, data:{index: image.index}, class: 'hidden-destroy'
+          -# ↑画像投稿部分
+          -# ↓商品名&説明部分
+          .showing__info
+            .showing__info__name
+              = f.label :name do
+                商品名 
+              %span.required
+                必須
+              .form
+                = f.text_field :name, {class: "form__input", placeholder: "40文字まで"}
+                - if @product.errors.include?(:name)
+                  %p{style: "color: red;"}
+                    = @product.errors.full_messages_for(:name).first
+            .showing__info__explain
+              = f.label :explanation do
+                商品の説明 
+              %span.required
+                必須
+              .form
+                =f.text_area :explanation, {class: "form__input--textarea", placeholder: "商品の説明（色、素材、重さ、定価、注意点など）"}
+                - if @product.errors.include?(:explanation)
+                  %p{style: "color: red;"}
+                    = @product.errors.full_messages_for(:explanation).first
+          -# ↑商品名&説明部分
+          -# ↓商品の詳細部分
+          .showing__detail
+            %p.sentence
+              商品の詳細
+            .showing__detail__category{ id: 'showing__detail__category--detail' }
+              = f.label :category_id do
+                カテゴリー
+              %span.required 必須
+              %div{ id: 'showing__select-category--wrapper' }
+              .form
+                = f.collection_select :category_id, Category.where(sub: '0'), :id, :name, { prompt: '--' }, class: 'form__input', id: 'sell-main__select-category--main'
+                - if @product.errors.include?(:category_id)
+                  %p{style: "color: red;"}
+                    = @product.errors.full_messages_for(:category_id).first
+            .showing__detail__brand
+              %label.sub_title
+                ブランド
+              %span.option
+                任意
+              .form
+                = f.text_field :brand, {class: "form__input", placeholder: "例）シャネル"}
+            .showing__detail__status
+              = f.label :product_status  do
+                商品の状態
+              %span.required
+                必須
+              .form
+                = f.collection_select :product_status_id, ProductStatus.all, :id, :value, { prompt: '--' }, class: 'form__input'
+                - if @product.errors.include?(:product_status_id)
+                  %p{style: "color: red;"}
+                    = @product.errors.full_messages_for(:product_status_id).first
+          -# ↑商品の詳細部分
+          -# ↓配送について部分
+          .showing__delivery
+            %p.sentence
+              配送について
+            .showing__delivery__cost
+              = f.label :delivery_cost_id do
+                配送料の負担
+              %span.required
+                必須
+              .form
+              = f.collection_select :delivery_cost_id, DeliveryCost.all, :id, :value, { prompt: '--' }, class: 'form__input'
+              - if @product.errors.include?(:delivery_cost_id)
+                %p{style: "color: red;"}
+                  = @product.errors.full_messages_for(:delivery_cost_id).first
+            .showing__delivery__area
+              = f.label :shipping_origin_id do
+                発送元の地域
+                %span.required 必須
+              .form
+              = f.collection_select :shipping_origin_id, ShippingOrigin.all, :id, :name, { prompt: '--' }, class: 'form__input'
+              - if @product.errors.include?(:shipping_origin_id)
+                %p{style: "color: red;"}
+                  = @product.errors.full_messages_for(:shipping_origin_id).first
+            .showing__delivery__day
+              = f.label :delivery_day_id do
+                発送までの日数
+              %span.required
+                必須
+              .form
+              = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :value, { prompt: '--' }, class: 'form__input'
+              - if @product.errors.include?(:delivery_day_id)
+                %p{style: "color: red;"}
+                  = @product.errors.full_messages_for(:delivery_day_id).first
+          -# ↑配送について部分
+          -# ↓価格部分
+          .showing__price
+            %p.sentence
+              価格（¥300〜9,999,999）
+            .showing__price__box
+              .showing__price__box__left
+                = f.label :price do
+                  販売価格
+                %span.required
+                  必須
+              .showing__price__box__right
+                ¥
+                = f.text_field :price, {class: 'form__price',id: 'form__price-input', placeholder: '例）300',  value: '' }
+                - if @product.errors.include?(:price)
+                  %p{style: "color: red;"}
+                    = @product.errors.full_messages_for(:price).first
+                -# ↑販売価格入力部分です
+                -# ↓販売手数料・販売利益を表示部分です
+            .showing__price__smallbox
+              .showing__price__smallbox__left
+                %p.sentence--cost
+                  販売手数料 （10%）
+              .showing__price__smallbox__right{ id: 'form__fee' }
+                ー
+            .showing__price__smallbox
+              .showing__price__smallbox__left
+                %p.sentence--cost
+                  販売利益
+              .showing__price__smallbox__right{ id: 'form__profit' }
+                ー
+                -# ↑販売手数料・販売利益を表示部分です。
+          -# ↑価格部分
+          -# ↓アクション部分
+          .showing__action
+            .showing__action__btns
+              .showing__action__btns--submit
+                = f.submit "出品する", {class:"link__btn--white"}
+              .showing__action__btns--buttom
+                = link_to "#", class: "link__btn--black" do
+                  下書きに保存する
+              .showing__action__btns--back
+                = link_to root_path, class: "link__btn--blue" do
+                  トップページへもどる
+            %p.showing__action__note
+              禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+          -# ↑アクション部分
+        .product__end
+          = render partial: '/template/input-bottom'
