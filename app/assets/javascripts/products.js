@@ -64,15 +64,10 @@ $(function(){
   lastIndex = $('.input_box__upload:last').data('index');
   fileIndex.splice(0, lastIndex);
 
-  // ↓ edit機能時に画面表示をリセットする際に使用する予定です
   let resetcunt = $('.input_box__upload').length;
-  if (resetcunt == 1) {
-    console.log("0枚");
-  } else if (resetcunt == 10) {
-    console.log("10数枚");
+  if (resetcunt == 10) {
     $('.input_box').addClass("resetcunt");
   } else if (resetcunt < 10) {
-    console.log("数枚");
     $('.input_box').addClass("resetcunt");
     $('.showing__images__file').append(nextInput(fileIndex[0]));
   }
