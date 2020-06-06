@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,password_length: 7..128
+
          
   validates :nickname, presence: true
   validates :family_name, presence: true
@@ -13,6 +14,7 @@ class User < ApplicationRecord
   
   has_one :profileaddress, dependent: :destroy
   has_one :deliveryaddress, dependent: :destroy
+  has_many :products
 
   # パスワード英字数字１文字かつ７文字以上のバリデーション↓
   validate :password_complexity
