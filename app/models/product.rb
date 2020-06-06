@@ -12,11 +12,7 @@ class Product < ApplicationRecord
   validates :images, presence: true, length: {manimum: 1, maximum: 10}
   validates :name, presence: true, length: { maximum: 40 }
   validates :explanation, presence: true, length: { maximum: 1000 }
-  validates :category_id, presence: true
-  validates :product_status_id, presence: true
-  validates :delivery_cost_id, presence: true
-  validates :shipping_origin_id, presence: true
-  validates :delivery_day_id, presence: true
+  validates :category_id, :product_status_id, :delivery_cost_id, :shipping_origin_id, :delivery_day_id, presence: true
   validates :price, presence: true, inclusion: 300..9999999
 
 end
