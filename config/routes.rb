@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories, only: [:new]
+  end
+
   resources :products
   # 購入機能の担当がここの編集を行う予定です。
 end

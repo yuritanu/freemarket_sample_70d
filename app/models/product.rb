@@ -14,5 +14,4 @@ class Product < ApplicationRecord
   validates :explanation, presence: true, length: { maximum: 1000 }
   validates :category_id, :product_status_id, :delivery_cost_id, :shipping_origin_id, :delivery_day_id, presence: true
   validates :price, presence: true, inclusion: 300..9999999
-
 end

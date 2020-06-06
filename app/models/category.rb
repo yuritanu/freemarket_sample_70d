@@ -1,3 +1,9 @@
+class Category < ApplicationRecord
+
+  has_many :products
+  has_ancestry
+end
+
 class Category < ActiveHash::Base
   include ActiveHash::Associations
   self.data = [

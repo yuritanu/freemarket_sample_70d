@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
 
   def index
+    @parents = Category.where(ancestry: nil).order("id ASC") 
   end
 
   def new
