@@ -83,8 +83,10 @@ gem "haml-rails"
 gem "font-awesome-sass"
 gem "devise"
 gem "pry-rails"
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+gem 'rails-controller-testing'
 gem "ancestry"
-gem "jquery-rails"
 gem 'active_hash'
 gem 'carrierwave'
 gem 'mini_magick'
@@ -93,3 +95,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 # railsを日本語対応にする↓
 gem 'rails-i18n'
+# jqueryを使用する
+gem 'jquery-rails'
+# ↓payjpを使用する
+gem 'payjp'

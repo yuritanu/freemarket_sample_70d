@@ -1,22 +1,24 @@
 class MypagesController < ApplicationController
 
   def index
+  end
 
+  def show
+    user = User.find(params[:id])
   end
 
   def logout
-
   end
 
   def card
+    @creditcard = Creditcard.find_by(user_id: current_user.id)
+    if @creditcard.present?
+      Payjp.api_key = Rails.application.credentials.test_secret_key
+      customer = Payjp::Customer.retrieve(@creditcard.customer_id)
+      @card = customer.cards.retrieve(@creditcard.card_id)
+      @exp_month = @card.exp_month.to_s
+      @exp_year = @card.exp_year.to_s.slice(2,3)
+    end
   end
-
-  def newcard
-  end
-
-  # def show
-    
-  # end
-  # マイページのルーティングは一旦indexにしています。ログイン機能実装後showに変更予定
 
 end

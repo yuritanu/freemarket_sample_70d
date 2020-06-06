@@ -39,7 +39,7 @@
       - if user_signed_in?
         %ul.list-right
           %li.list-right__li
-            = link_to "マイページ", "#", class: "list-right__li__link"
+            = link_to "マイページ", mypage_path(current_user.id), class: "list-right__li__link"
           %li.list-right__li
             = link_to "ログアウト", destroy_user_session_path, method: :delete,class: "list-right__li__link"
       - else

@@ -8,18 +8,27 @@ Rails.application.routes.draw do
     post  '/profileaddresses', to: 'users/registrations#new_profileaddresses'
     post  '/deliveryaddresses',to: 'users/registrations#new_deliveryaddresses'
   end
-
-  resources :mypages, only: [:index] do
-    collection do
+   
+  # マイページ関係
+  resources :mypages, only: [:show] do
+    member do
       get 'logout'
       get 'card'
-      get 'newcard'
     end
   end
 
-  resources :categories, only: [:new]
+  # クレジットカード関係
+  resources :creditcards, only: [:new, :create, :destroy]
+
+  # 商品関係
+  resources :products do
+    member do
+      get  :buy
+      post :buy
+    end
   end
 
-  resources :products
-  # 購入機能の担当がここの編集を行う予定です。
+  # カテゴリー関係
+  resources :categories, only: [:new]
+  
 end

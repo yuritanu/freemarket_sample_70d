@@ -14,6 +14,7 @@ class User < ApplicationRecord
   
   has_one :profileaddress, dependent: :destroy
   has_one :deliveryaddress, dependent: :destroy
+  has_one :creditcard, dependent: :destroy
   has_many :products
 
   # パスワード英字数字１文字かつ７文字以上のバリデーション↓
