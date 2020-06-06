@@ -1,9 +1,3 @@
-# FactoryBot.define do
-#   factory :image do
-#     name { "images" }
-#     product nil
-#   end
-# end
 FactoryBot.define do
 
   factory :image do

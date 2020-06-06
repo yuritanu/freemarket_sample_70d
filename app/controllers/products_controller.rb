@@ -47,16 +47,4 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-
-
-
-
-  # ↓5/16スプリントレビュー用
-  def testshow
-  end
-
-  def testconfirm
-  end
-  # ↑5/16スプリントレビュー用
-
 end
