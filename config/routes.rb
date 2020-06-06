@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post  '/profileaddresses', to: 'users/registrations#new_profileaddresses'
     post  '/deliveryaddresses',to: 'users/registrations#new_deliveryaddresses'
   end
-   
+
   resources :mypages, only: [:index] do
     collection do
       get 'logout'
@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:new]
   end
 
-  resources :products, only: [:index, :new, :edit, :show]
+  resources :products
+  # 購入機能の担当がここの編集を行う予定です。
 end

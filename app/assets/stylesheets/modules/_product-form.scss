@@ -65,6 +65,11 @@ p.sentence {
   &--white {
     text-decoration: none;
     color: $white_color;
+    background-color: $red_color;
+    height: 48px;
+    width: 360px;
+    margin: 0px auto;
+    line-height: 48px;
   }
   &--black {
     text-decoration: none;
@@ -83,23 +88,48 @@ p.sentence {
   margin: 0 auto;
   // ↓出品画像の部分
   &__images {
-    height: 300px;
     border-bottom: 1px solid $lightgray_color;
     padding: 40px;
     &__file {
       width: 620px;
-      height: 150px;
       background-color: $gray_color;
-      font-size: 12px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
       text-align: center;
-      &--file_choice {
-        display: none;
+      flex-wrap: wrap;
+      .previews {
+        display: flex;
+        flex-wrap: wrap;
+        &__image {
+          width: 118px;
+          border: 1px solid $white;
+          &__box {
+            border-bottom: 1px solid $lightgray_color;
+          }
+        }
+      }
+      .input_box {
+        width: 100%;
+        height: 150px;
+        &__upload {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-top: 1px solid $lightgray_color;
+          &__field {
+            display: none;
+          }
+        }
       }
     }
+  }
+  .hidden-destroy {
+    display: none;
+  }
+  .resetcunt {
+    display: none;
   }
   // ↑出品画像の部分
   // ↓商品名の部分
@@ -143,7 +173,7 @@ p.sentence {
   // ↓アクションの部分
   &__action {
     height: 264px;
-    padding: 40px;
+    padding: 20px;
     &__btns {
       text-align: center;
       &--submit {
