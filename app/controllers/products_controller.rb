@@ -8,8 +8,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-  end
-
+    @parents = Category.where(ancestry: nil).order("id ASC")
+    end
+  
   def create
     @product = Product.new(product_params)
     if @product.save

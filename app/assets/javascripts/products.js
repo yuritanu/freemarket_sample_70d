@@ -65,9 +65,13 @@ $(function(){
   fileIndex.splice(0, lastIndex);
 
   let resetcunt = $('.input_box__upload').length;
-  if (resetcunt == 10) {
+  if (resetcunt == 1) {
+    console.log("0枚");
+  } else if (resetcunt == 10) {
+    console.log("10数枚");
     $('.input_box').addClass("resetcunt");
   } else if (resetcunt < 10) {
+    console.log("数枚");
     $('.input_box').addClass("resetcunt");
     $('.showing__images__file').append(nextInput(fileIndex[0]));
   }
