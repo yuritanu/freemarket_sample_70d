@@ -90,120 +90,23 @@
   %section.top-page__pickup
     %h2.toppage-subtitle__pickup
       ピックアップカテゴリー
-    .pickup
-      .pickup__head
-        = link_to "#",class: "pickup__head__link" do
-          %h3.pickup__head__link__title
+    .product__main
+      .product__head
+        = link_to "#",class: "product__head__link" do
+          %h3.product__head__link__title
             新規投稿商品
-      %ul.pickup__lists
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/steak.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product3
-              .list-details__body
-                %ul
-                  %li
-                    3000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/desert.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product2
-              .list-details__body
-                %ul
-                  %li
-                    2000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/meet.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product1
-              .list-details__body
-                %ul
-                  %li
-                    1000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
+      = render partial: "template/product_lists", locals: {products: @new_products}
   %section.top-page__pickup--brand
     %h2.toppage-subtitle__pickup
       ピックアップブランド
-    .pickup
-      -# .pickup__head
-      -#   = link_to "#",class: "pickup__head__link" do
-      -#     %h3.pickup__head__link__title
-      -#       アーカイバ
-      -# ↑5/16スプリントレビュー用にコメントアウト。上記が本流です。
-      -# 
-      -# ↓5/16のスプリントレビューで使います
-      .pickup__head
-        = link_to testshow_products_path,class: "pickup__head__link" do
-          %h3.pickup__head__link__title
-            商品詳細ページへ(5/16スプリントレビュー用)
-      -# ↑5/16のスプリントレビューで使います
-      %ul.pickup__lists
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/steak.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product3
-              .list-details__body
-                %ul
-                  %li
-                    3000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/desert.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product2
-              .list-details__body
-                %ul
-                  %li
-                    2000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/meet.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product1
-              .list-details__body
-                %ul
-                  %li
-                    1000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-   
+    .product__main
+      .product__head
+        = link_to "#",class: "product__head__link" do
+          %h3.product__head__link__title
+            アーカイバ
+      = render partial: "template/product_lists", locals: {products: @products}
+      .product_paginate
+        = paginate @products
   %aside.top-page__download
 .top-page__footer
 %a.top-page__sell

@@ -11,11 +11,20 @@
   text-decoration: none;
   color: $main-lightgreen;
 }
-@mixin pickup-lists {
+// @mixin pickup-lists {
+//   width: 780px;
+//   margin: 0 auto;
+//   padding: 26px 0;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+// }
+@mixin product-lists {
   width: 780px;
   margin: 0 auto;
   padding: 26px 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 @mixin list-link {
@@ -24,7 +33,35 @@
   display: inline-block;
 }
 @mixin list-details {
+  max-height: 95px;
   background-color: white;
   color: #333;
   padding: 16px;
+}
+
+@mixin paginate-btn {
+  display: inline-block;
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #ccc;
+  line-height: 42px;
+  a{
+    color: black;
+    text-decoration: none;
+  }
+}
+
+@mixin paginate-btn-current {
+  display: inline-block;
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: red;
+  border: 1px solid #ccc;
+  line-height: 42px;
+  color: white;
 }
