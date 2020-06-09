@@ -1,0 +1,205 @@
+
+.product {
+  width: 100%;
+  color: gray;
+  background-color: $gray_color;
+  &__top {
+    width: 700px;
+    height: 128px;
+    background-color: $gray_color;
+    margin: 0 auto;
+  }
+  &__end {
+    width: 700px;
+    height: 220px;
+    background-color: $gray_color;
+    margin: 0 auto;
+  }
+}   
+
+.required {
+  color: $white_color;
+  background-color: $red_color;
+}
+
+.option {
+  color: $white_color;
+  background-color: $lightgray_color;
+}
+
+.sub_title {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 50px 0;
+}
+
+.form__input {
+  height: 45px;
+  width: 100%;
+  padding-left: 20px;
+  line-height: 45px;
+  margin: 15px 0;
+  &--textarea {
+    width: 100%;
+    height: 150px;
+    padding-left: 20px;
+    margin: 15px 0;
+  }
+}
+
+.form__price {
+  text-align: right;
+}
+
+p.sentence {
+  margin: 15px 0;
+  font-size: 15px;
+  &--cost {
+    font-size: 13px;
+  }
+}
+
+.link__btn {
+  // 5/16スプリントレビュー用
+  text-decoration: none;
+  &--white {
+    text-decoration: none;
+    color: $white_color;
+    background-color: $red_color;
+    height: 48px;
+    width: 360px;
+    margin: 0px auto;
+    line-height: 48px;
+  }
+  &--black {
+    text-decoration: none;
+    color: $black_color;
+  }
+  &--blue {
+    text-decoration: none;
+    color: $bule_color;
+  }
+}
+
+.showing {
+  width: 700px;
+  height: 2210px;
+  background-color: $white_color;
+  margin: 0 auto;
+  // ↓出品画像の部分
+  &__images {
+    border-bottom: 1px solid $lightgray_color;
+    padding: 40px;
+    &__file {
+      width: 620px;
+      background-color: $gray_color;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      flex-wrap: wrap;
+      .previews {
+        display: flex;
+        flex-wrap: wrap;
+        &__image {
+          width: 118px;
+          border: 1px solid $white;
+          &__box {
+            border-bottom: 1px solid $lightgray_color;
+          }
+        }
+      }
+      .input_box {
+        width: 100%;
+        height: 150px;
+        &__upload {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-top: 1px solid $lightgray_color;
+          &__field {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .hidden-destroy {
+    display: none;
+  }
+  .resetcunt {
+    display: none;
+  }
+  // ↑出品画像の部分
+  // ↓商品名の部分
+  &__info {
+    height: 416px;
+    border-bottom: 1px solid $lightgray_color;
+    padding: 40px;
+  }
+  // ↑商品名の部分
+  // ↓商品の詳細の部分
+  &__detail {
+    height: 444px;
+    border-bottom: 1px solid $lightgray_color;
+    padding: 40px;
+  }
+  // ↑商品の詳細の部分
+  // ↓発送についての部分
+  &__delivery {
+    height: 444px;
+    border-bottom: 1px solid $lightgray_color;
+    padding: 40px;
+  }
+  // ↑発送についての部分
+  // ↓価格の部分
+  &__price {
+    height: 270px;
+    padding: 40px;
+    &__box {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 40px;
+    }
+    &__smallbox {
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 30px;
+    }
+  }
+  // ↑価格の部分
+  // ↓アクションの部分
+  &__action {
+    height: 264px;
+    padding: 20px;
+    &__btns {
+      text-align: center;
+      &--submit {
+        background-color: $red_color;
+        height: 48px;
+        width: 360px;
+        margin: 20px auto;
+        line-height: 48px;
+      }
+      &--buttom {
+        background-color: $lightgray_color;
+        height: 48px;
+        width: 360px;
+        margin: 20px auto;
+        line-height: 48px;
+      }
+      &--back {
+        height: 48px;
+        width: 260px;
+        margin: 20px auto;
+        line-height: 48px;
+      }
+    } 
+    &__note {
+      font-size: 12px;   
+    }
+  }
+  // ↑アクションの部分
+}

@@ -1,15 +1,17 @@
 .main_new_card
-  %section.new_card__registration
+  .new_card__registration
+    .flash_message_creditcard
+      = flash[:add_creditcard]
     %h2.registration__header
       クレジットカード情報入力
-    %form.registration-form
+    = form_with model: @creditcard, id: "card_form", class: "registration-form" do |f|
       .form_contents
         .form_contents__card_number
           %label.card_no
             カード番号
           %span.form_require
             必須
-          %input.form_contents__card_number__input{type: :text, placeholder: "半角数字のみ"}
+          = f.text_field :number, class: "form_contents__card_number__input", placeholder: "半角数字のみ", maxlength: "16"
 
         .form_contents__card_expiration_date
           %label.expiration_date
@@ -18,34 +20,11 @@
             必須
           %br
           .select_display_month
-            %select.select_month
-              %option{:value => "01"}01  
-              %option{:value => "02"}02
-              %option{:value => "03"}03
-              %option{:value => "04"}04
-              %option{:value => "05"}05
-              %option{:value => "06"}06
-              %option{:value => "07"}07
-              %option{:value => "08"}08
-              %option{:value => "09"}09
-              %option{:value => "10"}10
-              %option{:value => "11"}11
-              %option{:value => "12"}12
+            = f.select :exp_month,  [["1月", 1], ["2月", 2], ["3月", 3], ["4月", 4], ["5月", 5], ["6月", 6], ["7月", 7], ["8月", 8], ["9月", 9], ["10月", 10], ["11月", 11], ["12月", 12]], {}, {class: "select_month"}
             %span.text-month
               月
           .select_display_year
-            %select.select_year
-              %option{:value => "20"}20  
-              %option{:value => "21"}21
-              %option{:value => "22"}22
-              %option{:value => "23"}23
-              %option{:value => "24"}24
-              %option{:value => "25"}25
-              %option{:value => "26"}26
-              %option{:value => "27"}27
-              %option{:value => "28"}28
-              %option{:value => "29"}29
-              %option{:value => "30"}30
+            = f.select :exp_year,  [["20年", 2020], ["21年", 2021], ["22年", 2022], ["23年", 2023], ["24年", 2024], ["25年", 2025], ["26年", 2026], ["27年", 2027], ["28年", 2028], ["29年", 2029], ["30年", 2030], ["31年", 2031]], {}, {class: "select_year"}
             %span.text-year
               年
         .form_contents__card_security_code
@@ -53,6 +32,7 @@
             セキュリティーコード
           %span.form_require
             必須
-          %input.form_contents__security_code__input{type: :text, placeholder: "カード背面４桁もしくは３桁の番号"}
+          = f.text_field :cvc, class: "form_contents__security_code__input", maxlength: "4", placeholder: "カード背面４桁もしくは３桁の番号"
 
-        %input.form_contents__submit{type: "submit", value: "追加する"}  
+        = f.submit "追加する", id: "regist_card", class: "form_contents__submit"
+        #card_token

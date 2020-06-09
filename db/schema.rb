@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_113032) do
+ActiveRecord::Schema.define(version: 2020_05_29_095451) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "prefecture_id"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -20,29 +27,44 @@ ActiveRecord::Schema.define(version: 2020_05_17_113032) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id"
+  end
+
   create_table "deliveryaddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "given_name", null: false
     t.string "family_name_kana", null: false
     t.string "given_name_kana", null: false
-    t.integer "postal_code", null: false
+    t.string "postal_code", null: false
     t.string "prefectures", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_deliveryaddresses_on_user_id"
   end
 
-  create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_pictures_on_product_id"
+    t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
+  create_table "product_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "product_status_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,10 +72,10 @@ ActiveRecord::Schema.define(version: 2020_05_17_113032) do
     t.text "explanation", null: false
     t.bigint "category_id", null: false
     t.integer "brand"
-    t.integer "product_status", null: false
-    t.integer "delivery_cost", null: false
-    t.integer "shipping_origin", null: false
-    t.integer "delivery_day", null: false
+    t.integer "product_status_id", null: false
+    t.integer "delivery_cost_id", null: false
+    t.integer "shipping_origin_id", null: false
+    t.integer "delivery_day_id", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.integer "buyer"
@@ -64,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_113032) do
   end
 
   create_table "profileaddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "postal_code"
+    t.string "postal_code"
     t.string "prefectures"
     t.string "city"
     t.string "address"
@@ -93,8 +115,9 @@ ActiveRecord::Schema.define(version: 2020_05_17_113032) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "creditcards", "users"
   add_foreign_key "deliveryaddresses", "users"
-  add_foreign_key "pictures", "products"
+  add_foreign_key "images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "profileaddresses", "users"

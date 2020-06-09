@@ -51,7 +51,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|integer|null|
+|postal_code|string|null|
 |prefectures|string|null|
 |city|string|null|
 |address|string|null|
@@ -68,10 +68,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|card_number|string|null: false|
-|expiration_month|string|null: false|
-|expiration_year|string|null: false|
-|security_code|string|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 |user_id|references|foreign_key: true|
 
 ### Association
@@ -87,12 +85,12 @@ Things you may want to cover:
 |given_name|string|null: false|
 |family_name_kana|string|null: false|
 |given_name_kana|string|null: false|
-|postal_code|integer|null: false|
+|postal_code|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building|string|null|
-|phone_number|integer|null|
+|phone_number|string|null|
 |user_id|references|foreign_key: true|
 
 ### Association

@@ -95,7 +95,7 @@
         = link_to "#",class: "product__head__link" do
           %h3.product__head__link__title
             新規投稿商品
-      = render partial: "template/product_lists", locals: {products: @new_products}
+      = render partial: "product_lists", locals: {products: @new_products}
   %section.top-page__pickup--brand
     %h2.toppage-subtitle__pickup
       ピックアップブランド
@@ -104,7 +104,7 @@
         = link_to "#",class: "product__head__link" do
           %h3.product__head__link__title
             アーカイバ
-      = render partial: "template/product_lists", locals: {products: @products}
+      = render partial: "product_lists", locals: {products: @products}
       .product_paginate
         = paginate @products
   %aside.top-page__download
