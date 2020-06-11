@@ -1,7 +1,6 @@
 
 .product {
   width: 100%;
-  color: gr;
   background-color: $gray_color;
   &__top {
     width: 700px;
@@ -83,7 +82,6 @@ p.sentence {
 
 .showing {
   width: 700px;
-  height: 2210px;
   background-color: $white_color;
   margin: 0 auto;
   // ↓出品画像の部分
@@ -126,10 +124,12 @@ p.sentence {
     }
   }
   .hidden-destroy {
-    display: none;
+    visibility: hidden;
   }
   .resetcunt {
-    display: none;
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
   }
   // ↑出品画像の部分
   // ↓商品名の部分

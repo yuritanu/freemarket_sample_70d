@@ -1,6 +1,7 @@
 class CreditcardsController < ApplicationController
   require "payjp"
   protect_from_forgery with: :null_session
+  before_action :set_category, only: [:new]
   
   def new
     @creditcard = Creditcard.new
@@ -34,6 +35,11 @@ class CreditcardsController < ApplicationController
     customer.delete
     creditcard.destroy
     redirect_to root_path
+  end
+
+  private
+  def set_category
+    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 
 end
