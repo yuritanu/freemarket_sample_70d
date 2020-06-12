@@ -132,7 +132,7 @@
                 必須
             .showing__price__box__right
               ¥
-              = f.text_field :price, {class: 'form__price',id: 'form__price-input', placeholder: '例）300',  value: '' }
+              = f.text_field :price, {class: 'form__price',id: 'form__price-input', placeholder: '例）300'}
               - if @product.errors.include?(:price)
                 %p{style: "color: red;"}
                   = @product.errors.full_messages_for(:price).first

@@ -1,14 +1,17 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
+  before_action :set_category, only: [:index, :new, :show]
 
   def index
-    @parents = Category.where(ancestry: nil).order("id ASC") 
+    # ↓第3回スプリントレビュー用 終了後削除願います
+    @product = Product.all.last
+    @image = Image.find_by(product_id: @product)
+    # ↑第3回スプリントレビュー用 終了後削除願います
   end
 
   def new
     @product = Product.new
     @product.images.new
-    @parents = Category.where(ancestry: nil).order("id ASC")
     end
   
   def create
@@ -39,6 +42,19 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
       render :show
+    end
+  end
+
+  def check
+    @image = Image.find_by(product_id: params[:id])
+    @user = User.find(current_user.id)
+    @creditcard = Creditcard.find_by(user_id: current_user.id)
+    if @creditcard.present?
+      Payjp.api_key = Rails.application.credentials.test_secret_key
+      customer = Payjp::Customer.retrieve(@creditcard.customer_id)
+      @card = customer.cards.retrieve(@creditcard.card_id)
+      @exp_month = @card.exp_month.to_s
+      @exp_year = @card.exp_year.to_s.slice(2,3)
     end
   end
 
@@ -74,5 +90,9 @@ class ProductsController < ApplicationController
   # 商品情報
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_category
+    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 end

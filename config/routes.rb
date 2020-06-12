@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   # 商品関係
   resources :products do
     member do
+      get :check
       get  :buy
       post :buy
     end

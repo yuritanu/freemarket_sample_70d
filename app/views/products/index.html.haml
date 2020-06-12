@@ -195,7 +195,19 @@
                     0
                 %p
                   （税込）
-   
+
+  -# ↓第3回スプリントレビュー用 終了後削除願います
+  - if @product.present?
+    -# ↑商品出品が1つもないなければ@productは表示されません。
+    %section.top-page__pickup--brand
+      %h2.toppage-subtitle__pickup
+        第3回スプリントレビュー用
+      .pickup
+        %ul.pickup__lists
+          %li.pickup__lists__list
+            = link_to product_path(@product),class: "list-link" do
+              = image_tag @image.image.to_s
+  -# ↑第3回スプリントレビュー用 終了後削除願います
   %aside.top-page__download
 .top-page__footer
 %a.top-page__sell

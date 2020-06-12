@@ -6,7 +6,6 @@
     .content-right
       .top-content
         .flash_message_creditcard
-          = flash[:add_creditcard]
         .item-box
           %h2.item-box__name
             = @product.name
@@ -28,16 +27,22 @@
             .item-box__price__detail
               %span (税込み)
               %span 送料込み
-            - if @product.user_id == current_user.id
-              =link_to "#", class:"item-buy-btn" do
-                編集
-            - else
-              - if @product.buyer.blank?
-                =link_to buy_product_path, class:"item-buy-btn" do
-                  購入する
+            - if user_signed_in?
+              - if @product.user_id == current_user.id && @product.buyer.blank?
+                = link_to edit_product_path, class:"item-buy-btn" do
+                  編集
+                = link_to product_path, method: :delete, class:"item-delete-btn" do
+                  削除
               - else
-                =link_to "#", class:"item-buy-btn" do
-                  売り切れ
+                - if @product.buyer.blank?
+                  = link_to check_product_path, class:"item-buy-btn" do
+                    購入する
+                - else
+                  = link_to "#", class:"item-buy-btn" do
+                    売約済み
+            - else
+              = link_to root_path, class:"item-buy-btn" do
+                トップページへ
           .item-detail コメント欄
           .table
             %table
