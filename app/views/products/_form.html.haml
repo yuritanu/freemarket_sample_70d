@@ -17,8 +17,8 @@
               - @product.images.each_with_index do |image, i|
                 .previews__image
                   .previews__image__box
-                    = image_tag image.image.url, data: {image: {index: i }}, width: "100", height: '100'
-                  .previews__image__btn{data: {btn: {index: i}}}
+                    = image_tag image.image.url, data: {image: {index: i+1 }}, width: "100", height: '100'
+                  .previews__image__btn{data: {btn: {index: i+1}}}
                     削除する
           %label.input_box
             = f.fields_for :images do |image|
