@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # ↑コメントアウトにしてif文を追加しました。環境毎に保存先を変更します。
   # storage :fog
 
-  if Rails.env.development? || Rails.env.test? 
+  if Rails.env.production? 
     storage :fog
   else
     storage :file
