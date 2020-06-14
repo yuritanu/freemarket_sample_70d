@@ -1,7 +1,5 @@
 class MypagesController < ApplicationController
-
-  def index
-  end
+  before_action :set_category
 
   def show
     user = User.find(params[:id])
@@ -22,4 +20,8 @@ class MypagesController < ApplicationController
     end
   end
 
+  private
+  def set_category
+    @parents = Category.where(ancestry: nil).order("id ASC")
+  end
 end

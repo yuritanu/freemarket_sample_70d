@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   belongs_to :user
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :images, presence: true, length: {manimum: 1, maximum: 10}
+  validates :images, presence: true
   validates :name, presence: true, length: { maximum: 40 }
   validates :explanation, presence: true, length: { maximum: 1000 }
   validates :category_id, :product_status_id, :delivery_cost_id, :shipping_origin_id, :delivery_day_id, presence: true
