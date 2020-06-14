@@ -45,8 +45,7 @@ $(function(){
                     <div class="input_box__upload" data-index="${index}">
                       <input class="input_box__upload__field" type="file" name="product[images_attributes][${index}][image]" id="product_images_attributes_${index}_image">
                       <i class="fas fa-camera fa-2x"></i>
-                      <input name="product[item_imgs][_destroy]" type="hidden" value="${index}">
-                      <input class="hidden-destroy" data-index="${index}" type="checkbox" value="${index}" name="product[item_imgs][_destroy]" id="product_item_imgs__destroy">
+                      <input class="hidden-destroy" data-index="${index}" type="checkbox" name="product[item_imgs][_destroy]" id="product_item_imgs__destroy">
                     </div>
                 </label>`;
     return html;
@@ -68,7 +67,9 @@ $(function(){
   fileIndex.splice(0, lastIndex);
 
   let resetcunt = $('.input_box__upload').length;
-  if (resetcunt >= 10) {
+  if (resetcunt == 1) {
+    // ↑新規投稿時に上記の記載が無いと投稿不可能です。
+  } else if (resetcunt >= 10) {
     $('.input_box').addClass("resetcunt");
   } else if (resetcunt < 10) {
     $('.input_box').addClass("resetcunt");
