@@ -17,8 +17,8 @@
               - @product.images.each_with_index do |image, i|
                 .previews__image
                   .previews__image__box
-                    = image_tag image.image.url, data: {image: {index: i+1 }}, width: "100", height: '100'
-                  .previews__image__btn{data: {btn: {index: i+1}}}
+                    = image_tag image.image.url, data: {image: {index: i }}, width: "100", height: '100'
+                  .previews__image__btn{data: {btn: {index: i}}}
                     削除する
           %label.input_box
             = f.fields_for :images do |image|
@@ -29,7 +29,8 @@
                   %p{style: "color: red;"}
                     = @product.errors.full_messages_for(:"images.image").first
               .input_box__check_box
-                = image.check_box :_destroy, data:{index: image.index}, class: 'hidden-destroy'
+                = image.check_box :_destroy, data:{index: image.index}, value: image.index, class: 'hidden-destroy'
+                -# = image.hidden_field :id, value: image.object.id
         -# ↑画像投稿部分
         -# ↓商品名&説明部分
         .showing__info

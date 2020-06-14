@@ -69,7 +69,7 @@ $(function(){
 
   let resetcunt = $('.input_box__upload').length;
   if (resetcunt == 1) {
-  } else if (resetcunt == 10) {
+  } else if (resetcunt >= 10) {
     $('.input_box').addClass("resetcunt");
   } else if (resetcunt < 10) {
     $('.input_box').addClass("resetcunt");
