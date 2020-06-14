@@ -66,8 +66,9 @@ $(function(){
   lastIndex = $('.input_box__upload:last').data('index');
   fileIndex.splice(0, lastIndex);
 
-  let resetcunt = $('.input_box__upload').length;
-  if (resetcunt == 1) {
+  let resetcunt = $('.previews__image__btn').length;
+  console.log(resetcunt);
+  if (resetcunt == 0) {
     // ↑新規投稿時に上記の記載が無いと投稿不可能です。
   } else if (resetcunt >= 10) {
     $('.input_box').addClass("resetcunt");
