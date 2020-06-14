@@ -5,8 +5,9 @@ class ProductsController < ApplicationController
   PER_DISPLAY_PRODUCTS = 3
 
   def index
-    @new_products = Product.all.includes(:pictures).limit(MAX_DISPLAY_NEW_PRODUCTS).order('created_at DESC').where(buyer: nil)
-    @products = Product.order("RAND()").all.includes(:pictures).where(buyer: nil).page(params[:page]).per(PER_DISPLAY_PRODUCTS)
+    @parents = Category.where(ancestry: nil).order("id ASC") 
+    @new_products = Product.all.includes(:images).limit(MAX_DISPLAY_NEW_PRODUCTS).order('created_at DESC').where(buyer: nil)
+    @products = Product.order("RAND()").all.includes(:images).where(buyer: nil).page(params[:page]).per(PER_DISPLAY_PRODUCTS)
   end
   
   def edit
@@ -17,7 +18,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.new
     @parents = Category.where(ancestry: nil).order("id ASC")
-    end
+  end
   
   def create
     @product = Product.new(product_params)
@@ -29,6 +30,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 
   def edit

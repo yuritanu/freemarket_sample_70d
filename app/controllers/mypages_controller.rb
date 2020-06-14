@@ -5,6 +5,7 @@ class MypagesController < ApplicationController
 
   def show
     user = User.find(params[:id])
+    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 
   def logout

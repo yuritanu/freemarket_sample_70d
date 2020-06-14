@@ -11,14 +11,6 @@
   text-decoration: none;
   color: $main-lightgreen;
 }
-// @mixin pickup-lists {
-//   width: 780px;
-//   margin: 0 auto;
-//   padding: 26px 0;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: space-around;
-// }
 @mixin product-lists {
   width: 780px;
   margin: 0 auto;
@@ -26,6 +18,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  &__list:hover{
+    opacity: 0.5;
+  }
 }
 @mixin list-link {
   text-decoration: none;
@@ -38,7 +33,6 @@
   color: #333;
   padding: 16px;
 }
-
 @mixin paginate-btn {
   display: inline-block;
   font-size: 20px;
@@ -53,7 +47,6 @@
     text-decoration: none;
   }
 }
-
 @mixin paginate-btn-current {
   display: inline-block;
   font-size: 20px;
