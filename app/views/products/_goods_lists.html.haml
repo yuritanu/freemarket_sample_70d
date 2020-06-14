@@ -1,17 +1,17 @@
-%ul.product__lists
-  - products.each do |product|
-    %li.product__lists__list
-      = link_to product_path(product), class: "list-link" do
-        - product.images.each_with_index do |image, index|
+%ul.goods__lists
+  - goods.each do |g|
+    %li.goods__lists__list
+      = link_to product_path(g), class: "list-link" do
+        - g.images.each_with_index do |image, index|
           - if index == 0
             = image_tag(image.image.url, class: "list-image")
         .list-details
           %h3.list-details__name
-            = product.name
+            = g.name
           .list-details__body
             %ul
               %li
-                = product.price
+                = g.price
                 円
               %li.list-details__body__icon
                 = icon("fa","star")

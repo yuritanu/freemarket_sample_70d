@@ -2,13 +2,12 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
   before_action :set_category, only: [:index, :new, :show]
 
-  MAX_DISPLAY_NEW_PRODUCTS = 3
-  PER_DISPLAY_PRODUCTS = 3
+  MAX_DISPLAY_NEW_GOODS = 3
+  PER_DISPLAY_GOODS = 3
 
   def index
-    @parents = Category.where(ancestry: nil).order("id ASC") 
-    @new_products = Product.all.includes(:images).limit(MAX_DISPLAY_NEW_PRODUCTS).order('created_at DESC').where(buyer: nil)
-    @products = Product.order("RAND()").all.includes(:images).where(buyer: nil).page(params[:page]).per(PER_DISPLAY_PRODUCTS)
+    @new_goods = Product.all.includes(:images).limit(MAX_DISPLAY_NEW_GOODS).order('created_at DESC').where(buyer: nil)
+    @goods = Product.order("RAND()").all.includes(:images).where(buyer: nil).page(params[:page]).per(PER_DISPLAY_GOODS)
   end
   
   def edit
@@ -18,7 +17,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-    @parents = Category.where(ancestry: nil).order("id ASC")
   end
   
   def create
@@ -31,7 +29,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 
   def edit

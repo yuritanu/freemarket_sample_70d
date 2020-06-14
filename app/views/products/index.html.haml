@@ -90,23 +90,23 @@
   %section.top-page__pickup
     %h2.toppage-subtitle__pickup
       ピックアップカテゴリー
-    .product__main
-      .product__head
-        = link_to "#",class: "product__head__link" do
-          %h3.product__head__link__title
+    .goods__main
+      .goods__head
+        = link_to "#",class: "goods__head__link" do
+          %h3.goods__head__link__title
             新規投稿商品
-      = render partial: "product_lists", locals: {products: @new_products}
+      = render partial: "goods_lists", locals: {goods: @new_goods}
   %section.top-page__pickup--brand
     %h2.toppage-subtitle__pickup
       ピックアップブランド
-    .product__main
-      .product__head
-        = link_to "#",class: "product__head__link" do
-          %h3.product__head__link__title
+    .goods__main
+      .goods__head
+        = link_to "#",class: "goods__head__link" do
+          %h3.goods__head__link__title
             アーカイバ
-      = render partial: "product_lists", locals: {products: @products}
-      .product_paginate
-        = paginate @products
+      = render partial: "goods_lists", locals: {goods: @goods}
+      .goods_paginate
+        = paginate @goods
   %aside.top-page__download
 .top-page__footer
 %a.top-page__sell
