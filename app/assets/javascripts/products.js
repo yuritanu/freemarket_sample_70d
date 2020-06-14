@@ -45,7 +45,8 @@ $(function(){
                     <div class="input_box__upload" data-index="${index}">
                       <input class="input_box__upload__field" type="file" name="product[images_attributes][${index}][image]" id="product_images_attributes_${index}_image">
                       <i class="fas fa-camera fa-2x"></i>
-                      <input class="hidden-destroy" data-index="${index}" type="checkbox" name="product[item_imgs][_destroy]" id="product_item_imgs__destroy">
+                      <input name="product[item_imgs][_destroy]" type="hidden" value="${index}">
+                      <input class="hidden-destroy" data-index="${index}" type="checkbox" value="${index}" name="product[item_imgs][_destroy]" id="product_item_imgs__destroy">
                     </div>
                 </label>`;
     return html;
