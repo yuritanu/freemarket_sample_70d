@@ -33,7 +33,8 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to root_path
     else
-      render :edit
+      flash[:edit_product] = "必須項目に誤りがあります。もう一度ご確認の上、お試しください。"
+      redirect_to edit_product_path(@product)
     end
   end
 

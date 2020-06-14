@@ -2,6 +2,8 @@
   .product__top
     = render partial: '/template/input-top'
   .showing
+    .flash_message_edit_product
+      = flash[:edit_product]
     = form_with(model: @product, local: true) do |f|
       -# ↓画像投稿部分
       .showing__images
@@ -11,6 +13,9 @@
           必須
         %p.sentence
           最大10枚までアップロードできます
+        - if @product.errors.include?(:"images.image")
+          %p{style: "color: red;"}
+            = @product.errors.full_messages_for(:"images.image").first
         .showing__images__file
           .previews
             - if @product.persisted?
@@ -25,12 +30,9 @@
               .input_box__upload{data: {index: "#{image.index}"}}
                 = image.file_field :image, class: "input_box__upload__field"
                 = icon('fas','camera fa-2x')
-                - if @product.errors.include?(:"images.image")
-                  %p{style: "color: red;"}
-                    = @product.errors.full_messages_for(:"images.image").first
+
               .input_box__check_box
-                = image.check_box :_destroy, data:{index: image.index}, value: image.index, class: 'hidden-destroy'
-                -# = image.hidden_field :id, value: image.object.id
+                = image.check_box :_destroy, data:{index: image.index}, class: 'hidden-destroy'
         -# ↑画像投稿部分
         -# ↓商品名&説明部分
         .showing__info
