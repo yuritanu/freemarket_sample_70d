@@ -1,7 +1,17 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
+  before_action :set_product, except: [:index, :new, :create]
+  before_action :set_category, only: [:index, :new, :show]
+
+  MAX_DISPLAY_NEW_GOODS = 3
+  PER_DISPLAY_GOODS = 3
 
   def index
+    @new_goods = Product.all.includes(:images).limit(MAX_DISPLAY_NEW_GOODS).order('created_at DESC').where(buyer: nil)
+    @goods = Product.order("RAND()").all.includes(:images).where(buyer: nil).page(params[:page]).per(PER_DISPLAY_GOODS)
+  end
+  
+  def edit
     @parents = Category.where(ancestry: nil).order("id ASC") 
   end
 
@@ -65,6 +75,19 @@ class ProductsController < ApplicationController
     end
   end
 
+  def check
+    @image = Image.find_by(product_id: params[:id])
+    @user = User.find(current_user.id)
+    @creditcard = Creditcard.find_by(user_id: current_user.id)
+    if @creditcard.present?
+      Payjp.api_key = Rails.application.credentials.test_secret_key
+      customer = Payjp::Customer.retrieve(@creditcard.customer_id)
+      @card = customer.cards.retrieve(@creditcard.card_id)
+      @exp_month = @card.exp_month.to_s
+      @exp_year = @card.exp_year.to_s.slice(2,3)
+    end
+  end
+
   def buy
     if @product.buyer.present?
       flash[:add_creditcard] = "申し訳ございません。先に他のお客様が購入されました。"      
@@ -97,5 +120,9 @@ class ProductsController < ApplicationController
   # 商品情報
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_category
+    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 end

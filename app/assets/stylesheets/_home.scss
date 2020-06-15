@@ -144,8 +144,8 @@
     padding:80px 0 0 0;
     background-color: $main-background;
     height: 100%;
-    .pickup{
-      &__head{
+    .goods__main{
+      .goods__head{
         text-align: center;
         &__link{
           @include pickup-link;
@@ -154,20 +154,27 @@
           }
         }
       }
-      &__lists{
-        @include pickup-lists;
+      .goods__lists{
+        @include goods-lists;
         &__list{
           width: 220px;
+          padding-bottom: 16px;
           .list-link{
             @include list-link;
           }
           .list-image{
-            max-width: 100%;
+            width: 227px;
+            height: 222px;
           }
           .list-details{
-            @include list-details;
+            max-height: 95px;
+            background-color: white;
+            color: #333;
+            padding: 16px;
             &__name{
+              height: 24px;
               line-height: 1.5;
+              overflow: hidden;
             }
             &__body{
               & ul{
@@ -189,11 +196,11 @@
     }
   }
   &__pickup--brand{
-    padding: 80px 0 ;
+    padding:80px 0;
     background-color: $main-background;
     height: 100%;
-    .pickup{
-      &__head{
+    .goods__main{
+      .goods__head{
         text-align: center;
         &__link{
           @include pickup-link;
@@ -202,20 +209,24 @@
           }
         }
       }
-      &__lists{
-        @include pickup-lists;
+      .goods__lists{
+        @include goods-lists;
         &__list{
           width: 220px;
+          padding-bottom: 16px;
           .list-link{
             @include list-link;
           }
           .list-image{
-            max-width: 100%;
+            width: 227px;
+            height: 222px;
           }
           .list-details{
             @include list-details;
             &__name{
+              height: 24px;
               line-height: 1.5;
+              overflow: hidden;
             }
             &__body{
               & ul{
@@ -281,4 +292,43 @@
       position: relative;
     }
   }
+  .goods_paginate{
+    nav.pagination{
+      position: relative;
+      text-align: center;
+      margin: 0 auto;
+      width: 780px;
+     .pagi-left{
+        position: absolute;
+        top: 0;
+        left: 0;
+        span.first{
+          @include paginate-btn;
+        }
+        span.prev{
+          @include paginate-btn;
+        }
+      }
+      .pagi-center{
+        span.page{
+          @include paginate-btn;
+        }
+        span.page.current{
+          @include paginate-btn-current;
+        }
+      }
+      .pagi-right{
+        position: absolute;
+        top: 0;
+        right: 0;
+        span.next{
+          @include paginate-btn;
+        }
+        span.last{
+          @include paginate-btn;
+        }
+      }
+    }
+  }
+
 }

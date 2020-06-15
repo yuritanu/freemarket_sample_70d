@@ -83,6 +83,7 @@ gem "haml-rails"
 gem "font-awesome-sass"
 gem "devise"
 gem "pry-rails"
+gem 'kaminari'
 gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
