@@ -83,7 +83,7 @@ p.sentence {
 
 .showing {
   width: 700px;
-  height: 2210px;
+  height: 100%;
   background-color: $white_color;
   margin: 0 auto;
   // ↓出品画像の部分
@@ -141,14 +141,13 @@ p.sentence {
   // ↑商品名の部分
   // ↓商品の詳細の部分
   &__detail {
-    height: 444px;
     border-bottom: 1px solid $lightgray_color;
     padding: 40px;
   }
   // ↑商品の詳細の部分
   // ↓発送についての部分
   &__delivery {
-    height: 444px;
+    // height: 444px;
     border-bottom: 1px solid $lightgray_color;
     padding: 40px;
   }

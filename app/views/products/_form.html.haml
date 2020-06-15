@@ -58,16 +58,16 @@
         .showing__detail
           %p.sentence
             商品の詳細
-          .showing__detail__category{ id: 'showing__detail__category--detail' }
-            = f.label :category_id do
-              カテゴリー
-            %span.required 必須
-            %div{ id: 'showing__select-category--wrapper' }
-            .form
-              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, { prompt: '--' }, class: 'form__input', id: 'sell-main__select-category--main'
-              - if @product.errors.include?(:category)
-                %p{style: "color: red;"}
-                  = @product.errors.full_messages_for(:category).first
+          .showing_form-box
+            .showing-product-detail__category
+              = f.label 'カテゴリー', class: 'showing-default__label'
+              %span.required 必須
+              .showing-select-wrapper
+                .showing-select-wrapper__box
+                  = f.select :category, @category_parent_array, {}, {class: 'form__input', id: 'parent_category'}
+                  - if @product.errors.include?(:category)
+                    %p{style: "color: red;"}
+                      = @product.errors.full_messages_for(:category).first
           .showing__detail__brand
             %label.sub_title
               ブランド
