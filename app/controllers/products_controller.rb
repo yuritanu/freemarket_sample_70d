@@ -2,17 +2,22 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
   before_action :set_category, only: [:index, :new, :show]
 
+  MAX_DISPLAY_NEW_GOODS = 3
+  PER_DISPLAY_GOODS = 3
+
   def index
-    # ↓第3回スプリントレビュー用 終了後削除願います
-    @product = Product.all.last
-    @image = Image.find_by(product_id: @product)
-    # ↑第3回スプリントレビュー用 終了後削除願います
+    @new_goods = Product.all.includes(:images).limit(MAX_DISPLAY_NEW_GOODS).order('created_at DESC').where(buyer: nil)
+    @goods = Product.order("RAND()").all.includes(:images).where(buyer: nil).page(params[:page]).per(PER_DISPLAY_GOODS)
+  end
+  
+  def edit
+    @parents = Category.where(ancestry: nil).order("id ASC") 
   end
 
   def new
     @product = Product.new
     @product.images.new
-    end
+  end
   
   def create
     @product = Product.new(product_params)

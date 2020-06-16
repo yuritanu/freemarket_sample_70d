@@ -90,124 +90,23 @@
   %section.top-page__pickup
     %h2.toppage-subtitle__pickup
       ピックアップカテゴリー
-    .pickup
-      .pickup__head
-        = link_to "#",class: "pickup__head__link" do
-          %h3.pickup__head__link__title
+    .goods__main
+      .goods__head
+        = link_to "#",class: "goods__head__link" do
+          %h3.goods__head__link__title
             新規投稿商品
-      %ul.pickup__lists
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/steak.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product3
-              .list-details__body
-                %ul
-                  %li
-                    3000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/desert.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product2
-              .list-details__body
-                %ul
-                  %li
-                    2000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/meet.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product1
-              .list-details__body
-                %ul
-                  %li
-                    1000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
+      = render partial: "goods_lists", locals: {goods: @new_goods}
   %section.top-page__pickup--brand
     %h2.toppage-subtitle__pickup
       ピックアップブランド
-    .pickup
-      .pickup__head
-        = link_to "#",class: "pickup__head__link" do
-          %h3.pickup__head__link__title
+    .goods__main
+      .goods__head
+        = link_to "#",class: "goods__head__link" do
+          %h3.goods__head__link__title
             アーカイバ
-      %ul.pickup__lists
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/steak.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product3
-              .list-details__body
-                %ul
-                  %li
-                    3000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/desert.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product2
-              .list-details__body
-                %ul
-                  %li
-                    2000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-        %li.pickup__lists__list
-          = link_to "#",class: "list-link" do
-            = image_tag("copy/meet.jpg",class: "list-image")
-            .list-details
-              %h3.list-details__name
-                product1
-              .list-details__body
-                %ul
-                  %li
-                    1000円
-                  %li.list-details__body__icon
-                    = icon("fa","star")
-                    0
-                %p
-                  （税込）
-
-  -# ↓第3回スプリントレビュー用 終了後削除願います
-  - if @product.present?
-    -# ↑商品出品が1つもないなければ@productは表示されません。
-    %section.top-page__pickup--brand
-      %h2.toppage-subtitle__pickup
-        第3回スプリントレビュー用
-      .pickup
-        %ul.pickup__lists
-          %li.pickup__lists__list
-            = link_to product_path(@product),class: "list-link" do
-              = image_tag @image.image.to_s
-  -# ↑第3回スプリントレビュー用 終了後削除願います
+      = render partial: "goods_lists", locals: {goods: @goods}
+      .goods_paginate
+        = paginate @goods
   %aside.top-page__download
 .top-page__footer
 %a.top-page__sell
