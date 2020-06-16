@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :product do
+    user
+    category
 
     id {"1"}
     name {"バッグ"}
@@ -11,7 +13,7 @@ FactoryBot.define do
     shipping_origin_id {"5"}
     delivery_day_id {"2"}
     price {"3000"}
-    user { create(:user) }
+    user_id {"1"}
     buyer {}
     after(:build) do |product|
       product.images << build(:image, product: product)
