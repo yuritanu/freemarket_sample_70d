@@ -59,8 +59,6 @@ p.sentence {
 }
 
 .link__btn {
-  // 5/16スプリントレビュー用
-  text-decoration: none;
   &--white {
     text-decoration: none;
     color: $white_color;
@@ -148,7 +146,6 @@ p.sentence {
   // ↑商品の詳細の部分
   // ↓発送についての部分
   &__delivery {
-    // height: 444px;
     border-bottom: 1px solid $lightgray_color;
     padding: 40px;
   }

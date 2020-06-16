@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
   before_action :set_category, only: [:index, :new, :show]
+  before_action :call_category, only: [:create, :new]
 
   MAX_DISPLAY_NEW_GOODS = 3
   PER_DISPLAY_GOODS = 3
@@ -17,13 +18,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-    # @parents = Category.where(ancestry: nil).order("id ASC")
-    #セレクトボックスの初期値設定
-    @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -43,11 +37,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      @category_parent_array = ["---"]
-      #データベースから、親カテゴリーのみ抽出し、配列化
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-    end
       render :new
     end
   end
@@ -123,5 +112,13 @@ class ProductsController < ApplicationController
 
   def set_category
     @parents = Category.where(ancestry: nil).order("id ASC")
+  end
+
+  def call_category
+    @category_parent_array = ["---"]
+     #データベースから、親カテゴリーのみ抽出し、配列化
+    Category.where(ancestry: nil).each do |parent|
+    @category_parent_array << parent.name
+    end
   end
 end
