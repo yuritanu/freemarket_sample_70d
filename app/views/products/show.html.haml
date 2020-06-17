@@ -35,17 +35,18 @@
 
                 = link_to product_path, method: :delete, class:"item-delete-btn" do
                   削除
+
               - else
                 - if @product.buyer.blank?
                   = link_to check_product_path, class:"item-buy-btn" do
                     購入する
+                    
                 - else
                   = link_to "#", class:"item-buy-btn" do
                     売約済み
             - else
               = link_to root_path, class:"item-buy-btn" do
                 トップページへ
-                
           .item-detail コメント欄
           .table
             %table
