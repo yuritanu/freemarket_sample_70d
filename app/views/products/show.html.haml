@@ -27,10 +27,12 @@
             .item-box__price__detail
               %span (税込み)
               %span 送料込み
+
             - if user_signed_in?
               - if @product.user_id == current_user.id && @product.buyer.blank?
                 = link_to edit_product_path, class:"item-buy-btn" do
                   編集
+
                 = link_to product_path, method: :delete, class:"item-delete-btn" do
                   削除
               - else
@@ -43,6 +45,7 @@
             - else
               = link_to root_path, class:"item-buy-btn" do
                 トップページへ
+                
           .item-detail コメント欄
           .table
             %table
