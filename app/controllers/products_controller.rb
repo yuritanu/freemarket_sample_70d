@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create]
+  before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
   before_action :set_category, only: [:index, :new, :show]
+  before_action :call_category, only: [:create, :new]
 
   MAX_DISPLAY_NEW_GOODS = 3
   PER_DISPLAY_GOODS = 3
@@ -18,7 +19,19 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.new
   end
-  
+
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   def create
     @product = Product.new(product_params)
     if @product.save
@@ -99,5 +112,13 @@ class ProductsController < ApplicationController
 
   def set_category
     @parents = Category.where(ancestry: nil).order("id ASC")
+  end
+
+  def call_category
+    @category_parent_array = ["---"]
+     #データベースから、親カテゴリーのみ抽出し、配列化
+    Category.where(ancestry: nil).each do |parent|
+    @category_parent_array << parent.name
+    end
   end
 end
