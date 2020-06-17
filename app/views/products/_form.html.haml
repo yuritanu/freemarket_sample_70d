@@ -64,12 +64,27 @@
             .showing-product-detail__category
               = f.label 'カテゴリー', class: 'showing-default__label'
               %span.required 必須
-              .showing-select-wrapper
-                .showing-select-wrapper__box
-                  = f.select :category, @category_parent_array, {}, {class: 'form__input', id: 'parent_category'}
-                  - if @product.errors.include?(:category)
-                    %p{style: "color: red;"}
-                      = @product.errors.full_messages_for(:category).first
+              - if @product.category_id.nil?
+                .showing-select-wrapper
+                  .showing-select-wrapper__box
+                    = f.select :category, @category_parent_array, {}, {class: 'form__input', id: 'parent_category'}
+                    - if @product.errors.include?(:category)
+                      %p{style: "color: red;"}
+                        = @product.errors.full_messages_for(:category).first
+              - else
+                -# .showing-select-wrapper
+                -#   .showing-select-wrapper__box
+                -#     = f.select :category, @category_parent_array, {}, {class: 'form__input', id: 'parent_category'}
+                -#     - if @product.errors.include?(:category)
+                -#       %p{style: "color: red;"}
+                -#         = @product.errors.full_messages_for(:category).first
+                -# .showing-select-wrapper__added#children_wrapper
+                -#   .showing-select-wrapper__box
+                -#     = f.select :category, @category_children, {}, {class: 'form__input', id: 'child_category'}
+                -# .showing-select-wrapper__added#grandchildren_wrapper
+                -#   .showing-select-wrapper__box
+                -#     = f.select :category_id, @category_grandchildren, {}, {class: 'form__input', id: 'grandchild_category'}
+
           .showing__detail__brand
             %label.sub_title
               ブランド
