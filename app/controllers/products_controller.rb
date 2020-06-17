@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
-  before_action :set_category, only: [:index, :new, :show]
-  before_action :call_category, only: [:create, :new]
+  before_action :set_category, only:  [:index, :new, :show, :edit]
+  before_action :call_category, only: [:create, :new, :edit, :update]
 
   MAX_DISPLAY_NEW_GOODS = 3
   PER_DISPLAY_GOODS = 3
@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
   end
   
   def edit
-    @parents = Category.where(ancestry: nil).order("id ASC") 
   end
 
   def new
@@ -51,7 +50,8 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to root_path
     else
-      render :edit
+      flash[:edit_product] = "必須項目に誤りがあります。もう一度ご確認の上、お試しください。"
+      redirect_to edit_product_path(@product)
     end
   end
 

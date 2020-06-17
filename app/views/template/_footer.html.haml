@@ -41,8 +41,9 @@
     =link_to image_tag("logo/logo-white.png",class: "footer-logo__image"),"#",class: "footer-logo" 
   %p.copyright
     © FURIMA
-.sell-button
-  = link_to new_product_path,class: "product-button" do
-    %span.sell-button__text
-      出品する
-    = image_tag("icon/icon_camera.png",class: "sell-button__image")
+- if user_signed_in?
+  .sell-button
+    = link_to new_product_path,class: "product-button" do
+      %span.sell-button__text
+        出品する
+      = image_tag("icon/icon_camera.png",class: "sell-button__image")

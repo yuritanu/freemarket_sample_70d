@@ -45,8 +45,7 @@ $(function(){
                     <div class="input_box__upload" data-index="${index}">
                       <input class="input_box__upload__field" type="file" name="product[images_attributes][${index}][image]" id="product_images_attributes_${index}_image">
                       <i class="fas fa-camera fa-2x"></i>
-                      <input name="product[item_imgs][_destroy]" type="hidden" value="${index}">
-                      <input class="hidden-destroy" data-index="${index}" type="checkbox" value="${index}" name="product[item_imgs][_destroy]" id="product_item_imgs__destroy">
+                      <input class="hidden-destroy" data-index="${index}" type="checkbox" name="product[item_imgs][_destroy]" id="product_item_imgs__destroy">
                     </div>
                 </label>`;
     return html;
@@ -67,9 +66,11 @@ $(function(){
   lastIndex = $('.input_box__upload:last').data('index');
   fileIndex.splice(0, lastIndex);
 
-  let resetcunt = $('.input_box__upload').length;
-  if (resetcunt == 1) {
-  } else if (resetcunt == 10) {
+  let resetcunt = $('.previews__image__btn').length;
+  console.log(resetcunt);
+  if (resetcunt == 0) {
+    // ↑新規投稿時に上記の記載が無いと投稿不可能です。
+  } else if (resetcunt >= 10) {
     $('.input_box').addClass("resetcunt");
   } else if (resetcunt < 10) {
     $('.input_box').addClass("resetcunt");
@@ -91,7 +92,6 @@ $(function(){
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
 
       if (preview_count == 9) {
-        // $('.input_box').removeClass('input_box');
         $('.input_box').addClass('resetcunt');
         $('.fas').removeClass('fas');
         $('.fa-camera').removeClass('fa-camera');  
@@ -107,13 +107,11 @@ $(function(){
 
   $('.showing__images__file').on('click', '.previews__image__btn', function(){
     let targetIndex = $(this).data('btn-index');
-    // $(`div[data-index="${targetIndex}"].input_box__upload`).parent().remove();
+    $(`div[data-index="${targetIndex}"].input_box__upload`).remove();
     $(this).parent().remove();
     let hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     hiddenCheck.prop('checked', true)
     if ($('.input_box').length == 0) $('.showing__images__file').append(nextInput(fileIndex[0]));
-    // let cunt = $('.previews__image').length
-    // console.log(cunt);
     if ($('.previews__image').length == 9) $('.showing__images__file').append(nextInput(fileIndex[0]));
   });
 }); 
