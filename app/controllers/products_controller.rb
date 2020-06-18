@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :update]
   before_action :set_category, only:  [:index, :new, :show, :edit]
-  before_action :call_category, only: [:create, :new, :update, :edit]
+  before_action :call_category, only: [:create, :new, :update]
 
   MAX_DISPLAY_NEW_GOODS = 3
   PER_DISPLAY_GOODS = 3
@@ -46,19 +46,19 @@ class ProductsController < ApplicationController
     @parent_category = @child_category.parent
     # binding.pry
 
-    # @category_parent_array = ["---"]
-    # Category.where(ancestry: nil).each do |parent|
-    #   @category_parent_array << parent.name
-    # end
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
 
     @category_children_array = ["---"]
     Category.where(ancestry: @child_category.ancestry).each do |children|
-      @category_children_array << children
+      @category_children_array << children.name
     end
 
     @category_grandchildren_array = ["---"]
     Category.where(ancestry: @grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
+      @category_grandchildren_array << grandchildren.name
     end
     # binding.pry
   end
