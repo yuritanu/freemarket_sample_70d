@@ -84,8 +84,8 @@
                     = f.select :child_category, @category_children_array, {selected:@product.category.parent.name}, {class: 'form__input', id: 'child_category'}
                 .showing-select-wrapper__added#grandchildren_wrapper
                   .showing-select-wrapper__box
-                    = f.select :category_id, @category_grandchildren_array, {selected:@product.category.name}, {class: 'form__input', id: 'grandchild_category'}
-
+                    = f.select :category_id, options_for_select(@category_grandchildren_array, @grandchild_category.name), {class: 'form__input', id: 'grandchild_category'}
+                    -# = f.select :category_id, @category_grandchildren_array, {selected:@product.category.name}, {class: 'form__input', id: 'grandchild_category'}
           .showing__detail__brand
             %label.sub_title
               ブランド
