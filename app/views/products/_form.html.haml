@@ -85,7 +85,7 @@
                 .showing-select-wrapper__added#grandchildren_wrapper
                   .showing-select-wrapper__box
                     = f.select :category_id, @category_grandchildren_array, {selected:@product.category.name}, {class: 'form__input', id: 'grandchild_category'}
-                    -# = f.select :category_id, options_for_select(@category_grandchildren_array.map{|c| c.name, c.id, {data:{category: c[:id]}}, c.id}, {class: 'form__input', id: 'grandchild_category'}
+
           .showing__detail__brand
             %label.sub_title
               ブランド
