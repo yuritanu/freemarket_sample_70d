@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @image = Image.find_by(product_id: params[:id])
   end
 
   def edit

@@ -12,18 +12,15 @@
           .item-box__body
             %ul
               %li
-                =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
+                = image_tag @image.image.to_s
                 .item-box__body__items
                   %ul
                     %li
-                      =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
-                    %li
-                      =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png")
-                    %li
-                      =image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png")
-          .item-box__price
-            %span
-              = @product.price
+                    - @product.images.each_with_index do |image, i|
+                      = image_tag image.image.url, data: {image: {index: i }}
+              
+          .item-box__price 
+            %span= "¥ #{@product.price}"
             .item-box__price__detail
               %span (税込み)
               %span 送料込み
@@ -43,34 +40,35 @@
             - else
               = link_to root_path, class:"item-buy-btn" do
                 トップページへ
-          .item-detail コメント欄
+          .item-detail
+          =@product.explanation
           .table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td 
+                  %td=@product.user.nickname
                 %tr
                   %th カテゴリー
                   %td=@product.category.name
                 %tr
                   %th ブランド
-                  %td
+                  %td=@product.brand
                 %tr
                   %th 商品のサイズ
                   %td
                 %tr
                   %th 商品の状態
-                  %td
+                  %td=ProductStatus.find(@product.product_status_id).value
                 %tr
                   %th 配送料の負担
-                  %td
+                  %td=DeliveryCost.find(@product.delivery_cost_id).value
                 %tr
                   %th 発送元の地域
-                  %td
+                  %td=ShippingOrigin.find(@product.shipping_origin_id).name
                 %tr
                   %th 発送日の目安
-                  %td
+                  %td=DeliveryDay.find(@product.delivery_day_id).value
           .optional-area
             %ul
               %li.optional-area__left
