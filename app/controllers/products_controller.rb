@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
     @child_category = @grandchild_category.parent
 
     # 編集ページで子カテゴリーを表示する記載
-    @category_children_array = []
+    @category_children_array = ["---"]
     Category.where(ancestry: @child_category.ancestry).each do |children|
       name = children.name
       id = children.id
@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     end
 
     # 編集ページで孫カテゴリーを表示する記載
-    @category_grandchildren_array = []
+    @category_grandchildren_array = ["---"]
     Category.where(ancestry: @grandchild_category.ancestry).each do |grandchildren|
       name = grandchildren.name
       id = grandchildren.id
