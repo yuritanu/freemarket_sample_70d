@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
   before_action :set_category, only:  [:index, :new, :show, :edit]
-  before_action :call_category, only: [:create, :new, :edit, :update]
+  before_action :call_category, only: [:create, :new, :update, :edit]
 
   MAX_DISPLAY_NEW_GOODS = 3
   PER_DISPLAY_GOODS = 3
@@ -10,25 +10,10 @@ class ProductsController < ApplicationController
     @new_goods = Product.all.includes(:images).limit(MAX_DISPLAY_NEW_GOODS).order('created_at DESC').where(buyer: nil)
     @goods = Product.order("RAND()").all.includes(:images).where(buyer: nil).page(params[:page]).per(PER_DISPLAY_GOODS)
   end
-  
-  def edit
-  end
 
   def new
     @product = Product.new
     @product.images.new
-  end
-
-  # 親カテゴリーが選択された後に動くアクション
-  def get_category_children
-    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  end
-
-  # 子カテゴリーが選択された後に動くアクション
-  def get_category_grandchildren
-    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
   def create
@@ -43,7 +28,37 @@ class ProductsController < ApplicationController
   def show
   end
 
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   def edit
+    @grandchild_category = @product.category
+    @child_category = @grandchild_category.parent
+
+    # 編集ページで子カテゴリーを表示する記載
+    @category_children_array = ["---"]
+    Category.where(ancestry: @child_category.ancestry).each do |children|
+      name = children.name
+      id = children.id
+      @category_children_array << [name, id]
+    end
+
+    # 編集ページで孫カテゴリーを表示する記載
+    @category_grandchildren_array = ["---"]
+    Category.where(ancestry: @grandchild_category.ancestry).each do |grandchildren|
+      name = grandchildren.name
+      id = grandchildren.id
+      @category_grandchildren_array << [name, id]
+    end
   end
 
   def update
@@ -118,7 +133,7 @@ class ProductsController < ApplicationController
     @category_parent_array = ["---"]
      #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
-    @category_parent_array << parent.name
+      @category_parent_array << parent.name
     end
   end
 end
