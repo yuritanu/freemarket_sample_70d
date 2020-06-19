@@ -74,24 +74,16 @@
               - else
                 .showing-select-wrapper
                   .showing-select-wrapper__box
-                    -# = f.select :category, @category_parent_array, {}, {class: 'form__input', id: 'parent_category'}
-                    -# 
                     = f.select :category, @category_parent_array, {selected:@product.category.parent.parent.name}, {class: 'form__input', id: 'parent_category'}
-                    -# = f.select :category, options_for_select(@category_parent_array, @product.category.parent.parent.name), {class: 'form__input', id: 'parent_category'}
-                    -# = f.select :category, @category_parent_array, {selected:@product.category.parent.parent.name}, {class: 'form__input', id: 'parent_category'}
                     - if @product.errors.include?(:category)
                       %p{style: "color: red;"}
                         = @product.errors.full_messages_for(:category).first
                 .showing-select-wrapper__added#children_wrapper
                   .showing-select-wrapper__box
-                    = f.select :child_category, @category_children_array, {selected:@product.category.parent.name}, {class: 'form__input', id: 'child_category'}
-                    -# = f.select :child_category, options_for_select(@category_children_array, @product.category.parent.name), {class: 'form__input', id: 'child_category'}
-                    -# = f.select :child_category, @category_children_array, {selected:@product.category.parent.name}, {class: 'form__input', id: 'child_category'}
+                    = f.select :child_category, @category_children_array, {selected:@product.category.parent.id}, {class: 'form__input', id: 'child_category'}
                 .showing-select-wrapper__added#grandchildren_wrapper
                   .showing-select-wrapper__box
-                    = f.select :category_id, @category_grandchildren_array, {selected:@product.category.name}, {class: 'form__input', id: 'grandchild_category'}
-                    -# = f.select :category_id, options_for_select(@category_grandchildren_array, @grandchild_category.name), {class: 'form__input', id: 'grandchild_category'}
-                    -# = f.select :category_id, @category_grandchildren_array, {selected:@product.category.name}, {class: 'form__input', id: 'grandchild_category'}
+                    = f.select :category_id, @category_grandchildren_array, {selected:@product.category.id}, {class: 'form__input', id: 'grandchild_category'}
           .showing__detail__brand
             %label.sub_title
               ブランド

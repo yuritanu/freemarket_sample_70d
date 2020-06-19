@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :update]
+  before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
   before_action :set_category, only:  [:index, :new, :show, :edit]
   before_action :call_category, only: [:create, :new, :update, :edit]
 
@@ -43,26 +43,22 @@ class ProductsController < ApplicationController
   def edit
     @grandchild_category = @product.category
     @child_category = @grandchild_category.parent
-    @parent_category = @child_category.parent
-    # binding.pry
 
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-    # binding.pry
-
-    @category_children_array = ["---"]
+    # 編集ページで子カテゴリーを表示する記載
+    @category_children_array = []
     Category.where(ancestry: @child_category.ancestry).each do |children|
-      @category_children_array << children.name
+      name = children.name
+      id = children.id
+      @category_children_array << [name, id]
     end
-    # binding.pry
 
-    @category_grandchildren_array = ["---"]
+    # 編集ページで孫カテゴリーを表示する記載
+    @category_grandchildren_array = []
     Category.where(ancestry: @grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren.name
+      name = grandchildren.name
+      id = grandchildren.id
+      @category_grandchildren_array << [name, id]
     end
-    # binding.pry
   end
 
   def update
