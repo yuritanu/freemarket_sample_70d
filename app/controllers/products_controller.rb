@@ -21,7 +21,8 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      render :new
+      flash[:edit_product] = @product.errors.full_messages
+      redirect_to new_product_path
     end
   end
 
@@ -56,7 +57,7 @@ class ProductsController < ApplicationController
       name = children.name
       id = children.id
       @category_children_array << [name, id]
-  end
+    end
 
     # 編集ページで孫カテゴリーを表示する記載
     @category_grandchildren_array = ["---"]
