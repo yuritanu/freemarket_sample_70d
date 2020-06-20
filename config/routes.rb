@@ -26,8 +26,11 @@ Rails.application.routes.draw do
       get :check
       get  :buy
       post :buy
-      end
-    #Ajaxで動くアクションのルートを作成
+      # ↓editのカテゴリー選択部分(Ajaxで動くアクションのルートを作成)
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    # ↓newのカテゴリー選択部分(Ajaxで動くアクションのルートを作成)
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
