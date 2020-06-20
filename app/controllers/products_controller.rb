@@ -42,6 +42,11 @@ class ProductsController < ApplicationController
 
   def show
     @image = Image.find_by(product_id: params[:id])
+    # アクティブハッシュからデータ呼び出し
+    @product_status = ProductStatus.find(@product.product_status_id)
+    @delivery_cost = DeliveryCost.find(@product.delivery_cost_id)
+    @shipping_origin = ShippingOrigin.find(@product.shipping_origin_id)
+    @delivery_day = DeliveryDay.find(@product.delivery_day_id)
   end
 
   def edit

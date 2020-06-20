@@ -59,16 +59,16 @@
                   %td
                 %tr
                   %th 商品の状態
-                  %td=ProductStatus.find(@product.product_status_id).value
+                  %td=@product_status.value
                 %tr
                   %th 配送料の負担
-                  %td=DeliveryCost.find(@product.delivery_cost_id).value
+                  %td=@delivery_cost.value
                 %tr
                   %th 発送元の地域
-                  %td=ShippingOrigin.find(@product.shipping_origin_id).name
+                  %td=@shipping_origin.name
                 %tr
                   %th 発送日の目安
-                  %td=DeliveryDay.find(@product.delivery_day_id).value
+                  %td=@delivery_day.value
           .optional-area
             %ul
               %li.optional-area__left
