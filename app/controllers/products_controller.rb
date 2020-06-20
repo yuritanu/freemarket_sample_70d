@@ -51,6 +51,16 @@ class ProductsController < ApplicationController
       id = children.id
       @category_children_array << [name, id]
     end
+  end
+
+  def show
+    @image = Image.find_by(product_id: params[:id])
+    # アクティブハッシュからデータ呼び出し
+    @product_status = ProductStatus.find(@product.product_status_id)
+    @delivery_cost = DeliveryCost.find(@product.delivery_cost_id)
+    @shipping_origin = ShippingOrigin.find(@product.shipping_origin_id)
+    @delivery_day = DeliveryDay.find(@product.delivery_day_id)
+  end
 
     # 編集ページで孫カテゴリーを表示する記載
     @category_grandchildren_array = ["---"]
