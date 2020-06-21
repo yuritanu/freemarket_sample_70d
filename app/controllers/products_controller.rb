@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
+      flash.now[:edit_product] = "必須項目に誤りがあります。もう一度ご確認の上、お試しください。"
+      @createError = flash[:edit_product]
       render :new
     end
   end
