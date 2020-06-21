@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
+      flash.now[:edit_product] = "必須項目に誤りがあります。もう一度ご確認の上、お試しください。"
+      @createError = flash[:edit_product]
       render :new
     end
   end
@@ -56,7 +58,7 @@ class ProductsController < ApplicationController
       name = children.name
       id = children.id
       @category_children_array << [name, id]
-  end
+    end
 
     # 編集ページで孫カテゴリーを表示する記載
     @category_grandchildren_array = ["---"]

@@ -64,7 +64,7 @@
             .showing-product-detail__category
               = f.label 'カテゴリー', class: 'showing-default__label'
               %span.required 必須
-              - if @product.category_id.nil?
+              - if @product.category_id.nil? || @createError.nil? == false
                 .showing-select-wrapper
                   .showing-select-wrapper__box
                     = f.select :category, @category_parent_array, {}, {class: 'form__input', id: 'parent_category'}
