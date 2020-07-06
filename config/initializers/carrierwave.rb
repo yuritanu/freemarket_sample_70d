@@ -13,7 +13,7 @@ CarrierWave.configure do |config|
 
       region: 'ap-northeast-1'
     }
-    config.fog_directory  = 'teamd70-yuritanu'    '
+    config.fog_directory  = 'teamd70-yuritanu'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/teamd70-yuritanu'
     config.fog_public = false
 
