@@ -35,7 +35,7 @@ set :keep_releases, 5
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 # secrets.yml用のシンボリックリンクを追加
-set :linked_files, %w{ config/secrets.yml }
+# set :linked_files, %w{ config/secrets.yml }
 
 # 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
 
